@@ -15,6 +15,7 @@ class AddFieldsToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('username', 20)->unique();
+            $table->softDeletes();
         });
     }
 
@@ -27,6 +28,7 @@ class AddFieldsToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('username');
+            $table->dropSoftDeletes();
         });
     }
 }
