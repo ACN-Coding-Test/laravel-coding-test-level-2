@@ -20,4 +20,10 @@ class Project extends Model
         'id',
         'name',
     ];
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
+
 }
