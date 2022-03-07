@@ -18,10 +18,9 @@ class ProjectController extends Controller
         
 
         $project = Project::paginate(
-            10, // per page (may be get it from request)
-            ['*'], // columns to select from table (default *, means all fields)
-            'page', // page name that holds the page number in the query string
-            10 // current page, default 1
+            10, 
+            ['*'], 
+            'page', 
         );
         return response()->json(['project'=>$project],200);
 
