@@ -12,5 +12,11 @@ class Project extends Model
         'id',
         'name',
     ];
+    protected $perPage = 10;
+
+    public function Tasks()
+    {
+        return $this->belongsTo('App\Models\Task');
+    }
 
 }

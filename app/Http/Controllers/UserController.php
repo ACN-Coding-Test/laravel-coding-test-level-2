@@ -32,7 +32,11 @@ class UserController extends Controller
             'password' => 'required',
         ]);
         
-        return User::create($request->all());  
+        $user = User::create($request->except(['roles']));  
+        $user->roles()->sync($request->roles);
+
+         return $user;
+
       }
 
     /**
@@ -57,6 +61,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->update($request->all());
+        $user->roles()->sync($request->roles);
         return $user;
     }
 

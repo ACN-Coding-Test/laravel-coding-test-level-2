@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -38,7 +39,11 @@ class AuthController extends Controller
             'token' => $token
         ];
 
-        return response($response, 201);
+        $role = Role::select('id')->where('name','user')->first();
+
+        $user->roles()->attach($role);
+
+        return response($user, 201);
     }
     public function login(Request $request)
     {

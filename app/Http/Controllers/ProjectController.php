@@ -15,7 +15,16 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return Project::all();
+        
+
+        $project = Project::paginate(
+            10, // per page (may be get it from request)
+            ['*'], // columns to select from table (default *, means all fields)
+            'page', // page name that holds the page number in the query string
+            10 // current page, default 1
+        );
+        return response()->json(['project'=>$project],200);
+
     }
 
     /**
@@ -72,4 +81,9 @@ class ProjectController extends Controller
     {
         return project::destroy($id);
     }
+public function Query($name)
+    {
+        return Project::where('username', 'like', '%'.$name.'%')->get();
+    }
+
 }

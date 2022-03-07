@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\APIController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
@@ -21,29 +22,35 @@ use Illuminate\Support\Facades\Redirect;
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+  return $request->user();
 });
 
 
 Route::group(
   ['prefix' => 'v1'],
-  function(){
-      //public route
-     Route::post('/register', [AuthController::class,'register']);
-     Route::post('/login', [AuthController::class,'login']);
+  function () {
+    //public route
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/login', [AuthController::class, 'login']);
 
-    Route::resource('users', UserController::class)->missing(function (Request $request) {
-        return Redirect::route('photos.index');
-    });
-    // Route::get('/users/search/{username}', [UserController::class,'Search']);
 
-    Route::resource('projects', ProjectController::class);
-    Route::resource('tasks', TaskController::class);
-      //protected routes
+    //protected routes
     Route::group(['middleware' => ['auth:sanctum']], function () {
-        // Route::get('/users/search/{username}', [UserController::class,'Search']);
-        Route::post('/logout', [AuthController::class,'logout']);
 
+
+      //users route
+      Route::resource('users', UserController::class)->missing(function (Request $request) {
+        return Redirect::route('photos.index');
+      });
+      Route::get('/users/search/{username}', [UserController::class, 'Search']);
+
+      //Projects route
+      Route::resource('projects', ProjectController::class);
+      Route::get('/users/q/{name}', [UserController::class, 'Query']);
+      //tasks route
+      Route::resource('tasks', TaskController::class);
+      // Route::get('/users/search/{username}', [UserController::class,'Search']);
+      Route::post('/logout', [AuthController::class, 'logout']);
     });
   }
 
