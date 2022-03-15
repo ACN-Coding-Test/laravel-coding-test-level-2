@@ -20,6 +20,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('users', 'App\Http\Controllers\ApiController@getAllResource');
     Route::get('users/{id}', 'App\Http\Controllers\ApiController@getResource');
     Route::post('create/project','App\Http\Controllers\ApiController@createProject');
+    Route::post('create/task','App\Http\Controllers\ApiController@createTask');
 });
 
 
@@ -30,4 +31,4 @@ Route::post('users/login','App\Http\Controllers\ApiController@login');
 Route::put('users/{id}', 'App\Http\Controllers\ApiController@updateResource');
 Route::patch('users/{id}', 'App\Http\Controllers\ApiController@updateResourceData');
 Route::delete('users/{id}','App\Http\Controllers\ApiController@deleteResource');
-
+Route::get('project/{name}','App\Http\Controllers\ApiController@getAllProjects');

@@ -170,13 +170,27 @@ class ApiController extends Controller
     $task = Task::create([
         'title' => $request->title,
         'description'=>$request->description,
-        'status'=> "NOT_STARTED"
+        'status'=> "NOT_STARTED",
+        'user_id'=>$request->user_id,
+        'project_id'=>$request->project_id
     ]);
 
   return response()->json([
       "task"=>$task,
     "message" => "Task created"
   ], 201);
+}
+
+public function getAllProjects($name){
+
+  if (Project::where('name', $name)->exists()) {
+    $project = Project::where('name', $name)->orderBy('name','asc')->get()->toJson(JSON_PRETTY_PRINT);
+    return response($project, 200);
+  } else {
+    return response()->json([
+      "message" => "Resource not found"
+    ], 404);
+  }
 }
 
 }
