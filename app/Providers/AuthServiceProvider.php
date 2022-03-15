@@ -33,6 +33,20 @@ class AuthServiceProvider extends ServiceProvider
             }
         });
 
+        Gate::define('access-project',function(User $user){
+            if($user->role_id === 2)
+            {
+                return true;
+            }
+        });
+
+        Gate::define('access-task',function(User $user){
+            if($user->role_id === 2)
+            {
+                return true;
+            }
+        });
+
         //
     }
 }

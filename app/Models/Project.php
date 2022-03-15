@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\Uuids;
+use App\Models\Project;
 
 class Project extends Model
 {
@@ -15,4 +16,9 @@ class Project extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

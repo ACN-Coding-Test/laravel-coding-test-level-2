@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Role;
+use App\Models\Project;
+use App\Models\Task;
 use App\Traits\Uuids;
 
 class User extends Authenticatable
@@ -42,6 +44,17 @@ class User extends Authenticatable
     public function role()
     {
         return $this->belongsTo(Role::class);
+    }
+
+
+    public function project()
+    {
+        return $this->hasMany(Project::class);
+    }
+
+    public function task()
+    {
+        return $this->hasMany(Task::class);
     }
     /**
      * The attributes that should be cast.
