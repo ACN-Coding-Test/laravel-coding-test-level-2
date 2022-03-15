@@ -18,8 +18,8 @@ class CreateTasksTable extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->string('status');
-            $table->integer('project_id');
-            $table->integer('user_id');
+            $table->foreignId("project_id")->constrained("projects");
+            $table->foreignId("user_id")->constrained("users");
             $table->timestamps();
         });
     }
