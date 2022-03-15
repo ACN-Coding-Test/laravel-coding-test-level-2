@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware(['auth:sanctum'])->group(function () {
+
+    Route::get('users', 'App\Http\Controllers\ApiController@getAllResource');
+    Route::get('users/{id}', 'App\Http\Controllers\ApiController@getResource');
 });
+
+
+//Route::get('users', 'App\Http\Controllers\ApiController@getAllResource');
+//Route::get('users/{id}', 'App\Http\Controllers\ApiController@getResource');
+Route::post('users','App\Http\Controllers\ApiController@createResource');
+Route::post('users/login','App\Http\Controllers\ApiController@login');
+Route::put('users/{id}', 'App\Http\Controllers\ApiController@updateResource');
+Route::patch('users/{id}', 'App\Http\Controllers\ApiController@updateResourceData');
+Route::delete('users/{id}','App\Http\Controllers\ApiController@deleteResource');
