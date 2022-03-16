@@ -17,11 +17,8 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('username')->unique();
             $table->string('password');
-            $table->timestamps();
-        });
-
-        Schema::table('users', function (Blueprint $table) {
             $table->string('role');
+            $table->timestamps();
         });
     }
 
