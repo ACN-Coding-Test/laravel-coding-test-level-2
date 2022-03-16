@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\API;
-
+use Illuminate\Auth\Access\Response;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -22,7 +22,7 @@ class AuthController extends Controller
         }
 
         $user = User::create([
-            'username' => $request->name,
+            'username' => $request->username,
             'password' => Hash::make($request->password),
             'role' => 'Admin',
         ]);

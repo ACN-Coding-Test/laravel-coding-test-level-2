@@ -9,6 +9,7 @@ class Task extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $fillable = ['title', 'description', 'status', 'project_id', 'user_id'];
     public function users()
     {
         return $this->hasOne(User::class);

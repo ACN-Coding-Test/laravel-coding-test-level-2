@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\API;
-
+use Illuminate\Auth\Access\Response;
 use App\Http\Controllers\Controller;
 use App\Models\Task;
+use App\Models\User;
+use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Resources\TaskResource;
 use Validator;
@@ -16,11 +18,7 @@ class TaskController extends Controller
      * @return \Illuminate\Http\Response
      */
     public $tasks_status = ['NOT_STARTED', 'IN_PROGRESS', 'READY_FOR_TEST', 'COMPLETED'];
-    public function __construct(Request $request) {
-        if($request->role != 'PRODUCT_OWNER'){
-            return Response::deny('You must be a PRODUCT_OWNER to continue creating tasks.');
-        }
-    }
+    
 
     public function index()
     {
@@ -34,10 +32,20 @@ class TaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    private function checkUserRole()
+    {
+        if(auth('api')->user()->role != 'PRODUCT_OWNER'){
+            return false;
+        }
+        return true;
+    }
     public function store(Request $request)
     {
-        $request->status = 'NOT_STARTED';
+        if(!$this->checkUserRole()){
+            return Response::deny('You must be a PRODUCT_OWNER to continue creating tasks.');
+        }
         $data = $request->all();
+        $data['status'] = 'NOT_STARTED';
 
         $validator = Validator::make($data, [
             'title' => 'required|max:255',
@@ -50,11 +58,26 @@ class TaskController extends Controller
             return response(['error' => $validator->errors(), 'Validation Error']);
         }
 
-        if(!in_array($request->status, $tasks_status)){
+        if(!in_array($data['status'], $this->tasks_status)){
             return Response::deny("You must provide task status from following ['NOT_STARTED', 'IN_PROGRESS', 'READY_FOR_TEST', 'COMPLETED']");
         }
 
+        // Check if user id is valid
+        $user = User::find($request->user_id);
+        if(!$user){
+            return Response::deny("User not found to assign task!");
+        }
+        $project = Project::find($request->project_id);
+
+        if(!$project){
+            return Response::deny("Project not found!");
+        }
         $Task = Task::create($data);
+        
+ 
+        $user->role = 'PRODUCT_OWNER';
+        
+        $user->save();
 
         return response(['Task' => new TaskResource($Task), 'message' => 'Task created successfully']);
     }
@@ -79,9 +102,15 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $Task)
     {
-        $task_db = Task::Find($request->id);
         
         $data = $request->all();
+        return response(['data' => $request]);
+        if(!$this->checkUserRole()){
+            if(auth('api')->user()->id != $data['user_id']){
+                return Response::deny('You have no permission to edit task');
+            }
+            return Response::deny('You must be a PRODUCT_OWNER to continue creating tasks.');
+        }
 
         $validator = Validator::make($data, [
             'title' => 'required|max:255',
@@ -93,8 +122,19 @@ class TaskController extends Controller
         if($validator->fails()){
             return response(['error' => $validator->errors(), 'Validation Error']);
         }
-        if(!in_array($request->status, $tasks_status)){
+        if(!in_array($data['status'], $this->tasks_status)){
             return Response::deny("You must provide task status from following ['NOT_STARTED', 'IN_PROGRESS', 'READY_FOR_TEST', 'COMPLETED']");
+        }
+
+        // Check if user id is valid
+        $user = User::find($request->user_id);
+        if(!$user){
+            return Response::deny("User not found to assign task!");
+        }
+        $project = Project::find($request->project_id);
+
+        if(!$project){
+            return Response::deny("Project not found!");
         }
 
         $Task->update($data);

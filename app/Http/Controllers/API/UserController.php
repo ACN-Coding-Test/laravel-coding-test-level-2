@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\API;
-
+use Illuminate\Auth\Access\Response;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,7 +16,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function __construct(Request $request) {
-        if($request->role != 'Admin'){
+        if($request->username != 'Admin'){
             return Response::deny('You must be an administrator to continue accessing users.');
         }
     }
@@ -32,8 +32,18 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    private function checkUserRole()
+    {
+        if(auth('api')->user()->role != 'Admin'){
+            return false;
+        }
+        return true;
+    }
     public function store(Request $request)
     {
+        if(!$this->checkUserRole()){
+            return Response::deny('You must be a Admin to continue using users.');
+        }
         $data = $request->all();
 
         $validator = Validator::make($data, [
@@ -58,6 +68,9 @@ class UserController extends Controller
      */
     public function show(User $User)
     {
+        if(!$this->checkUserRole()){
+            return Response::deny('You must be a Admin to continue using users.');
+        }
         return response(['User' => new UserResource($User)]);
     }
 
@@ -70,6 +83,9 @@ class UserController extends Controller
      */
     public function update(Request $request, User $User)
     {
+        if(!$this->checkUserRole()){
+            return Response::deny('You must be a Admin to continue using users.');
+        }
         $data = $request->all();
 
         $validator = Validator::make($data, [
@@ -94,6 +110,9 @@ class UserController extends Controller
      */
     public function destroy(User $User)
     {
+        if(!$this->checkUserRole()){
+            return Response::deny('You must be a Admin to continue using users.');
+        }
         $User->delete();
 
         return response(['message' => 'User deleted successfully']);

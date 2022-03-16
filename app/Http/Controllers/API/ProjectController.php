@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\API;
-
+use Illuminate\Auth\Access\Response;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
@@ -15,11 +15,7 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(Request $request) {
-        if($request->role != 'PRODUCT_OWNER'){
-            return Response::deny('You must be an PRODUCT_OWNER to continue creating projects.');
-        }
-    }
+    
 
     public function index()
     {
@@ -33,8 +29,20 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    private function checkUserRole()
+    {
+        if(auth('api')->user()->role != 'PRODUCT_OWNER'){
+            return false;
+        }
+        return true;
+    }
+
     public function store(Request $request)
     {
+        if(!$this->checkUserRole()){
+            return Response::deny('You must be a PRODUCT_OWNER to continue.');
+        }
         $data = $request->all();
 
         $validator = Validator::make($data, [
@@ -58,6 +66,7 @@ class ProjectController extends Controller
      */
     public function show(Project $Project)
     {
+        
         return response(['Project' => new ProjectResource($Project)]);
     }
 
@@ -70,6 +79,9 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $Project)
     {
+        if(!$this->checkUserRole()){
+            return Response::deny('You must be a PRODUCT_OWNER to continue.');
+        }
         $data = $request->all();
 
         $validator = Validator::make($data, [
@@ -93,6 +105,9 @@ class ProjectController extends Controller
      */
     public function destroy(Project $Project)
     {
+        if(!$this->checkUserRole()){
+            return Response::deny('You must be a PRODUCT_OWNER to continue.');
+        }
         $Project->delete();
 
         return response(['message' => 'Project deleted successfully']);
