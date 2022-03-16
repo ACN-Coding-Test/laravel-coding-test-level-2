@@ -15,6 +15,12 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(Request $request) {
+        if($request->role != 'PRODUCT_OWNER'){
+            return Response::deny('You must be an PRODUCT_OWNER to continue creating projects.');
+        }
+    }
+
     public function index()
     {
         $Projects = Project::all();

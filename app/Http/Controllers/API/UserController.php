@@ -15,6 +15,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(Request $request) {
+        if($request->role != 'Admin'){
+            return Response::deny('You must be an administrator to continue accessing users.');
+        }
+    }
     public function index()
     {
         $Users = User::all();

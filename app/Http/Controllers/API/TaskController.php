@@ -15,6 +15,13 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public $tasks_status = ['NOT_STARTED', 'IN_PROGRESS', 'READY_FOR_TEST', 'COMPLETED'];
+    public function __construct(Request $request) {
+        if($request->role != 'PRODUCT_OWNER'){
+            return Response::deny('You must be a PRODUCT_OWNER to continue creating tasks.');
+        }
+    }
+
     public function index()
     {
         $Tasks = Task::all();
@@ -29,6 +36,7 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
+        $request->status = 'NOT_STARTED';
         $data = $request->all();
 
         $validator = Validator::make($data, [
@@ -40,6 +48,10 @@ class TaskController extends Controller
 
         if($validator->fails()){
             return response(['error' => $validator->errors(), 'Validation Error']);
+        }
+
+        if(!in_array($request->status, $tasks_status)){
+            return Response::deny("You must provide task status from following ['NOT_STARTED', 'IN_PROGRESS', 'READY_FOR_TEST', 'COMPLETED']");
         }
 
         $Task = Task::create($data);
@@ -67,6 +79,8 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $Task)
     {
+        $task_db = Task::Find($request->id);
+        
         $data = $request->all();
 
         $validator = Validator::make($data, [
@@ -78,6 +92,9 @@ class TaskController extends Controller
 
         if($validator->fails()){
             return response(['error' => $validator->errors(), 'Validation Error']);
+        }
+        if(!in_array($request->status, $tasks_status)){
+            return Response::deny("You must provide task status from following ['NOT_STARTED', 'IN_PROGRESS', 'READY_FOR_TEST', 'COMPLETED']");
         }
 
         $Task->update($data);

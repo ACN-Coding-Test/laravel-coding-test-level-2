@@ -19,6 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->timestamps();
         });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('role');
+        });
     }
 
     /**
