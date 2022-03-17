@@ -104,7 +104,6 @@ class TaskController extends Controller
     {
         
         $data = $request->all();
-        return response(['data' => $request]);
         if(!$this->checkUserRole()){
             if(auth('api')->user()->id != $data['user_id']){
                 return Response::deny('You have no permission to edit task');
