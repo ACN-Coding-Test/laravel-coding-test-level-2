@@ -1,0 +1,860 @@
+{
+	"info": {
+		"_postman_id": "00dab7b3-b3a7-4299-b3c1-045b50cb03e9",
+		"name": "Laravel Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://127.0.0.1:8000/api/v1/user/register",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "Admin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/user/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://127.0.0.1:8000/api/v1/user/register",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "Admin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/user/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"register"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 17 Mar 2022 10:35:38 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 17 Mar 2022 10:35:38 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.11"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"user\": {\n        \"username\": \"admin\",\n        \"password\": \"$2y$10$bRjrwMvvRZaR502.kzBfUefO1E96y0rmRby7wGiTJc8qOJUAo4c9.\",\n        \"role\": \"Admin\",\n        \"updated_at\": \"2022-03-17T10:35:36.000000Z\",\n        \"created_at\": \"2022-03-17T10:35:36.000000Z\",\n        \"id\": 4\n    },\n    \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjc0OTkxZTc2MDdiZTJhYjIwNWQ0MDk2NWY1M2MwOTEyMzFhNGQ1NDEwMGYwMzNlZjcwZmIwZmY3YjRmMzdjNGMyNjNmNzE3NTZlYWUyMDMiLCJpYXQiOjE2NDc1MTMzMzcuODQ1ODE3LCJuYmYiOjE2NDc1MTMzMzcuODQ1ODM2LCJleHAiOjE2NzkwNDkzMzcuNTY4MTUxLCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.kDGDcDYarVWDQVh5V_wNNsZq79340602qpS_yURJChWsKLJ0Ig7pBxspmjLZKPCpsLw2k5atz94Cmc6zSBDwPWw7GPQILYDnJLwlaRJMpXlFTTk9zMJbcXOAJ52q1U_h7BmU9Sf3iwmuCXSB7GbclVT7iRQBJissWJ-UfC1S8vpkExVLoTgKGgGbFH8dDBjaZpn9GuXBtv1YDxaSISyKDbqjq1D52qRMMzhjWd4wW0Q5qsB_oYXgtzVRb8KluD9ogVXecXZ7Zc-ZyxoewFk4V73iAefPgTYV1wixuPez78B2Bgy18EuBSSP7Rpdg4MbdmtnEq1elSp3OAiQoHWo9vW7AjrRLDfhNBVK7hTZdqQSOzXo3_xMbmwCCRRLh3BNUI4tVIHFPARtJY8HiiGQoQOuaT2mu50IQ4Z21hqfvyRxBK9-C4cppjK47upWSs3b62fKFocuGTI63lOU6oxtHbH2atGv47KHuHqRh6wpJVZBcoEFFQRKf9lpS3Aawe8tZ9N6EbsGN5pOTBI8brH-yOUiW8eLtsd49odoqCVEpBXu0fmV9-IUUaZUTmav6LdHqihvI9B1VPhoj77LlSNdBWIhAOVyI0EnUs356lSRI4UTxn25IHJBT82tjXOXE7MTISl3XFRyWSzSE-GVHzjDLrH8gtrqMmZwHxppFskkxwEQ\"\n}"
+				}
+			]
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/v1/user/register",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjc0OTkxZTc2MDdiZTJhYjIwNWQ0MDk2NWY1M2MwOTEyMzFhNGQ1NDEwMGYwMzNlZjcwZmIwZmY3YjRmMzdjNGMyNjNmNzE3NTZlYWUyMDMiLCJpYXQiOjE2NDc1MTMzMzcuODQ1ODE3LCJuYmYiOjE2NDc1MTMzMzcuODQ1ODM2LCJleHAiOjE2NzkwNDkzMzcuNTY4MTUxLCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.kDGDcDYarVWDQVh5V_wNNsZq79340602qpS_yURJChWsKLJ0Ig7pBxspmjLZKPCpsLw2k5atz94Cmc6zSBDwPWw7GPQILYDnJLwlaRJMpXlFTTk9zMJbcXOAJ52q1U_h7BmU9Sf3iwmuCXSB7GbclVT7iRQBJissWJ-UfC1S8vpkExVLoTgKGgGbFH8dDBjaZpn9GuXBtv1YDxaSISyKDbqjq1D52qRMMzhjWd4wW0Q5qsB_oYXgtzVRb8KluD9ogVXecXZ7Zc-ZyxoewFk4V73iAefPgTYV1wixuPez78B2Bgy18EuBSSP7Rpdg4MbdmtnEq1elSp3OAiQoHWo9vW7AjrRLDfhNBVK7hTZdqQSOzXo3_xMbmwCCRRLh3BNUI4tVIHFPARtJY8HiiGQoQOuaT2mu50IQ4Z21hqfvyRxBK9-C4cppjK47upWSs3b62fKFocuGTI63lOU6oxtHbH2atGv47KHuHqRh6wpJVZBcoEFFQRKf9lpS3Aawe8tZ9N6EbsGN5pOTBI8brH-yOUiW8eLtsd49odoqCVEpBXu0fmV9-IUUaZUTmav6LdHqihvI9B1VPhoj77LlSNdBWIhAOVyI0EnUs356lSRI4UTxn25IHJBT82tjXOXE7MTISl3XFRyWSzSE-GVHzjDLrH8gtrqMmZwHxppFskkxwEQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "test-user2",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "PRODUCT_OWNER",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/user/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/v1/project",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNDhkZGY4ZGE1NzIxMzk2MWU5MjhmZTRiYzI5ZmE4OTU1MzYwODhlOWIyNWZhNDJmM2E4Yzc4M2UxMmY4ZmJlYmZjODM2OTY0OTllZWQ3ZWUiLCJpYXQiOjE2NDc1MTQwNDguNDY0NzY5LCJuYmYiOjE2NDc1MTQwNDguNDY0ODA4LCJleHAiOjE2NzkwNTAwNDguMzk0ODkxLCJzdWIiOiI1Iiwic2NvcGVzIjpbXX0.lxPHlIfAUcFfjWzgJy9u4cK6sxPdjnr-CtfOkhSk5U9B1SIqXh4eIl9pPQJPbZ5JTK7hkfHImRRnUdLCyDHSNEFCf0YHEGH7WwEDXmIXbHJu932jXUb87AkJ35BplONUPQB_erwBbbPZ-hjlwRLvl_lwa_tn1-zZbXHWGRRL7IsjizGhLxrvOSTD-AMnBQxxjBXKGl2pZ76J368s90fC0fhw3sPkg3Ne9P45rAM7BmP8eGq78rOjPPxj10r3NvmfAx0B6CDMciiKMQlj2tfA3htseG-dncQMUni-dIgJKxJP9Vg-n4SUMXZjfePKF1VJ9fzr6M2k2f_yZU5rFC4JLUnyW2zSqk9HTo8Jx5_wuikvHOk5h1acK8lvzKZ5F064FQveVoxMPs_9mLC4giIrUQSt9QPFanuDP5pHkBGzCZBn1oIdVJleuHzz2o0TvGtq0gkhTw3Evk3X9C4fZTT-XWqNyfvCeE-NRet62cywfFl2ledW2wzaRHPDdqr2FpdlUMDW4YgPMdMF_gCXHDEP418MheQPpxB9WGrZztkRucM18nuQEXQw7fP1TdMDHmBSr4-QF21ALGmE2dfquAoJ1qSAjDr9IzW_4ZjWT5fD1HvPxxclRDT_n8vrZuukGCIbwMboOp7DhFQKLQdMCBOQ0EW3gaWCaS7AgVuWcDEu8x0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Filemanager Project",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/project",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"project"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://127.0.0.1:8000/api/v1/project",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Filemanager Project",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/project",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"project"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 17 Mar 2022 10:56:51 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 17 Mar 2022 10:56:51 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.11"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"Project\": {\n        \"name\": \"Filemanager Project\",\n        \"updated_at\": \"2022-03-17T10:56:51.000000Z\",\n        \"created_at\": \"2022-03-17T10:56:51.000000Z\",\n        \"id\": 5\n    },\n    \"message\": \"Project created successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/v1/tasks",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNDhkZGY4ZGE1NzIxMzk2MWU5MjhmZTRiYzI5ZmE4OTU1MzYwODhlOWIyNWZhNDJmM2E4Yzc4M2UxMmY4ZmJlYmZjODM2OTY0OTllZWQ3ZWUiLCJpYXQiOjE2NDc1MTQwNDguNDY0NzY5LCJuYmYiOjE2NDc1MTQwNDguNDY0ODA4LCJleHAiOjE2NzkwNTAwNDguMzk0ODkxLCJzdWIiOiI1Iiwic2NvcGVzIjpbXX0.lxPHlIfAUcFfjWzgJy9u4cK6sxPdjnr-CtfOkhSk5U9B1SIqXh4eIl9pPQJPbZ5JTK7hkfHImRRnUdLCyDHSNEFCf0YHEGH7WwEDXmIXbHJu932jXUb87AkJ35BplONUPQB_erwBbbPZ-hjlwRLvl_lwa_tn1-zZbXHWGRRL7IsjizGhLxrvOSTD-AMnBQxxjBXKGl2pZ76J368s90fC0fhw3sPkg3Ne9P45rAM7BmP8eGq78rOjPPxj10r3NvmfAx0B6CDMciiKMQlj2tfA3htseG-dncQMUni-dIgJKxJP9Vg-n4SUMXZjfePKF1VJ9fzr6M2k2f_yZU5rFC4JLUnyW2zSqk9HTo8Jx5_wuikvHOk5h1acK8lvzKZ5F064FQveVoxMPs_9mLC4giIrUQSt9QPFanuDP5pHkBGzCZBn1oIdVJleuHzz2o0TvGtq0gkhTw3Evk3X9C4fZTT-XWqNyfvCeE-NRet62cywfFl2ledW2wzaRHPDdqr2FpdlUMDW4YgPMdMF_gCXHDEP418MheQPpxB9WGrZztkRucM18nuQEXQw7fP1TdMDHmBSr4-QF21ALGmE2dfquAoJ1qSAjDr9IzW_4ZjWT5fD1HvPxxclRDT_n8vrZuukGCIbwMboOp7DhFQKLQdMCBOQ0EW3gaWCaS7AgVuWcDEu8x0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Task 2 to test-user2",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Assigned to test-user2",
+							"type": "text"
+						},
+						{
+							"key": "project_id",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "user_id",
+							"value": "5",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/tasks",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"tasks"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://127.0.0.1:8000/api/v1/tasks",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Task 2 to test-user2",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Assigned to test-user2",
+									"type": "text"
+								},
+								{
+									"key": "project_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/tasks",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"tasks"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 17 Mar 2022 10:57:56 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 17 Mar 2022 10:57:56 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.11"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"Task\": {\n        \"title\": \"Task 2 to test-user2\",\n        \"description\": \"Assigned to test-user2\",\n        \"project_id\": \"5\",\n        \"user_id\": \"5\",\n        \"status\": \"NOT_STARTED\",\n        \"updated_at\": \"2022-03-17T10:57:56.000000Z\",\n        \"created_at\": \"2022-03-17T10:57:56.000000Z\",\n        \"id\": 5\n    },\n    \"message\": \"Task created successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/v1/tasks/",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNDhkZGY4ZGE1NzIxMzk2MWU5MjhmZTRiYzI5ZmE4OTU1MzYwODhlOWIyNWZhNDJmM2E4Yzc4M2UxMmY4ZmJlYmZjODM2OTY0OTllZWQ3ZWUiLCJpYXQiOjE2NDc1MTQwNDguNDY0NzY5LCJuYmYiOjE2NDc1MTQwNDguNDY0ODA4LCJleHAiOjE2NzkwNTAwNDguMzk0ODkxLCJzdWIiOiI1Iiwic2NvcGVzIjpbXX0.lxPHlIfAUcFfjWzgJy9u4cK6sxPdjnr-CtfOkhSk5U9B1SIqXh4eIl9pPQJPbZ5JTK7hkfHImRRnUdLCyDHSNEFCf0YHEGH7WwEDXmIXbHJu932jXUb87AkJ35BplONUPQB_erwBbbPZ-hjlwRLvl_lwa_tn1-zZbXHWGRRL7IsjizGhLxrvOSTD-AMnBQxxjBXKGl2pZ76J368s90fC0fhw3sPkg3Ne9P45rAM7BmP8eGq78rOjPPxj10r3NvmfAx0B6CDMciiKMQlj2tfA3htseG-dncQMUni-dIgJKxJP9Vg-n4SUMXZjfePKF1VJ9fzr6M2k2f_yZU5rFC4JLUnyW2zSqk9HTo8Jx5_wuikvHOk5h1acK8lvzKZ5F064FQveVoxMPs_9mLC4giIrUQSt9QPFanuDP5pHkBGzCZBn1oIdVJleuHzz2o0TvGtq0gkhTw3Evk3X9C4fZTT-XWqNyfvCeE-NRet62cywfFl2ledW2wzaRHPDdqr2FpdlUMDW4YgPMdMF_gCXHDEP418MheQPpxB9WGrZztkRucM18nuQEXQw7fP1TdMDHmBSr4-QF21ALGmE2dfquAoJ1qSAjDr9IzW_4ZjWT5fD1HvPxxclRDT_n8vrZuukGCIbwMboOp7DhFQKLQdMCBOQ0EW3gaWCaS7AgVuWcDEu8x0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Task1 Assigned to test-user1",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "task 1",
+							"type": "text"
+						},
+						{
+							"key": "project_id",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "user_id",
+							"value": "6",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/tasks",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"tasks"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://127.0.0.1:8000/api/v1/tasks/",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Task1 Assigned to test-user1",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "task 1",
+									"type": "text"
+								},
+								{
+									"key": "project_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "6",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/tasks",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 17 Mar 2022 11:01:18 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 17 Mar 2022 11:01:18 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.11"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"Task\": {\n        \"title\": \"Task1 Assigned to test-user1\",\n        \"description\": \"task 1\",\n        \"project_id\": \"5\",\n        \"user_id\": \"6\",\n        \"status\": \"NOT_STARTED\",\n        \"updated_at\": \"2022-03-17T11:01:18.000000Z\",\n        \"created_at\": \"2022-03-17T11:01:18.000000Z\",\n        \"id\": 6\n    },\n    \"message\": \"Task created successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/v1/project?page=1&pageSize=2&sortBy=id&sortDirection=ASC",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjExMzU0YjE1MjdiNjk4NzdkMzE1NWM0MWUzYzI3MWQ3YWI2YWJmNzkxOTdlZDljODgzODJiYTI5ZmU3M2E3ZmJhOTE2NjUyYmM5NWYwMWQiLCJpYXQiOjE2NDc0NTgxNjAuMTAyOTc5LCJuYmYiOjE2NDc0NTgxNjAuMTAyOTk1LCJleHAiOjE2Nzg5OTQxNjAuMDEzNDY5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.F5oMP4NpJSOBxM2aXsjt4acXAsug5lqm_dNZHewfBnGbqP9zOB92SJvMjbaTdQB9LTt88tv4q1GNX05nn_T-jZrNv2QWXIrKL-rpEX89iqZYA57VRPMOxrwaulji-qFJix6np7I-nvIBi4v7YrzDgYRmEY_66rhYUmkWzg8bOqMBdzqj3g6jXjEsdoZ-SpVfDJaJW8RMBeSpubh54jwva6wiYZLUqwYrNMBcLHLWGv34chimyYnuUnjw3jo3HqaenG44d2Pi0Q9KpKn1qzsnWkxy_SzQbh2VpO-t0eMelxECPEg5_rwPpS79wT9omw6NNROrWLWI9ZzjwuEtfMNk9LSjykRyYh8UXTRfMJJiTbK9IsF2SEH8tXuBhzFCNfEJlvIlvz9RJPE0VPMkc4uVuiVfWGzDWg9uraJoW0mz2eBblDnGrWbsN55xT8GdrkJxgnH57abM4qbUnF2vbVKANT5EQSnlcGpla8DJabizRrsva0GsfECiRAuJ_yzx0mgjnnzjCh9aK_P86rJ8Dl8NzwPduwH546oi_akeJ99PL3ocuJUnjI0E2bXl_yHs_lwfwIvNnF-Raj8RPnJSgdVXwLXjuM6QrFDqccZqGHbD7YfVYEwqMp-dpSkESpqk3cWtJ-BLlZR7LF2xs3c9fQsE3IHjjMMOzKpKz9uXapy5qvU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/project?page=1&pageSize=2&sortBy=id&sortDirection=ASC",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"project"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": "2"
+						},
+						{
+							"key": "sortBy",
+							"value": "id"
+						},
+						{
+							"key": "sortDirection",
+							"value": "ASC"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://127.0.0.1:8000/api/v1/project?page=1&pageSize=2&sortBy=id&sortDirection=ASC",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/project?page=1&pageSize=2&sortBy=id&sortDirection=ASC",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"project"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "2"
+								},
+								{
+									"key": "sortBy",
+									"value": "id"
+								},
+								{
+									"key": "sortDirection",
+									"value": "ASC"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 17 Mar 2022 11:02:20 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 17 Mar 2022 11:02:20 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.11"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"Projects\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 1,\n                \"name\": \"Laravel Test Project\",\n                \"created_at\": \"2022-03-16T19:46:14.000000Z\",\n                \"updated_at\": \"2022-03-16T19:46:14.000000Z\"\n            },\n            {\n                \"id\": 2,\n                \"name\": \"The US Daily News\",\n                \"created_at\": null,\n                \"updated_at\": null\n            }\n        ],\n        \"first_page_url\": \"http://127.0.0.1:8000/api/v1/project?page=1\",\n        \"from\": 1,\n        \"last_page\": 3,\n        \"last_page_url\": \"http://127.0.0.1:8000/api/v1/project?page=3\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/api/v1/project?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/api/v1/project?page=2\",\n                \"label\": \"2\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/api/v1/project?page=3\",\n                \"label\": \"3\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/api/v1/project?page=2\",\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": \"http://127.0.0.1:8000/api/v1/project?page=2\",\n        \"path\": \"http://127.0.0.1:8000/api/v1/project\",\n        \"per_page\": \"2\",\n        \"prev_page_url\": null,\n        \"to\": 2,\n        \"total\": 5\n    }\n}"
+				}
+			]
+		}
+	]
+}
