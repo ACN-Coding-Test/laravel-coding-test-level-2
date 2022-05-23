@@ -15,6 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
+        $this->authorize('ADMIN');
+        
         return User::all();
     }
 
@@ -26,15 +28,18 @@ class UserController extends Controller
      */
     public function store(Request $req)
     {
+        $this->authorize('ADMIN');
 
         $fields = $req->validate([
             'username' => 'required|string|unique:users,username',
             'password' => 'required|string|confirmed',
+            'role_id' => 'string',
         ]);
-
+        
         $user = User::create([
             'username' => $fields['username'],
             'password' => bcrypt($fields['password']),
+            'role_id' => $fields['role_id'] ?? 3,
         ]);
 
         $token = $user->createToken('$3cr37')->plainTextToken;
@@ -55,6 +60,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        $this->authorize('ADMIN');
+
         return $user;
     }
 
@@ -67,12 +74,19 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $request->validate([
-            'username' => 'required|string|unique:users,username',
-            'password' => 'required|string',
+        $this->authorize('ADMIN');
+
+        $fields = $request->validate([
+            'username' => 'string|unique:users,username',
+            'password' => 'string',
+            'role_id' => 'string',
         ]);
 
-        $user->update($request->all());
+        $user->update([
+            'username' => $fields['username'] ?? $user->username,
+            'password' => bcrypt( $fields['password'] ?? $user->password),
+            'role_id' => $fields['role_id'] ?? $user->role_id,
+        ]);
 
         return $user;
     }
@@ -85,6 +99,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        $this->authorize('ADMIN');
+
         $user->delete();
 
         return response([

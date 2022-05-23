@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use Illuminate\Auth\Access\Response;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
@@ -15,7 +16,31 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return Project::all();
+        $query = isset($_GET['q']) 
+            ? $_GET['q'] 
+            : '';
+
+        $pageSize = isset($_GET['pageSize'])
+            ? $_GET['pageSize']
+            : 2;
+
+        $sortBy = isset($_GET['sortBy']) 
+            ? $_GET['sortBy']
+            :'name';
+        
+        $sortDirection = isset($_GET['sortDirection'])
+            ? $_GET['sortDirection']
+            : 'ASC';
+
+        $Projects = Project::orderBy($sortBy, $sortDirection);
+
+        $Projects = $query 
+            ? $Projects->where('name', 'LIKE', "%$query%") 
+            : $Projects;
+            
+        $Projects = $Projects->paginate($pageSize);
+
+        return $Projects;
     }
 
     /**
@@ -26,11 +51,14 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|unique:projects',
+        $this->authorize('PRODUCT_OWNER');
+
+        $fields = $request->validate([
+            'name' => 'required|string|unique:projects,name',
+            'user_id' => 'required|string',
         ]);
 
-        return Project::create($request->all());
+        return Project::create($fields);
     }
 
     /**
@@ -53,6 +81,7 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
+        $this->authorize('PRODUCT_OWNER');
         $request->validate([
             'name' => 'required|unique:projects',
         ]);
@@ -70,6 +99,8 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        $this->authorize('PRODUCT_OWNER');
+        
         $project->delete();
 
         return response([

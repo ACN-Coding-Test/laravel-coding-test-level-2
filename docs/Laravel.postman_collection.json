@@ -1,0 +1,1103 @@
+{
+	"info": {
+		"_postman_id": "a9dc9dfc-a407-44a0-ae57-df6f4d739d0a",
+		"name": "Laravel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Project",
+			"item": [
+				{
+					"name": "Create project",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|c7BeK5SwpJRvMEts2dr6BoIpYqqABcdZeWT4Qrm2",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Firewall",
+									"type": "default"
+								},
+								{
+									"key": "user_id",
+									"value": "",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{endpoint}}/projects",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all projects",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7|IxTJzvcanArCgYKtGt2Gn95mepVao4NzvCbTPUmH",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{endpoint}}/projects?q=ipho&page=1&pageSize=10&sortBy=updated_at",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"projects"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "ipho"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								},
+								{
+									"key": "sortBy",
+									"value": "updated_at"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update project",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|c7BeK5SwpJRvMEts2dr6BoIpYqqABcdZeWT4Qrm2",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Hacking",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{endpoint}}/projects/53872a7c-489e-49bf-9919-2c3e5d08f46b",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"projects",
+								"53872a7c-489e-49bf-9919-2c3e5d08f46b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get project by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{endpoint}}/projects/53872a7c-489e-49bf-9919-2c3e5d08f46b",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"projects",
+								"53872a7c-489e-49bf-9919-2c3e5d08f46b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete project",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|c7BeK5SwpJRvMEts2dr6BoIpYqqABcdZeWT4Qrm2",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{endpoint}}/projects/53872a7c-489e-49bf-9919-2c3e5d08f46b",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"projects",
+								"53872a7c-489e-49bf-9919-2c3e5d08f46b"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{authToken}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "Get all tasks",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "15|H0EeF9ckfwIWoDDxuGQrjqGAIJF3qDiyPuWU46SB",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{endpoint}}/tasks",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get task by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "15|H0EeF9ckfwIWoDDxuGQrjqGAIJF3qDiyPuWU46SB",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{endpoint}}/tasks/c7af95bd-796f-4756-bd36-8c21e5413d1d",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"tasks",
+								"c7af95bd-796f-4756-bd36-8c21e5413d1d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Task",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|c7BeK5SwpJRvMEts2dr6BoIpYqqABcdZeWT4Qrm2",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "Implement Firewall",
+									"type": "default"
+								},
+								{
+									"key": "project_id",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "user_id",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "description",
+									"value": "Create firewall to open port",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{endpoint}}/createTask",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"createTask"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Assign task",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "16|EsdL3IjdWBvTqEYk7JojGyr69v9Or5RIjoIJnDmo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user_id",
+									"value": "",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{endpoint}}/assignTask/c7af95bd-796f-4756-bd36-8c21e5413d1d",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"assignTask",
+								"c7af95bd-796f-4756-bd36-8c21e5413d1d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Status",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7|IxTJzvcanArCgYKtGt2Gn95mepVao4NzvCbTPUmH",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "status",
+									"value": "IN_PROGRESS",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{endpoint}}/updateStatus/c7af95bd-796f-4756-bd36-8c21e5413d1d",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"updateStatus",
+								"c7af95bd-796f-4756-bd36-8c21e5413d1d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update task attribute",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "3|f0CJvUfWPghc6uGrOm8QZEyX0pBU2Vj1wiIa8S44",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "Update firewall title",
+									"type": "default"
+								},
+								{
+									"key": "description",
+									"value": "Drop firewall",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}{{api/version}}updateTask/e375e145-cedd-4f78-86c9-6eeaa4a5716d",
+							"host": [
+								"{{host}}{{api/version}}updateTask"
+							],
+							"path": [
+								"e375e145-cedd-4f78-86c9-6eeaa4a5716d"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{authToken}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get all users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "13|fpcJL2L4X3vuy7IFroClElnPJ8KGCWgDuP8yVytH",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{endpoint}}/users",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all users Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "17|sMW1KXUQShT4VMhfSmvGrne95n30pp9VfwlRlQap",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "ahmad_admin1",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "S3cured",
+									"type": "default"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "S3cured",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{endpoint}}/users",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user by id",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "17|sMW1KXUQShT4VMhfSmvGrne95n30pp9VfwlRlQap",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "role_id",
+									"value": "1",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{endpoint}}/users/f54eaff3-31f8-4e00-a2a3-455d8b426979",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"users",
+								"f54eaff3-31f8-4e00-a2a3-455d8b426979"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "17|sMW1KXUQShT4VMhfSmvGrne95n30pp9VfwlRlQap",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{endpoint}}/users/f54eaff3-31f8-4e00-a2a3-455d8b426979",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"users",
+								"f54eaff3-31f8-4e00-a2a3-455d8b426979"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{authToken}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Logout",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "10|AwpNOnGxAXnD3Jc9g4RkxyNgRCfbCMNu7C33osVn",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "khalid12",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "natang",
+							"type": "default"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "natang",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{endpoint}}/logout",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get current user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "12|glHhr6bRESdeV9eFcliwCDPlqWh9FhyITgs8Wmj1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "khalid123",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "default"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "123",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{endpoint}}/user",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "3|ldjU71J8FTh142wjHDFwKw8kyQ2P2NtemiWxpQ8V",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "khalid_admin1",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "P@ssword1",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{endpoint}}/login",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register a user",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "13|fpcJL2L4X3vuy7IFroClElnPJ8KGCWgDuP8yVytH",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "khalid_tm3",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "P@ssword1",
+							"type": "default"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "P@ssword1",
+							"type": "default"
+						},
+						{
+							"key": "role_id",
+							"value": "1",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{endpoint}}/register",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "5|f4H2Dk0B681hW8O989O5liuHmE1NqBu39CR7UXSW",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "endpoint",
+			"value": "localhost:8000/api/v1",
+			"type": "default"
+		}
+	]
+}

@@ -16,6 +16,7 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->uuid('id')->primary()->nullable(false);
             $table->string('name')->unique()->nullable(false);
+            $table->foreignUuid('user_id')->constrained();
             $table->timestamps();
         });
     }
