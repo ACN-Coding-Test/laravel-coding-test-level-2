@@ -16,7 +16,31 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return Project::all();
+        $query = isset($_GET['q']) 
+            ? $_GET['q'] 
+            : '';
+
+        $pageSize = isset($_GET['pageSize'])
+            ? $_GET['pageSize']
+            : 2;
+
+        $sortBy = isset($_GET['sortBy']) 
+            ? $_GET['sortBy']
+            :'name';
+        
+        $sortDirection = isset($_GET['sortDirection'])
+            ? $_GET['sortDirection']
+            : 'ASC';
+
+        $Projects = Project::orderBy($sortBy, $sortDirection);
+
+        $Projects = $query 
+            ? $Projects->where('name', 'LIKE', "%$query%") 
+            : $Projects;
+            
+        $Projects = $Projects->paginate($pageSize);
+
+        return $Projects;
     }
 
     /**
