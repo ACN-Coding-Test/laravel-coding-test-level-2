@@ -55,8 +55,10 @@ class ProjectController extends Controller
 
         $fields = $request->validate([
             'name' => 'required|string|unique:projects,name',
-            'user_id' => 'required|string',
+            'user_id' => 'string',
         ]);
+
+        $fields['user_id'] = $fields['user_id'] ??auth('sanctum')->user()->id;
 
         return Project::create($fields);
     }
