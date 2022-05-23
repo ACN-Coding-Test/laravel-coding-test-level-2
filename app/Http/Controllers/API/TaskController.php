@@ -37,10 +37,11 @@ class TaskController extends Controller
             'title' => 'required|string',
             'description' => 'string',
             'status' => 'string',
-            'project_id' => 'required',
-            'user_id' => 'required',
+            'project_id' => 'required|string',
+            'user_id' => 'string',
         ]);
 
+        $fields['user_id'] = $fields['user_id'] ??auth('sanctum')->user()->id;
         $fields['status'] = $fields['status'] ?? 'NOT_STARTED';
         
 

@@ -36,6 +36,23 @@ class AuthController extends Controller
         return response($res, 201);
     }
 
+    /**
+     * @OA\POST(
+     *      path="/regiasdster",
+     *      operationId="Regisasdter",
+     *      tags={"Main"},
+     *      summary="Register a user",
+     *      description="Returns user and access token",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *       ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
     public function login(Request $req) {
         $fields = $req->validate([
             'username' => 'required',

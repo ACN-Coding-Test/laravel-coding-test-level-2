@@ -1,0 +1,736 @@
+{
+    "swagger": "2.0",
+    "host": "localhost:8000",
+    "basePath": "/api/v1",
+    "tags": [
+        {
+            "name": "Home"
+        },
+        {
+            "name": "Project"
+        },
+        {
+            "name": "Task"
+        },
+        {
+            "name": "User"
+        }
+    ],
+    "schemes": ["http"],
+    "security": [
+        {
+            "Bearer": [""]
+        }
+    ],
+    "paths": {
+        "/register": {
+            "post": {
+                "tags": ["Home"],
+                "summary": "Register a User",
+                "description": "",
+                "operationId": "regiserUser",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "username": {
+                                    "type": "string",
+                                    "default": "Khalid"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "default": "P@ssword1"
+                                },
+                                "password_confirmation": {
+                                    "type": "string",
+                                    "default": "P@ssword1"
+                                },
+                                "role_id": {
+                                    "type": "string",
+                                    "default": "1"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Pet not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    },
+                    "422": {
+                        "description": "Duplicate entry"
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": ["Home"],
+                "summary": "Generate access token",
+                "description": "",
+                "operationId": "userLogin",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "username": {
+                                    "type": "string",
+                                    "default": "Khalid"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "default": "P@ssword1"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Pet not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/projects": {
+            "post": {
+                "tags": ["Project"],
+                "summary": "Create a project",
+                "description": "",
+                "operationId": "createProject",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "default": "Firewall",
+                                    "required": true
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Pet not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/projects/{id}": {
+            "put": {
+                "tags": ["Project"],
+                "summary": "Get all projects",
+                "description": "",
+                "operationId": "Update project",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "project_id",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Rename project",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "required": true
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Pet not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/projects?": {
+            "get": {
+                "tags": ["Project"],
+                "summary": "Get all projects",
+                "description": "",
+                "operationId": "getProject",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "q",
+                        "description": "Query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "description": "page",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "pageSize",
+                        "description": "pageSize",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortBy",
+                        "description": "sortBy",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Pet not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/projects/{proj_id}": {
+            "get": {
+                "tags": ["Project"],
+                "summary": "Get all projects",
+                "description": "",
+                "operationId": "getProjectById",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "proj_id",
+                        "description": "project_id",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Pet not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/projects/{p_id}": {
+            "delete": {
+                "tags": ["Project"],
+                "summary": "Get all projects",
+                "description": "",
+                "operationId": "deleteProject",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "p_id",
+                        "description": "project_id",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Pet not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/tasks": {
+            "get": {
+                "tags": ["Task"],
+                "summary": "Get all projects",
+                "description": "",
+                "operationId": "getAllTask",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Pet not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/tasks/{id}": {
+            "get": {
+                "tags": ["Task"],
+                "summary": "Get task by Id",
+                "description": "",
+                "operationId": "getTaskById",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "task_id",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Pet not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/createTask": {
+            "post": {
+                "tags": ["Task"],
+                "summary": "Create a task",
+                "description": "",
+                "operationId": "createTask",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "title": {
+                                    "type": "string",
+                                    "default": "",
+                                    "required": true
+                                },
+                                "project_id": {
+                                    "type": "string",
+                                    "default": "",
+                                    "required": true
+                                },
+                                "user_id": {
+                                    "type": "string",
+                                    "default": ""
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "default": "",
+                                    "required": true
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Pet not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/assignTask/{taskId}": {
+            "put": {
+                "tags": ["Task"],
+                "summary": "Assign Task",
+                "description": "",
+                "operationId": "assignTask",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "taskId",
+                        "description": "task_id",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "user_id": {
+                                    "type": "string",
+                                    "default": "",
+                                    "required": true
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Pet not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/updateStatus/{taskId}": {
+            "put": {
+                "tags": ["Task"],
+                "summary": "Update task status",
+                "description": "",
+                "operationId": "updateStatus",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "taskId",
+                        "description": "task_id",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "status": {
+                                    "type": "string",
+                                    "default": "",
+                                    "required": true
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Pet not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/updateTask/{taskId}": {
+            "put": {
+                "tags": ["Task"],
+                "summary": "Update task attribute",
+                "description": "",
+                "operationId": "updateTask",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "taskId",
+                        "description": "task_id",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "title": {
+                                    "type": "string",
+                                    "default": "",
+                                    "required": true
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "default": "",
+                                    "required": true
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Pet not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": ["User"],
+                "summary": "Get all user",
+                "description": "",
+                "operationId": "getAllUsers",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Pet not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/users/{userId}": {
+            "put": {
+                "tags": ["User"],
+                "summary": "Update user",
+                "description": "",
+                "operationId": "updateUser",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "userId",
+                        "description": "user_id",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "username": {
+                                    "type": "string",
+                                    "default": "",
+                                    "required": false
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "default": "",
+                                    "required": false
+                                },
+                                "role_id": {
+                                    "type": "string",
+                                    "default": "",
+                                    "required": false
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Pet not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/users/{user_id}": {
+            "get": {
+                "tags": ["User"],
+                "summary": "get user by id",
+                "description": "",
+                "operationId": "getUserById",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "user_id",
+                        "description": "user_id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Pet not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    },
+    "externalDocs": {
+        "description": "Find out more about Swagger",
+        "url": "http://swagger.io"
+    }
+}
