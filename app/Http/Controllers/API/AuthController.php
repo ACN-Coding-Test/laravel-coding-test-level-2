@@ -11,14 +11,19 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     public function register(Request $req) {
+
         $fields = $req->validate([
             'username' => 'required|string|unique:users,username',
             'password' => 'required|string|confirmed',
+            'role_id' => 'string',
         ]);
+
+        $fields['role_id'] = $fields['role_id'] ?? 3;
 
         $user = User::create([
             'username' => $fields['username'],
             'password' => bcrypt($fields['password']),
+            'role_id' => $fields['role_id'],
         ]);
 
         $token = $user->createToken('$3cr37')->plainTextToken;

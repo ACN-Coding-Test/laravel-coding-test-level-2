@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use Illuminate\Auth\Access\Response;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
@@ -26,11 +27,14 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|unique:projects',
+        $this->authorize('PRODUCT_OWNER');
+
+        $fields = $request->validate([
+            'name' => 'required|string|unique:projects,name',
+            'user_id' => 'required|string',
         ]);
 
-        return Project::create($request->all());
+        return Project::create($fields);
     }
 
     /**
@@ -53,6 +57,7 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
+        $this->authorize('PRODUCT_OWNER');
         $request->validate([
             'name' => 'required|unique:projects',
         ]);
@@ -70,6 +75,8 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        $this->authorize('PRODUCT_OWNER');
+        
         $project->delete();
 
         return response([

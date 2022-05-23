@@ -18,8 +18,8 @@ class CreateTasksTable extends Migration
             $table->string('title')->nullable(false);
             $table->string('description')->nullable(true);
             $table->string('status')->nullable(false);
-            $table->uuid('project_id')->nullable(false);
-            $table->uuid('user_id')->nullable(false);
+            $table->foreignUuid('project_id')->constrained();
+            $table->foreignUuid('user_id')->constrained();
             $table->timestamps();
         });
     }
