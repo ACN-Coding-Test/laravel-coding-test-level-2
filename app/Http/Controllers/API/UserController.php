@@ -76,12 +76,17 @@ class UserController extends Controller
     {
         $this->authorize('ADMIN');
 
-        $request->validate([
-            'username' => 'required|string|unique:users,username',
-            'password' => 'required|string',
+        $fields = $request->validate([
+            'username' => 'string|unique:users,username',
+            'password' => 'string',
+            'role_id' => 'string',
         ]);
 
-        $user->update($request->all());
+        $user->update([
+            'username' => $fields['username'] ?? $user->username,
+            'password' => bcrypt( $fields['password'] ?? $user->password),
+            'role_id' => $fields['role_id'] ?? $user->role_id,
+        ]);
 
         return $user;
     }

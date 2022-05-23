@@ -29,7 +29,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::get('/v1/tasks', [TaskController::class, 'index']);
     Route::get('/v1/tasks/{id}', [TaskController::class, 'show']);
-    Route::post('/v1/task', [TaskController::class, 'createTask']);
+    Route::post('/v1/createTask', [TaskController::class, 'createTask']);
     Route::put('/v1/assignTask/{id}', [TaskController::class, 'assignTask']);
     Route::put('/v1/updateStatus/{id}', [TaskController::class, 'updateStatus']);
     Route::put('/v1/updateTask/{id}', [TaskController::class, 'updateTask']);
