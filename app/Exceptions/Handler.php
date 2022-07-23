@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -13,7 +14,7 @@ class Handler extends ExceptionHandler
      * @var array<int, class-string<Throwable>>
      */
     protected $dontReport = [
-        //
+    ValidationException::class,
     ];
 
     /**
@@ -38,4 +39,14 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    // public function render($request, Exception $exception)
+    // {
+    //     // if ($e instanceof ModelNotFoundException) {
+    //     //     $e = new NotFoundHttpException($e->getMessage(), $e);
+    //     // }else if ($e instanceof ValidationException) 
+    //     // {
+    //     //     return $this->convertValidationExceptionToResponse($e, $request);
+    //     // }
+    // }
 }
