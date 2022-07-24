@@ -17,9 +17,9 @@ class ProjectController extends Controller
 
     }
 
-    public function getProjects(){
+    public function getProjects(Request $req){
 
-        $data_projects =  $this->project->index();
+        $data_projects =  $this->project->index($req);
 
         if(!$data_projects) return ResponseTrait::sendResponse(null,0,'Failed',422);
 

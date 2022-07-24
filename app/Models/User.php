@@ -54,9 +54,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function index()
+    public function index($request, $limit = 15, $sort = 'created_at', $order = 'asc')
     {
-        return $this::all();
+
+        $sort = isset($request['sort']) ? $request['sort'] : $sort;
+        $order = isset($request['order']) ? $request['order'] : $order;
+        $limit = isset($request['limit']) ? $request['limit'] : $limit;
+
+        $page = 1;
+		$paginate = $limit;
+
+        $return = $this;
+        return $return->orderBy($sort,$order)->paginate($limit)->appends(request()->query());
     }
  
     public function show($id)

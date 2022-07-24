@@ -19,9 +19,25 @@ class Project extends Model
 
     protected $primaryKey = 'id';
 
-    public function index()
+    public function index($request, $limit = 15, $sort = 'created_at', $order = 'asc')
     {
-        return $this::all();
+
+        $search = isset($request['q']) ? $request['q'] : null; //search for project name
+        $sort = isset($request['sortBy']) ? $request['sortBy'] : $sort;
+        $order = isset($request['sortDirection ']) ? $request['sortDirection '] : $order;
+        $limit = isset($request['pageSize']) ? $request['pageSize'] : $limit;
+
+		$paginate = $limit;
+
+        $return = $this;
+        if (!is_null($search)) {
+        // dd($search);
+            return $return->whereRaw('UPPER(name) LIKE ?', strtoupper('%'.urldecode($search).'%'))
+            ->orderBy($sort,$order)->paginate($limit)->appends(request()->query());
+        }
+        
+        return $return->orderBy($sort,$order)->paginate($limit)->appends(request()->query());
+        
     }
  
     public function show($id)

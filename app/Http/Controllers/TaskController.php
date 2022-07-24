@@ -16,9 +16,9 @@ class TaskController extends Controller
 
     }
 
-    public function getTasks(){
+    public function getTasks(Request $req){
 
-        $data_tasks =  $this->task->index();
+        $data_tasks =  $this->task->index($req);
 
         if(!$data_tasks) return ResponseTrait::sendResponse(null,0,'Failed',422);
 

@@ -39,9 +39,27 @@ class Task extends Model
         return $this->belongsTo(Project::class,'project_id','id');
     }
 
-    public function index()
+    public function index($request, $limit = 3, $sort = 'created_at', $order = 'asc')
     {
-        return $this::with('user')->with('project')->get();
+
+        $search = isset($request['q']) ? $request['q'] : null; //search for project name
+        $sort = isset($request['sortBy']) ? $request['sortBy'] : $sort;
+        $order = isset($request['sortDirection ']) ? $request['sortDirection '] : $order;
+        $limit = isset($request['pageSize']) ? $request['pageSize'] : $limit;
+
+        // $page = 1;
+		$paginate = $limit;
+
+        $return = $this::with('user')->with('project');
+        
+        if (!is_null($search)) {
+                $return = $return->whereHas('project', function($data) use($search){
+                    $data->whereRaw('UPPER(name) LIKE ?', strtoupper('%'.urldecode($search).'%'));
+                });
+            }
+
+        
+        return $return->orderBy($sort,$order)->paginate($limit)->appends(request()->query());
     }
  
     public function show($id)

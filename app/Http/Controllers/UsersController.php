@@ -18,12 +18,12 @@ class UsersController extends Controller
 
     }
 
-    public function getUsers(){
+    public function getUsers(Request $req){
 
         $authUser = Auth::User();
-        // dd($authUser);
+        dd($authUser);
         if($authUser['role'] == User::ADMIN){
-            $users =  $this->user->index();
+            $users =  $this->user->index($req);
             if(!$users) return ResponseTrait::sendResponse(null,0,'Failed',422);
             return ResponseTrait::sendResponse($users,1,'Success',200);
         }else{
