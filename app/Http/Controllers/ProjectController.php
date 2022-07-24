@@ -5,6 +5,8 @@ use App\Models\Project;
 use App\Http\Traits\ResponseTrait;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
@@ -34,14 +36,19 @@ class ProjectController extends Controller
     }
 
     public function storeProject(Request $data){
+        $authUser = Auth::User();
+        if($authUser['role'] == User::PRODUCT_OWNER){
 
-        $data_project = $this->project->store($data);
+            $data_project = $this->project->store($data);
 
-        // dd($data_project);
-        if($data_project == 0) return ResponseTrait::sendResponse(null,1,'Name already exist',200);
-        else if(!$data_project) return ResponseTrait::sendResponse(null,0,'Failed',422);
+            // dd($data_project);
+            if($data_project == 0) return ResponseTrait::sendResponse(null,1,'Name already exist',200);
+            else if(!$data_project) return ResponseTrait::sendResponse(null,0,'Failed',422);
 
-        return ResponseTrait::sendResponse($data_project,1,'Success',200);
+            return ResponseTrait::sendResponse($data_project,1,'Success',200);
+        }else{
+            return ResponseTrait::sendResponse(null,2,'Restricted User',200);
+        }
     }
 
     public function updateProject(Request $data, $id){

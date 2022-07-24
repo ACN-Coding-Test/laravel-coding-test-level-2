@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Support\Facades\Auth;
+
 class Task extends Model
 {
     use HasFactory;
@@ -28,14 +30,23 @@ class Task extends Model
     const READY_FOR_TEST = 2; 
     const COMPLETED = 3;
 
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id','id');
+    }
+    public function project()
+    {
+        return $this->belongsTo(Project::class,'project_id','id');
+    }
+
     public function index()
     {
-        return $this::all();
+        return $this::with('user')->with('project')->get();
     }
  
     public function show($id)
     {
-        return $this::find($id);
+        return $this::with('user')->with('project')->where('id',$id)->first();
     }
 
     public function store($request)
@@ -57,6 +68,20 @@ class Task extends Model
             'project_id'=> $request['project_id'],
             'user_id' => $request['user_id']
         ]);
+    }
+    public function updateStatus($request, $id)
+    {
+        $authUser = Auth::User();
+        $exist = $this::where('id',$id)->where('user_id',$authUser['id'])->exists();
+        if($exist){
+            $data = $this::where('id',$id)->where('user_id',$authUser['id'])->update([
+                'status'=> $request['status'],
+            ]);
+            return 1;
+        }else{
+            return 0;
+        }
+        
     }
 
     public function deleteTask($id)
