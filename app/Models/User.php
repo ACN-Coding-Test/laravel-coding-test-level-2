@@ -33,6 +33,14 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+
+    protected $rules = [
+        'id'              => 'uuid|required|pk',
+        'username'                => 'string|required|unique',
+        'password'                   => 'string|requirede',
+    ];
+
+
     /**
      * The attributes that should be cast.
      *
