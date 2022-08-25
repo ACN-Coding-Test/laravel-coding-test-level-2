@@ -13,8 +13,14 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $Projects = Project::all();
-        return response(['Projects' => ProjectResource::collection($Projects)]);
+        $pageSize = isset($_GET['pageSize'])?$_GET['pageSize']:2;
+        $sortBy = isset($_GET['sortBy'])?$_GET['sortBy']:'name';
+        $sortDirection = isset($_GET['sortDirection'])?$_GET['sortDirection']:'ASC';
+        $Projects = Project::orderBy($sortBy, $sortDirection);
+        $q = isset($_GET['q'])?$_GET['q']:'';
+        $Projects = $q?$Projects->where('name', 'LIKE', "%$q%"):$Projects;
+        $Projects = $Projects->paginate($pageSize);
+        return response(['Projects' => $Projects]);
     }
 
     private function checkUserRole()
