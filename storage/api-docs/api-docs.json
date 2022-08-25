@@ -1,0 +1,144 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Project API API",
+        "contact": {
+            "name": "Hiren Shah",
+            "email": "hiren@atyantik.com"
+        },
+        "license": {
+            "name": "Properietary",
+            "url": "https://atyantik.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/api/v1/"
+        }
+    ],
+    "paths": {
+        "/projects": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Display a listing of projects."
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Error": {
+                "properties": {
+                    "errorMessage": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Success": {
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Pagination": {
+                "properties": {
+                    "pagination": {
+                        "properties": {
+                            "total": {
+                                "description": "Total",
+                                "type": "integer"
+                            },
+                            "count": {
+                                "description": "Count",
+                                "type": "integer"
+                            },
+                            "pageSize": {
+                                "description": "Per Page",
+                                "type": "integer"
+                            },
+                            "pageIndex": {
+                                "description": "Current Page",
+                                "type": "integer"
+                            },
+                            "totalPages": {
+                                "description": "Total Page",
+                                "type": "integer"
+                            },
+                            "links": {
+                                "properties": {
+                                    "first": {
+                                        "description": "First Page",
+                                        "type": "string"
+                                    },
+                                    "last": {
+                                        "description": "Last Page",
+                                        "type": "string"
+                                    },
+                                    "current": {
+                                        "description": "Current Page",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "parameters": {
+            "Authorization": {
+                "name": "Authorization",
+                "in": "header",
+                "description": "JWT Token",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "sortBy": {
+                "name": "sortBy",
+                "in": "query",
+                "description": "Sort Order",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "sortDirection": {
+                "name": "sortDirection",
+                "in": "query",
+                "description": "Sort Direction",
+                "schema": {
+                    "type": "string",
+                    "enum": [
+                        "asc",
+                        "desc"
+                    ]
+                }
+            },
+            "includes": {
+                "name": "includes",
+                "in": "query",
+                "description": "Includes for getting object dependened data",
+                "schema": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "collectionFormat": "csv"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
