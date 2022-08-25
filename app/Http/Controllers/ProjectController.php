@@ -23,9 +23,11 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return ProjectResource::collection(Project::all());
+        $query = Project::query();
+
+        return Project::simplePaginate();
     }
 
     /**
