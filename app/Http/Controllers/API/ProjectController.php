@@ -17,8 +17,20 @@ class ProjectController extends Controller
         return response(['Projects' => ProjectResource::collection($Projects)]);
     }
 
+    private function checkUserRole()
+    {
+        if(auth('api')->user()->role != 'PRODUCT_OWNER'){
+            return false;
+        }
+        return true;
+    }
+
     public function store(Request $request)
     {
+        if($request->role != 'PRODUCT_OWNER'){
+            return Response::deny('You must be a PRODUCT_OWNER.');
+        }
+
         $data = $request->all();
 
         $validator = Validator::make($data, [
@@ -41,6 +53,11 @@ class ProjectController extends Controller
 
     public function update(Request $request, Project $Project)
     {
+        
+        if(!$this->checkUserRole()){
+            return Response::deny('You must be a PRODUCT_OWNER.');
+        }
+        
         $data = $request->all();
 
         $validator = Validator::make($data, [
@@ -58,6 +75,10 @@ class ProjectController extends Controller
 
     public function destroy(Project $Project)
     {
+        if(!$this->checkUserRole()){
+            return Response::deny('You must be a PRODUCT_OWNER.');
+        }
+        
         $Project->delete();
 
         return response(['message' => 'Project deleted successfully']);

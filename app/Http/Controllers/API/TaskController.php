@@ -11,15 +11,31 @@ use Validator;
 
 class TaskController extends Controller
 {
+    public $tasks_status = ['NOT_STARTED', 'IN_PROGRESS', 'READY_FOR_TEST', 'COMPLETED'];
+    
     public function index()
     {
         $Tasks = Task::all();
         return response(['Tasks' => TaskResource::collection($Tasks)]);
     }
 
+    private function checkUserRole()
+    {
+        if(auth('api')->user()->role != 'PRODUCT_OWNER'){
+            return false;
+        }
+        return true;
+    }
+    
     public function store(Request $request)
     {
+        
+        if(!$this->checkUserRole()){
+            return Response::deny('You must be a PRODUCT_OWNER.');
+        }
+
         $data = $request->all();
+        $data['status'] = 'NOT_STARTED';
 
         $validator = Validator::make($data, [
             'title' => 'required|max:255',
@@ -30,6 +46,10 @@ class TaskController extends Controller
 
         if($validator->fails()){
             return response(['error' => $validator->errors(), 'Validation Error']);
+        }
+
+        if(!in_array($data['status'], $this->tasks_status)){
+            return Response::deny("You must provide task status from following ['NOT_STARTED', 'IN_PROGRESS', 'READY_FOR_TEST', 'COMPLETED']");
         }
 
         $Task = Task::create($data);
@@ -46,6 +66,13 @@ class TaskController extends Controller
     {
         $data = $request->all();
 
+        if(!$this->checkUserRole()){
+            if(auth('api')->user()->id != $data['user_id']){
+                return Response::deny('You have no permission to edit task');
+            }
+            return Response::deny('You must be a PRODUCT_OWNER.');
+        }
+
         $validator = Validator::make($data, [
             'title' => 'required|max:255',
             'status' => 'required',
@@ -55,6 +82,10 @@ class TaskController extends Controller
 
         if($validator->fails()){
             return response(['error' => $validator->errors(), 'Validation Error']);
+        }
+
+        if(!in_array($request->status, $tasks_status)){
+            return Response::deny("You must provide task status from following ['NOT_STARTED', 'IN_PROGRESS', 'READY_FOR_TEST', 'COMPLETED']");
         }
 
         $Task->update($data);

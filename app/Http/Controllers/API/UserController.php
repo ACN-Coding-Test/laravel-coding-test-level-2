@@ -11,19 +11,38 @@ use Validator;
 
 class UserController extends Controller
 {
+    public function __construct(Request $request) {
+        if($request->username != 'Admin'){
+            return Response::deny('You must be an administrator.');
+        }
+    }
+    
     public function index()
     {
         $Users = User::all();
         return response(['Users' => UserResource::collection($Users)]);
     }
 
+    private function checkUserRole()
+    {
+        if(auth('api')->user()->role != 'Admin'){
+            return false;
+        }
+        return true;
+    }
+
     public function store(Request $request)
     {
+        if(!$this->checkUserRole()){
+            return Response::deny('You must be a Admin.');
+        }
+        
         $data = $request->all();
 
         $validator = Validator::make($data, [
             'username' => 'required',
             'password' => 'required|min:6',
+            'role' => 'required',
         ]);
 
         if($validator->fails()){
@@ -37,11 +56,19 @@ class UserController extends Controller
 
     public function show(User $User)
     {
+        if(!$this->checkUserRole()){
+            return Response::deny('You must be a Admin.');
+        }
+        
         return response(['User' => new UserResource($User)]);
     }
 
     public function update(Request $request, User $User)
     {
+        if(!$this->checkUserRole()){
+            return Response::deny('You must be a Admin.');
+        }
+        
         $data = $request->all();
 
         $validator = Validator::make($data, [
@@ -60,6 +87,10 @@ class UserController extends Controller
 
     public function destroy(User $User)
     {
+        if(!$this->checkUserRole()){
+            return Response::deny('You must be a Admin.');
+        }
+        
         $User->delete();
 
         return response(['message' => 'User deleted successfully']);
