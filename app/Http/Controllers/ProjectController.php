@@ -10,6 +10,14 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('acl:list:projects')->only(['index']);
+        $this->middleware('acl:create:project')->only(['store']);
+        $this->middleware('acl:view:project')->only(['show']);
+        $this->middleware('acl:update:project')->only(['update']);
+        $this->middleware('acl:delete:project')->only(['destroy']);
+    }
     /**
      * Display a listing of the resource.
      *

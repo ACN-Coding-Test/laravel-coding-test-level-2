@@ -7,17 +7,33 @@ use App\Http\Requests\TaskRequest;
 use App\Resources\TaskResource;
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Validation\UnauthorizedException;
 
 class TaskController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('acl:create:task')->only(['store']);
+        $this->middleware('acl:delete:task')->only(['destroy']);
+    }
+
     /**
-     * Display a listing of the resource.
+      Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return TaskResource::collection(Task::all());
+        $canListAllTasks = $request->user()->tokenCan('list:tasks');
+        $canListOwnTasks = $request->user()->tokenCan('list:own:tasks');
+        if (!$canListAllTasks && !$canListOwnTasks) {
+            throw new UnauthorizedException('You are not authorized for this action', 403);
+        }
+        if ($canListAllTasks) {
+            return Task::simplePaginate(10);
+        }
+        $userId = $request->user()->id;
+        return Task::where(['user_id' => $userId])->simplePaginate();
     }
 
     /**
@@ -49,7 +65,20 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        return new TaskResource(Task::findOrFail($id));
+        $canViewTask = $request->user()->tokenCan('view:task');
+        $canViewOwnTask = $request->user()->tokenCan('view:own:task');
+        if (!$canViewTask && !$canViewOwnTask) {
+            throw new UnauthorizedException('You are not authorized for this action', 403);
+        }
+        if (
+            !$canViewTask
+            && $canViewOwnTask
+            && $task->user_id !== $request->user->id
+        ) {
+            throw new UnauthorizedException('You are not authorized for this action', 403);
+        }
+
+        return $task->toArray();
     }
 
     /**
@@ -59,19 +88,37 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TaskRequest $request, Task $task)
+    public function update(TaskRequest $request, $taskId)
     {
-        $input = $request->input();
 
-        $task->fill([
-            'title' => $input['title'],
-            'description' => $input['description'],
-            'status' => $input['status'],
-            'project_id' => $input['project_id'],
-            'user_id' => $input['user_id'],
-        ]);
+        $canUpdateTask = $request->user()->tokenCan('update:task');
+        $canUpdateOwnTask = $request->user()->tokenCan('update:own:task');
+        if (!$canUpdateTask && !$canUpdateOwnTask) {
+            throw new UnauthorizedException('You are not authorized for this action', 403);
+        }
+        $task = Task::findOrFail($taskId);
 
-        return new TaskResource($task);
+        if (
+            !$canUpdateTask
+            && $canUpdateOwnTask
+            && $task->user_id !== $request->user->id
+        ) {
+            throw new UnauthorizedException('You are not authorized for this action', 403);
+        }
+        $updatable = [
+            'title',
+            'description',
+            'status',
+            'project_id',
+        ];
+        // A user cannot assign the task to another member
+        // Only product owner can
+        if ($canUpdateTask) {
+            array_push($updatable, 'user_id');
+        }
+        $taskData = $request->only($updatable);
+        $task->update($taskData);
+        return $task->toArray();
     }
 
     /**
