@@ -30,7 +30,12 @@ class UserRequest extends FormRequest
         $rules['username'] = ['required' , 'min:3' , 'max:255' , 'unique:users,username'];
         $rules['password'] = ['required' , 'confirmed', 'min:6'];
         $rules['role_id'] = ['required', 'exists:roles,id'];
-
+        if ($this->isMethod('put') || $this->isMethod('patch')) {
+            foreach($rules as $key=>$rule) {
+                array_unshift($rule,'sometimes');
+                $rules[$key]=$rule;
+            }
+        }
         return $rules;
     }
 

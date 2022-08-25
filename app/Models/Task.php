@@ -15,7 +15,7 @@ class Task extends Model
     const STATUS = array(
         "NOT_STARTED"     => "NOT_STARTED",
         "IN_PROGRESS"     => "IN_PROGRESS",
-        "READY_FOR_TEST"     => "READY_FOR_TEST",
+        "READY_FOR_TEST"  => "READY_FOR_TEST",
         "COMPLETED"     => "COMPLETED",
     );
 

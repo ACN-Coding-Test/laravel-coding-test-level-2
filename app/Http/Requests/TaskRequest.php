@@ -30,6 +30,12 @@ class TaskRequest extends FormRequest
         $rules['status'] = ['required', 'string'];
         $rules['project_id'] = ['required', 'exists:projects,id'];
         $rules['user_id'] = ['required', 'exists:users,id'];
+       if ($this->isMethod('put') || $this->isMethod('patch')) {
+            foreach($rules as $key=>$rule) {
+                array_unshift($rule,'sometimes');
+                $rules[$key]=$rule;
+            }
+        }
 
         return $rules;
     } 

@@ -7,9 +7,21 @@ use App\Http\Requests\UserRequest;
 use App\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('acl:list:users')->only(['index']);
+        $this->middleware('acl:create:user')->only(['store']);
+        $this->middleware('acl:view:user')->only(['show']);
+        $this->middleware('acl:update:user')->only(['update']);
+        $this->middleware('acl:delete:user')->only(['destroy']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -29,7 +41,7 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
 
-        $user = app('user_manager')->store($request->inpput());
+        $user = app('user_manager')->store($request->input());
 
         return new UserResource($user);
     }
@@ -52,11 +64,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, User $user)
+    public function update(UserRequest $request,  $userId)
     {
-        $validated = $request->validated();
+        $user = User::findOrFail($userId);
+        $user = app('user_manager')->store($request->input(), $user);
 
-        $user = $this->app('user_manager')->store($validated, $user);
 
         return new UserResource($user);
     }
@@ -67,12 +79,30 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($userId)
     {
+        $user = User::findOrFail($userId);
+
         $user->delete();
 
         return response()->json([
             'message' => 'User deleted successfully'
         ], 200);
+    }
+
+    public function login(Request $request) {
+        if(
+            Auth::attempt([
+                'username' => $request->username,
+                'password' => $request->password
+            ])
+        ) {
+            $role = Auth::user()->role->slug;
+            $token = $request->user()->createToken($request->username, config("acl.{$role}") ?? []);
+            return [
+                'token' => $token->plainTextToken
+            ];
+        }
+        throw new NotFoundHttpException('Cannot find user with provided details');
     }
 }

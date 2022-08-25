@@ -10,10 +10,11 @@ use Illuminate\Support\Facades\Hash;
  */
 class UserManager
 {
-    public function store(array $input, User $user = null) : User {
+    public function store($input, $user = null) : User {
 
 
         if (!$user) {
+            var_dump("hi");
             $user = User::create([
                 'email' => $input['email'],
                 'username' => $input['username'],
@@ -21,12 +22,15 @@ class UserManager
                 'role_id'  => $input['role_id'],
             ]);
         } else {
-            $user->fill([
-                'email' => $input['email'],
-                'name' => $input['name'],
-                'username' => $input['username'],
-                'role_id'  => $input['role_id'],
-            ]);
+            $fillables = ['email','name','username','role_id'];
+            foreach ($fillables as $key => $value) {
+                if (isset($input[$value])) {
+                    $user->fill([
+                        $value => $input[$value]
+                    ]);
+                }
+            }
+
 
         }
         if (isset($input['password'])) {
