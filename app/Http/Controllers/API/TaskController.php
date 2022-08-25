@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use Illuminate\Auth\Access\Response;
 use App\Http\Controllers\Controller;
 use App\Models\Task;
+use App\Models\User;
+use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Resources\TaskResource;
 use Validator;
@@ -52,7 +54,21 @@ class TaskController extends Controller
             return Response::deny("You must provide task status from following ['NOT_STARTED', 'IN_PROGRESS', 'READY_FOR_TEST', 'COMPLETED']");
         }
 
+        $user = User::find($request->user_id);
+        if(!$user){
+            return Response::deny("User not found to assign task!");
+        }
+        $project = Project::find($request->project_id);
+
+        if(!$project){
+            return Response::deny("Project not found!");
+        }
+
         $Task = Task::create($data);
+
+        $user->role = 'PRODUCT_OWNER';
+
+        $user->save();
 
         return response(['Task' => new TaskResource($Task), 'message' => 'Task created successfully']);
     }
@@ -86,6 +102,17 @@ class TaskController extends Controller
 
         if(!in_array($request->status, $tasks_status)){
             return Response::deny("You must provide task status from following ['NOT_STARTED', 'IN_PROGRESS', 'READY_FOR_TEST', 'COMPLETED']");
+        }
+
+
+        $user = User::find($request->user_id);
+        if(!$user){
+            return Response::deny("User not found to assign task!");
+        }
+        $project = Project::find($request->project_id);
+
+        if(!$project){
+            return Response::deny("Project not found!");
         }
 
         $Task->update($data);
