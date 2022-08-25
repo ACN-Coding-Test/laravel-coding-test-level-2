@@ -4,7 +4,7 @@ namespace App\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UserResource extends JsonResource
+class TaskResource extends JsonResource
 {
     /**
      * Indicates if the resource's collection keys should be preserved.
@@ -23,11 +23,11 @@ class UserResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'email' => $this->email,
-            'username' => $this->username,
-            'name' => $this->name,
-            'role_id' => $this->role_id,
-            'role'=>$this->role->name,
+            'title' => $this->title,
+            'description' => $this->description,
+            'status' => $this->status,
+            'project_id' => $this->project_id,
+            'user_id' => $this->user_id,
         ];
 
     }

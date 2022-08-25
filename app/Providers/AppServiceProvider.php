@@ -14,8 +14,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('user_manager',function() {
-            return UserManager();
+        $this->app->singleton('user_manager', function($app) {
+            return new UserManager();
         });
 
     }

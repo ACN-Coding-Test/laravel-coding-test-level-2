@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserRequest;
-use App\Resources\UserResource;
-use App\Models\User;
+use App\Http\Requests\ProjectRequest;
+use App\Resources\ProjectResource;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return UserResource::collection(User::all());
+        return ProjectResource::collection(Project::all());
     }
 
     /**
@@ -26,12 +26,15 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(ProjectRequest $request)
     {
+        $input = $request->input();
 
-        $user = app('user_manager')->store($request->inpput());
+        $project = Project::create([
+            'name' => $input['name'],
+        ]);
 
-        return new UserResource($user);
+        return new ProjectResource($project);
     }
 
     /**
@@ -42,7 +45,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return new UserResource(User::findOrFail($id));
+        return new ProjectResource(Project::findOrFail($id));
     }
 
     /**
@@ -52,13 +55,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, User $user)
+    public function update(ProjectRequest $request, Project $project)
     {
-        $validated = $request->validated();
+        $input = $request->input();
 
-        $user = $this->app('user_manager')->store($validated, $user);
+        $project->fill([
+            'name' => $input['name'],
+        ]);
 
-        return new UserResource($user);
+        return new ProjectResource($project);
     }
 
     /**
@@ -67,12 +72,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Project $project)
     {
-        $user->delete();
+        $project->delete();
 
         return response()->json([
-            'message' => 'User deleted successfully'
+            'message' => 'Project deleted successfully'
         ], 200);
     }
 }

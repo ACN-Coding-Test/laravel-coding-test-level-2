@@ -25,6 +25,8 @@ class UserRequest extends FormRequest
     {
         $rules = [];
 
+        $rules['name'] = ['required'];
+        $rules['email'] = ['required' , 'unique:users,email'];
         $rules['username'] = ['required' , 'min:3' , 'max:255' , 'unique:users,username'];
         $rules['password'] = ['required' , 'confirmed', 'min:6'];
         $rules['role_id'] = ['required', 'exists:roles,id'];
@@ -41,6 +43,9 @@ class UserRequest extends FormRequest
     {
 
         $messages = [];
+
+        $messages['email.required']  = __("The :name field is required", ["name" => __("Email")]);
+        $messages['email.unique']  = __("The :name has already been taken", ["name" => __("Email")]);
 
         $messages['username.required']  = __("The :name field is required", ["name" => __("Username")]);
         $messages['username.min:3']  = __("The :name field must contain at least 3 character", ["name" => __("Username")]);
