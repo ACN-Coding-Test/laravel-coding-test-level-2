@@ -25,9 +25,12 @@ class ProjectController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Project::query();
+        $query =Project::query();
+        if ($request->query('q',null)) {
+            $query->where('name','like',$request->query('q'));
+        }
 
-        return Project::simplePaginate();
+        return $query->jsonPaginate();
     }
 
     /**
