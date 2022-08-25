@@ -7,7 +7,7 @@ use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    use HasFactory;
+    use HasFactory,ClearCacheTrait;
 
     public $incrementing = false;
     public $timestamps = false;
