@@ -1,0 +1,793 @@
+{
+	"info": {
+		"_postman_id": "45065865-dc51-4846-84d1-a4a8087f76af",
+		"name": "Telekom Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "217133"
+	},
+	"item": [
+		{
+			"name": "https://telekom.local/api/v1/user/register",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "Admin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://telekom.local/api/v1/user/register",
+					"protocol": "https",
+					"host": [
+						"telekom",
+						"local"
+					],
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "https://telekom.local/api/v1/user/register",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "Admin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://telekom.local/api/v1/user/register",
+							"protocol": "https",
+							"host": [
+								"telekom",
+								"local"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"register"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "telekom.local"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 25 Aug 2022 23:35:38 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 25 Aug 2022 23:35:38 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.11"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"user\": {\n        \"username\": \"admin\",\n        \"password\": \"$2y$10$bRjrwMvvRZaR502.kzBfUefO1E96y0rmRby7wGiTJc8qOJUAo4c9.\",\n        \"role\": \"Admin\",\n        \"updated_at\": \"2022-08-25T10:35:36.000000Z\",\n        \"created_at\": \"2022-08-25T10:35:36.000000Z\",\n        \"id\": 4    }"
+				}
+			]
+		},
+		{
+			"name": "https://telekom.local/api/v1/user/register",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "test-user2",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "PRODUCT_OWNER",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://telekom.local/api/v1/user/register",
+					"protocol": "https",
+					"host": [
+						"telekom",
+						"local"
+					],
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://telekom.local/api/v1/project",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Filemanager Project",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://telekom.local/api/v1/project",
+					"protocol": "https",
+					"host": [
+						"telekom",
+						"local"
+					],
+					"path": [
+						"api",
+						"v1",
+						"project"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "https://telekom.local/api/v1/project",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Filemanager Project",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://telekom.local/api/v1/project",
+							"protocol": "https",
+							"host": [
+								"telekom",
+								"local"
+							],
+							"path": [
+								"api",
+								"v1",
+								"project"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "telekom.local"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Aug 2022 23:56:51 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Aug 2022 23:56:51 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.11"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"Project\": {\n        \"name\": \"Filemanager Project\",\n        \"updated_at\": \"2022-08-25T10:56:51.000000Z\",\n        \"created_at\": \"2022-08-25T10:56:51.000000Z\",\n        \"id\": 5\n    },\n    \"message\": \"Project created successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "https://telekom.local/api/v1/tasks",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Task 2 to test-user2",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Assigned to test-user2",
+							"type": "text"
+						},
+						{
+							"key": "project_id",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "user_id",
+							"value": "5",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://telekom.local/api/v1/tasks",
+					"protocol": "https",
+					"host": [
+						"telekom",
+						"local"
+					],
+					"path": [
+						"api",
+						"v1",
+						"tasks"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "https://telekom.local/api/v1/tasks",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Task 2 to test-user2",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Assigned to test-user2",
+									"type": "text"
+								},
+								{
+									"key": "project_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://telekom.local/api/v1/tasks",
+							"protocol": "https",
+							"host": [
+								"telekom",
+								"local"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tasks"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "telekom.local"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 25 Aug 2022 23:57:56 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 25 Aug 2022 23:57:56 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.11"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"Task\": {\n        \"title\": \"Task 2 to test-user2\",\n        \"description\": \"Assigned to test-user2\",\n        \"project_id\": \"5\",\n        \"user_id\": \"5\",\n        \"status\": \"NOT_STARTED\",\n        \"updated_at\": \"2022-08-25T10:57:56.000000Z\",\n        \"created_at\": \"2022-08-25T10:57:56.000000Z\",\n        \"id\": 5\n    },\n    \"message\": \"Task created successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "https://telekom.local/api/v1/tasks/",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Task1 Assigned to test-user1",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "task 1",
+							"type": "text"
+						},
+						{
+							"key": "project_id",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "user_id",
+							"value": "6",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://telekom.local/api/v1/tasks",
+					"protocol": "https",
+					"host": [
+						"telekom",
+						"local"
+					],
+					"path": [
+						"api",
+						"v1",
+						"tasks"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "https://telekom.local/api/v1/tasks/",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Task1 Assigned to test-user1",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "task 1",
+									"type": "text"
+								},
+								{
+									"key": "project_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "6",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://telekom.local/api/v1/tasks",
+							"protocol": "https",
+							"host": [
+								"telekom",
+								"local"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "telekom.local"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 25 Aug 2022 23:01:18 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 25 Aug 2022 23:01:18 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.11"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"Task\": {\n        \"title\": \"Task1 Assigned to test-user1\",\n        \"description\": \"task 1\",\n        \"project_id\": \"5\",\n        \"user_id\": \"6\",\n        \"status\": \"NOT_STARTED\",\n        \"updated_at\": \"2022-08-25T11:01:18.000000Z\",\n        \"created_at\": \"2022-08-25T11:01:18.000000Z\",\n        \"id\": 6\n    },\n    \"message\": \"Task created successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "https://telekom.local/api/v1/project?page=1&pageSize=2&sortBy=id&sortDirection=ASC",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://telekom.local/api/v1/project?page=1&pageSize=2&sortBy=id&sortDirection=ASC",
+					"protocol": "https",
+					"host": [
+						"telekom",
+						"local"
+					],
+					"path": [
+						"api",
+						"v1",
+						"project"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": "2"
+						},
+						{
+							"key": "sortBy",
+							"value": "id"
+						},
+						{
+							"key": "sortDirection",
+							"value": "ASC"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://telekom.local/api/v1/project?page=1&pageSize=2&sortBy=id&sortDirection=ASC",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://telekom.local/api/v1/project?page=1&pageSize=2&sortBy=id&sortDirection=ASC",
+							"protocol": "https",
+							"host": [
+								"telekom",
+								"local"
+							],
+							"path": [
+								"api",
+								"v1",
+								"project"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "2"
+								},
+								{
+									"key": "sortBy",
+									"value": "id"
+								},
+								{
+									"key": "sortDirection",
+									"value": "ASC"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "telekom.local"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 25 Aug 2022 23:02:20 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 25 Aug 2022 23:02:20 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.11"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"Projects\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 1,\n                \"name\": \"Telekom Test\",\n                \"created_at\": \"2022-08-25T19:46:14.000000Z\",\n                \"updated_at\": \"2022-08-25T19:46:14.000000Z\"\n            },\n            {\n                \"id\": 2,\n                \"name\": \"The US Daily News\",\n                \"created_at\": null,\n                \"updated_at\": null\n            }\n        ],\n        \"first_page_url\": \"http://telekom.local/api/v1/project?page=1\",\n        \"from\": 1,\n        \"last_page\": 3,\n        \"last_page_url\": \"http://telekom.local/api/v1/project?page=3\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://telekom.local/api/v1/project?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": \"http://telekom.local/api/v1/project?page=2\",\n                \"label\": \"2\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://telekom.local/api/v1/project?page=3\",\n                \"label\": \"3\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://telekom.local/api/v1/project?page=2\",\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": \"http://telekom.local/api/v1/project?page=2\",\n        \"path\": \"http://telekom.local/api/v1/project\",\n        \"per_page\": \"2\",\n        \"prev_page_url\": null,\n        \"to\": 2,\n        \"total\": 5\n    }\n}"
+				}
+			]
+		}
+	]
+}
