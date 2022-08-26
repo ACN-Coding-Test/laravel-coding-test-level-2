@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-
 class UserController extends Controller
 {
     public function __construct()
