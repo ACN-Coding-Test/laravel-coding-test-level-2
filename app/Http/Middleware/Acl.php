@@ -16,6 +16,7 @@ class Acl
      */
     public function handle(Request $request, Closure $next, $ability)
     {
+
         if (!$request->user()->tokenCan($ability)) {
             throw new UnauthorizedException('You are not authorized');
         }

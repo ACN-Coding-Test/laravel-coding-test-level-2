@@ -14,7 +14,6 @@ class UserManager
 
 
         if (!$user) {
-            var_dump("hi");
             $user = User::create([
                 'email' => $input['email'],
                 'username' => $input['username'],
