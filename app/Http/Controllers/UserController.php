@@ -11,12 +11,11 @@ use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-
 class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('acl:list:users')->only(['index']);
+        //$this->middleware('acl:list:users')->only(['index']);
         $this->middleware('acl:create:user')->only(['store']);
         $this->middleware('acl:view:user')->only(['show']);
         $this->middleware('acl:update:user')->only(['update']);

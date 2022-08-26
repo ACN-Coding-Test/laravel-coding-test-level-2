@@ -52,13 +52,6 @@
  */
 
 /**
- * @OA\Get(
- *     path="/projects",
- *     @OA\Response(response="200", description="Display a listing of projects.")
- * )
- */
-
-/**
  * @OA\Post(
  *   path="/users/login",
  *   tags={"Login"},
@@ -76,4 +69,30 @@
  *   @OA\Response(response=404, description="Invalid Client Code"),
  *   @OA\Response(response=500, description="Internal Server Error")
  * )
+ */
+
+/**
+ * @OA\Get(
+ *      path="/users",
+ *      security={{
+ *          "sanctum":{}
+ *      }}, 
+ *      operationId="getUserList",
+ *      tags={"Users"},
+ *      summary="Get list of users",
+ *      description="Returns list of users",
+ *      @OA\Response(
+ *          response=200,
+ *          description="Successful operation",
+ *          @OA\JsonContent(ref="#/components/schemas/UserResource")
+ *       ),
+ *      @OA\Response(
+ *          response=401,
+ *          description="Unauthenticated",
+ *      ),
+ *      @OA\Response(
+ *          response=403,
+ *          description="Forbidden"
+ *      )
+ *     )
  */
