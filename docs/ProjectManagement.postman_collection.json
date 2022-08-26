@@ -1,0 +1,512 @@
+{
+	"info": {
+		"_postman_id": "b1745b6b-5e81-4649-818e-8d372141bacb",
+		"name": "Accenture",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3060542"
+	},
+	"item": [
+		{
+			"name": "Users (All)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "3|4444",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/users",
+					"protocol": "http",
+					"host": [
+						"laravel-coding-test-level-2",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "A User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "3|DHBHYKhEHV9u3ZXDcnDTFWIbUbLfxFm1R0p1IpsF",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/users/631ddd759d04487a868afdd1b7ad0cae",
+					"protocol": "http",
+					"host": [
+						"laravel-coding-test-level-2",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"631ddd759d04487a868afdd1b7ad0cae"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Store User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "3|DHBHYKhEHV9u3ZXDcnDTFWIbUbLfxFm1R0p1IpsF",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "product_owner2",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "role_id",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/users",
+					"protocol": "http",
+					"host": [
+						"laravel-coding-test-level-2",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "3|DHBHYKhEHV9u3ZXDcnDTFWIbUbLfxFm1R0p1IpsF",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "team_member_edit",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "role_id",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/users/631ddd759d04487a868afdd1b7ad0cae",
+					"protocol": "http",
+					"host": [
+						"laravel-coding-test-level-2",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"631ddd759d04487a868afdd1b7ad0cae"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "3|DHBHYKhEHV9u3ZXDcnDTFWIbUbLfxFm1R0p1IpsF",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "team_member",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "role_id",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/users/631ddd759d04487a868afdd1b7ad0cae",
+					"protocol": "http",
+					"host": [
+						"laravel-coding-test-level-2",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"631ddd759d04487a868afdd1b7ad0cae"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "3|DHBHYKhEHV9u3ZXDcnDTFWIbUbLfxFm1R0p1IpsF",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/users/631ddd759d04487a868afdd1b7ad0cae",
+					"protocol": "http",
+					"host": [
+						"laravel-coding-test-level-2",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"631ddd759d04487a868afdd1b7ad0cae"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Projects (Paginate)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|mQ0ZCny8gXXmiY2ZuvjQm31ESrWkHG6kut58LzVv",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/projects?q=Project A&pageIndex=2&pageSize=5&sortBy=id&sortDirection=DESC",
+					"protocol": "http",
+					"host": [
+						"laravel-coding-test-level-2",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"projects"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Project A"
+						},
+						{
+							"key": "pageIndex",
+							"value": "2"
+						},
+						{
+							"key": "pageSize",
+							"value": "5"
+						},
+						{
+							"key": "sortBy",
+							"value": "id"
+						},
+						{
+							"key": "sortDirection",
+							"value": "DESC"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Store Project",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|mQ0ZCny8gXXmiY2ZuvjQm31ESrWkHG6kut58LzVv",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Project A",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/projects",
+					"protocol": "http",
+					"host": [
+						"laravel-coding-test-level-2",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Store Task",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|mQ0ZCny8gXXmiY2ZuvjQm31ESrWkHG6kut58LzVv",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Task A",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Sample Desc",
+							"type": "text"
+						},
+						{
+							"key": "project_id",
+							"value": "553f8b2ecf0b4085ac346363cdcfca29",
+							"type": "text"
+						},
+						{
+							"key": "user_id",
+							"value": "631ddd759d04487a868afdd1b7ad0cae",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/tasks",
+					"protocol": "http",
+					"host": [
+						"laravel-coding-test-level-2",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Task Status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "3|DHBHYKhEHV9u3ZXDcnDTFWIbUbLfxFm1R0p1IpsF",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "status",
+							"value": "IN_PROGRESS",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/taskstatus/cbec712866c74cca8fcd6761a7dc2f8e",
+					"protocol": "http",
+					"host": [
+						"laravel-coding-test-level-2",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"taskstatus",
+						"cbec712866c74cca8fcd6761a7dc2f8e"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
