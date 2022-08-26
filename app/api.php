@@ -96,3 +96,70 @@
  *      )
  *     )
  */
+
+/**
+ * @OA\Post(
+ *      path="/users",
+ *      operationId="storeUser",
+ *      tags={"Users"},
+ *      summary="Store new user",
+ *      description="Returns user data",
+ *      @OA\Parameter(
+ *          name="name",
+ *          in="query",
+ *          required=true,
+ *          @OA\Schema(
+ *              type="string"
+ *          )
+ *      ),
+ *  @OA\Parameter(
+ *      name="email",
+ *      in="query",
+ *      required=true,
+ *      @OA\Schema(
+ *           type="string"
+ *      )
+ *   ),
+ *   @OA\Parameter(
+ *       name="mobile_number",
+ *      in="query",
+ *      required=true,
+ *      @OA\Schema(
+ *           type="integer"
+ *      )
+ *   ),
+ *   @OA\Parameter(
+ *      name="password",
+ *      in="query",
+ *      required=true,
+ *      @OA\Schema(
+ *           type="string"
+ *      )
+ *   ),
+ *      @OA\Parameter(
+ *      name="password_confirmation",
+ *      in="query",
+ *      required=true,
+ *      @OA\Schema(
+ *           type="string"
+ *      )
+ *   ),
+ *      @OA\Response(
+ *          response=201,
+ *          description="Successful operation",
+ *          @OA\JsonContent(ref="#/components/schemas/UserResource")
+ *       ),
+ *      @OA\Response(
+ *          response=400,
+ *          description="Bad Request"
+ *      ),
+ *      @OA\Response(
+ *          response=401,
+ *          description="Unauthenticated",
+ *      ),
+ *      @OA\Response(
+ *          response=403,
+ *          description="Forbidden"
+ *      )
+ * )
+ */
