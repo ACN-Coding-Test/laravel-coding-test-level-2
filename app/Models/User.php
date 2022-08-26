@@ -8,6 +8,19 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use GoldSpecDigital\LaravelEloquentUUID\Foundation\Auth\User as Authenticatable;
 
+/**
+ *
+ * @OA\Schema(schema="Login",
+ *   @OA\Property(property="username", type="string", description="username", default="admin"),
+ *   @OA\Property(property="password", type="string", description="password", default="admin@123")
+ *  );
+ * @OA\RequestBody(
+ *     request="Login",
+ *     description="Login ",
+ *     required=true,
+ *     @OA\JsonContent(ref="#/components/schemas/Login")
+ * )
+ **/
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;

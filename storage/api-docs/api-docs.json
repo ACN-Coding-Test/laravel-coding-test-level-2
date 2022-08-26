@@ -26,6 +26,52 @@
                     }
                 }
             }
+        },
+        "/users/login": {
+            "post": {
+                "tags": [
+                    "Login"
+                ],
+                "summary": "Login as User",
+                "description": "Login as User",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/Login"
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Success"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Order"
+                    },
+                    "401": {
+                        "description": "Invalid Credential",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Invalid Client Code"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -92,13 +138,28 @@
                     }
                 },
                 "type": "object"
+            },
+            "Login": {
+                "properties": {
+                    "username": {
+                        "description": "username",
+                        "type": "string",
+                        "default": "admin"
+                    },
+                    "password": {
+                        "description": "password",
+                        "type": "string",
+                        "default": "admin@123"
+                    }
+                },
+                "type": "object"
             }
         },
         "parameters": {
             "Authorization": {
                 "name": "Authorization",
                 "in": "header",
-                "description": "JWT Token",
+                "description": "Sanctum Token",
                 "required": true,
                 "schema": {
                     "type": "string"
@@ -133,6 +194,19 @@
                     "items": {
                         "type": "string",
                         "collectionFormat": "csv"
+                    }
+                }
+            }
+        },
+        "requestBodies": {
+            "Login": {
+                "description": "Login ",
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Login"
+                        }
                     }
                 }
             }
