@@ -43,7 +43,7 @@
  *            )
  *         )
  *     ),
- *     @OA\Parameter(name="Authorization", in="header", @OA\Schema(type="string"), required=true, description="JWT Token"),
+ *     @OA\Parameter(name="Authorization", in="header", @OA\Schema(type="string"), required=true, description="Sanctum Token"),
  *     @OA\Parameter(name="sortBy", in="query", @OA\Schema(type="string"),  description="Sort Order"),
  *     @OA\Parameter(name="sortDirection", in="query", @OA\Schema(type="string", enum={"asc","desc"}),  description="Sort Direction"),
  *     @OA\Parameter(name="includes", in="query", description="Includes for getting object dependened data", @OA\Schema(type="array", @OA\Items( type="string", collectionFormat="csv")) )
@@ -55,5 +55,25 @@
  * @OA\Get(
  *     path="/projects",
  *     @OA\Response(response="200", description="Display a listing of projects.")
+ * )
+ */
+
+/**
+ * @OA\Post(
+ *   path="/users/login",
+ *   tags={"Login"},
+ *   summary="Login as User",
+ *   description="Login as User",
+ *   requestBody={"$ref":"#/components/requestBodies/Login"},
+ *   @OA\Response(
+ *     response=200,
+ *     description="successful operation",
+ *     @OA\JsonContent(ref="#/components/schemas/Success")
+ *   ),
+ *   @OA\Response(response=400,  description="Invalid Order"),
+ *   @OA\Response(response=401, description="Invalid Credential", @OA\JsonContent(ref="#/components/schemas/Error")),
+ *   @OA\Response(response=403, description="Forbidden"),
+ *   @OA\Response(response=404, description="Invalid Client Code"),
+ *   @OA\Response(response=500, description="Internal Server Error")
  * )
  */
