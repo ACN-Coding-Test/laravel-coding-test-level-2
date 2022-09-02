@@ -17,13 +17,14 @@ class CreateTasksTable extends Migration
             $table->uuid('id')->primary();
             $table->string('title');
             $table->string('description')->nullable();
-            $table->string('status');
+            $table->unsignedBigInteger('status_id')->default(1);
             $table->uuid('project_id');
             $table->uuid('user_id');
             $table->timestamps();
 
             $table->foreign('project_id')->on('projects')->references('id');
             $table->foreign('user_id')->on('users')->references('id');
+            $table->foreign('status_id')->on('statuses')->references('id');
         });
     }
 

@@ -2,14 +2,10 @@
 
 namespace App\Models;
 
-use App\Traits\Uuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Task extends Model
+class Roles extends Model
 {
-    use Uuid, HasFactory;
-
-    public $incrementing = false;
-
+    use HasFactory;
 }
