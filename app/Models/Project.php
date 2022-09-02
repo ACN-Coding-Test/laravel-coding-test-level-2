@@ -12,4 +12,9 @@ class Project extends Model
 
     public $incrementing = false;
 
+    protected $fillable = [
+        'name',
+        'product_owner'
+    ];
+
 }
