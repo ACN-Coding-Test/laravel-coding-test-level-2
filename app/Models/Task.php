@@ -12,4 +12,12 @@ class Task extends Model
 
     public $incrementing = false;
 
+    protected $fillable = [
+        'title',
+        'description',
+        'project_id',
+        'user_id',
+        'status_id'
+    ];
+
 }
