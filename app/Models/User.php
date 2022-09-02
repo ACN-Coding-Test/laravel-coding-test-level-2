@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\Uuid;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -35,4 +36,12 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    /**
+     * @return BelongsTo
+     */
+    public function products(): BelongsTo
+    {
+        return $this->belongsTo(Project::class,'id','product_owner');
+    }
 }
