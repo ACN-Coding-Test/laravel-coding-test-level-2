@@ -45,7 +45,7 @@ class UserController extends Controller
             $user = new User();
             $user->username = $request->username;
             $user->password = bcrypt($request->password);
-            $user->role_id = isset($request->role_id) ?: 3;
+            $user->role_id = isset($request->role_id) && $request->role_id != '' ? $request->role_id: 3;
             $user->save();
 
         } catch (Throwable $throwable) {
