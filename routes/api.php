@@ -1,6 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\ProjectController;
+use App\Http\Controllers\Api\TaskController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['prefix'=>'v1'], function (){
+    Route::resource('users', UserController::class,['except'=>'edit']);
+    Route::patch('users/{user}/roles/reassign', [UserController::class,'update'])->name('users.roles.reassign');
+    Route::resource('projects', ProjectController::class,['except'=>'edit']);
+    Route::patch('projects/{project}/users/{user}/reassign', [ProjectController::class,'update'])->name('projects.users.reassign');
+    Route::resource('tasks', TaskController::class,['except'=>'edit']);
+    Route::patch('tasks/{task}/users/{user}/reassign', [ProjectController::class,'update'])->name('tasks.users.reassign');
 });
