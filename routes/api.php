@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\TaskController;
 use App\Http\Controllers\Api\UserController;
@@ -17,10 +18,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['prefix'=>'v1'], function (){
-    Route::resource('users', UserController::class,['except'=>'edit']);
-    Route::patch('users/{user}/roles/reassign', [UserController::class,'update'])->name('users.roles.reassign');
-    Route::resource('projects', ProjectController::class,['except'=>'edit']);
-    Route::patch('projects/{project}/users/{user}/reassign', [ProjectController::class,'update'])->name('projects.users.reassign');
-    Route::resource('tasks', TaskController::class,['except'=>'edit']);
-    Route::patch('tasks/{task}/users/{user}/reassign', [ProjectController::class,'update'])->name('tasks.users.reassign');
+
+    Route::post('login', [AuthController::class,'login'])->name('login');
+
+    Route::group(['middleware'=>'auth:sanctum'], function (){
+        Route::post('logout', [AuthController::class,'logout'])->name('logout');
+        Route::resource('users', UserController::class,['except'=>['index','show']]);
+        Route::patch('users/{user}/roles/reassign',[UserController::class,'update']);
+        Route::resource('projects', ProjectController::class,['except'=>['index','show']]);
+        Route::patch('projects/{project}/transfer',[ProjectController::class, 'update']);
+        Route::resource('tasks', TaskController::class,['except'=>['index','show']]);
+        Route::patch('tasks/{task}/transfer',[TaskController::class, 'update']);
+        Route::patch('tasks/{task}/change-status',[TaskController::class, 'update']);
+    });
+
+    Route::resource('users', UserController::class,['only'=>['index','show']]);
+    Route::resource('projects', ProjectController::class,['only'=>['index','show']]);
+    Route::resource('tasks', TaskController::class,['only'=>['index','show']]);
+
+    Route::get('unauthorized', function () {
+        return response()->json(['message' => 'Unauthorized.'], 401);
+    })->name('unauthorized');
 });

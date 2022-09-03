@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Throwable;
 
 class ProjectController extends Controller
@@ -17,7 +19,7 @@ class ProjectController extends Controller
      */
     public function index(Request $request): JsonResponse
     {
-        $projects = Project::paginate(15);
+        $projects = Project::with('tasks.user')->paginate(15);
         return response()->json($projects);
 
     }
@@ -28,7 +30,7 @@ class ProjectController extends Controller
      */
     public function show($id): JsonResponse
     {
-        $project = Project::with('tasks')->find($id);
+        $project = Project::with('tasks.user')->find($id);
 
         return response()->json($project);
     }
@@ -36,14 +38,16 @@ class ProjectController extends Controller
     /**
      * @param ProjectRequest $request
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function store(ProjectRequest $request): JsonResponse
     {
+        $this->authorize('crud-projects');
         try {
 
             $project = new Project();
             $project->name = $request->name;
-            $project->product_owner = $request->product_owner;
+            $project->product_owner = Auth::id();
             $project->save();
 
         } catch (Throwable $throwable) {
@@ -66,9 +70,11 @@ class ProjectController extends Controller
      * @param $id
      * @param ProjectRequest $request
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function update($id, ProjectRequest $request): JsonResponse
     {
+        $this->authorize('crud-projects');
         try{
 
             $project = Project::find($id);
@@ -105,9 +111,11 @@ class ProjectController extends Controller
     /**
      * @param $id
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function destroy($id): JsonResponse
     {
+        $this->authorize('crud-projects');
         try {
 
             Project::find($id)->delete();

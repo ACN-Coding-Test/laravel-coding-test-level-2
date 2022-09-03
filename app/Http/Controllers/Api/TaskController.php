@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TaskRequest;
 use App\Models\Task;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Throwable;
@@ -36,9 +37,11 @@ class TaskController extends Controller
     /**
      * @param TaskRequest $request
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function store(TaskRequest $request): JsonResponse
     {
+        $this->authorize('crud-tasks');
         try {
 
             $task = new Task();
@@ -69,9 +72,11 @@ class TaskController extends Controller
      * @param $id
      * @param TaskRequest $request
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function update($id, TaskRequest $request): JsonResponse
     {
+        $this->authorize('crud-tasks');
         try {
 
             $task = Task::find($id);

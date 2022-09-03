@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\Uuid;
+use Couchbase\Role;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -41,9 +42,17 @@ class User extends Authenticatable
     /**
      * @return BelongsTo
      */
-    public function products(): BelongsTo
+    public function role(): BelongsTo
     {
-        return $this->belongsTo(Project::class,'id','product_owner');
+        return $this->belongsTo(Role::class);
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function products(): HasMany
+    {
+        return $this->hasMany(Project::class,'product_owner');
     }
 
     /**
