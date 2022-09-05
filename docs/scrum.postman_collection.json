@@ -1,0 +1,709 @@
+{
+	"info": {
+		"_postman_id": "2fc5b203-6abc-49b3-91d5-bb96a9e94428",
+		"name": "scrum",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1807938"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://laravel-coding-test-level-2.test/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"laravel-coding-test-level-2",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|yzD9iIyfgwzCbFFrjLJuhdgOS2skk0ehrk3aR9SM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"PM 1\",\n    \"password\":\"password\",\n    \"password_confirmation\":\"password\",\n    \"role_id\":\"2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://laravel-coding-test-level-2.test/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"laravel-coding-test-level-2",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://laravel-coding-test-level-2.test/api/v1/users/b4659905-92b5-4ff4-8704-54a7073a064f",
+							"protocol": "http",
+							"host": [
+								"laravel-coding-test-level-2",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"b4659905-92b5-4ff4-8704-54a7073a064f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|yzD9iIyfgwzCbFFrjLJuhdgOS2skk0ehrk3aR9SM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"pm1\",\n    \"password\":\"muhaimi123\",\n    \"password_confirmation\":\"muhaimi123\",\n    \"role_id\":\"2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://laravel-coding-test-level-2.test/api/v1/users/c6a5b6b6-b9c3-46a0-993b-fb62c3adb001",
+							"protocol": "http",
+							"host": [
+								"laravel-coding-test-level-2",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"c6a5b6b6-b9c3-46a0-993b-fb62c3adb001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Role",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|yzD9iIyfgwzCbFFrjLJuhdgOS2skk0ehrk3aR9SM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"role_id\":\"2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://laravel-coding-test-level-2.test/api/v1/users/c6a5b6b6-b9c3-46a0-993b-fb62c3adb001/roles/reassign",
+							"protocol": "http",
+							"host": [
+								"laravel-coding-test-level-2",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"c6a5b6b6-b9c3-46a0-993b-fb62c3adb001",
+								"roles",
+								"reassign"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://laravel-coding-test-level-2.test/api/v1/users/e4189357-39eb-4b91-a43f-924b91888776",
+							"protocol": "http",
+							"host": [
+								"laravel-coding-test-level-2",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"e4189357-39eb-4b91-a43f-924b91888776"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://laravel-coding-test-level-2.test/api/v1/projects",
+							"protocol": "http",
+							"host": [
+								"laravel-coding-test-level-2",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "2|RqgxcLZmDhd5vq4o0xNeHx7SL8ne3VTqSrOnL2eg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Website KKM New Enhance Modules\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://laravel-coding-test-level-2.test/api/v1/projects",
+							"protocol": "http",
+							"host": [
+								"laravel-coding-test-level-2",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://laravel-coding-test-level-2.test/api/v1/projects/08294e87-393c-45fe-8030-1620028899ed",
+							"protocol": "http",
+							"host": [
+								"laravel-coding-test-level-2",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"projects",
+								"08294e87-393c-45fe-8030-1620028899ed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Website KKM KKM\",\n    \"product_owner\":\"5bd60b93-e2b8-49d1-a4fe-1b0b62fae51e\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://laravel-coding-test-level-2.test/api/v1/projects/a7e84a9f-d58b-48a9-887e-abaa3ab114c4",
+							"protocol": "http",
+							"host": [
+								"laravel-coding-test-level-2",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"projects",
+								"a7e84a9f-d58b-48a9-887e-abaa3ab114c4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transfer",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"product_owner\":\"813d11b2-e9de-408e-87dc-b907d501de13\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://laravel-coding-test-level-2.test/api/v1/projects/6f7a3121-add4-4fe4-be3e-ebc651479e0f/transfer",
+							"protocol": "http",
+							"host": [
+								"laravel-coding-test-level-2",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"projects",
+								"6f7a3121-add4-4fe4-be3e-ebc651479e0f",
+								"transfer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://laravel-coding-test-level-2.test/api/v1/projects/c74a3f3f-7f44-47f7-a78b-edb3e02272de",
+							"protocol": "http",
+							"host": [
+								"laravel-coding-test-level-2",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"projects",
+								"c74a3f3f-7f44-47f7-a78b-edb3e02272de"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://laravel-coding-test-level-2.test/api/v1/tasks",
+							"protocol": "http",
+							"host": [
+								"laravel-coding-test-level-2",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "2|RqgxcLZmDhd5vq4o0xNeHx7SL8ne3VTqSrOnL2eg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Create migration files\",\n    \"description\":\"The Laravel Framework must migration files\",\n    \"project_id\":\"5f4c0476-2638-46a8-96fc-7f3b5680173a\",\n    \"user_id\":\"58784b49-74f7-4cb9-bbaa-6c8ef23d95fc\",\n    \"status_id\":1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://laravel-coding-test-level-2.test/api/v1/tasks",
+							"protocol": "http",
+							"host": [
+								"laravel-coding-test-level-2",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://laravel-coding-test-level-2.test/api/v1/tasks/8e888757-bf13-428c-aa8a-aeb42691b7ed",
+							"protocol": "http",
+							"host": [
+								"laravel-coding-test-level-2",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tasks",
+								"8e888757-bf13-428c-aa8a-aeb42691b7ed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Create new project laravel 8.0\",\n    \"description\": \"Please install all dependencies\",\n    \"status_id\": 1,\n    \"project_id\": \"a7e84a9f-d58b-48a9-887e-abaa3ab114c4\",\n    \"user_id\": \"ca40210b-cf2e-415d-aa82-3911c654f474\",\n    \"created_at\": \"2022-09-02T19:49:01.000000Z\",\n    \"updated_at\": \"2022-09-02T19:49:01.000000Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://laravel-coding-test-level-2.test/api/v1/tasks/8e888757-bf13-428c-aa8a-aeb42691b7ed",
+							"protocol": "http",
+							"host": [
+								"laravel-coding-test-level-2",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tasks",
+								"8e888757-bf13-428c-aa8a-aeb42691b7ed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transfer",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": \"ca40210b-cf2e-415d-aa82-3911c654f474\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://laravel-coding-test-level-2.test/api/v1/tasks/{task}/transfer",
+							"protocol": "http",
+							"host": [
+								"laravel-coding-test-level-2",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tasks",
+								"{task}",
+								"transfer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Status",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n    \"status_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://laravel-coding-test-level-2.test/api/v1/users/{user}/tasks/{task}/change-status",
+							"protocol": "http",
+							"host": [
+								"laravel-coding-test-level-2",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"{user}",
+								"tasks",
+								"{task}",
+								"change-status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://laravel-coding-test-level-2.test/api/v1/tasks/50f45ad0-7da5-4cdc-9cd7-78265061739e",
+							"protocol": "http",
+							"host": [
+								"laravel-coding-test-level-2",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tasks",
+								"50f45ad0-7da5-4cdc-9cd7-78265061739e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"admin\",\n    \"password\":\"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://laravel-coding-test-level-2.test/api/v1/login",
+							"protocol": "http",
+							"host": [
+								"laravel-coding-test-level-2",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|bMbduXWNR4a67mpAV9o4RZeTGWp8p8GOoV1sfZ9c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://laravel-coding-test-level-2.test/api/v1/logout",
+							"protocol": "http",
+							"host": [
+								"laravel-coding-test-level-2",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
