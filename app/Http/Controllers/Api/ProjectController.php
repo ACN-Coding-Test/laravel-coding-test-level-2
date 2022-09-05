@@ -19,7 +19,7 @@ class ProjectController extends Controller
      */
     public function index(Request $request): JsonResponse
     {
-        $projects = Project::with('tasks.user')->paginate(15);
+        $projects = Project::with('tasks.user')->paginate(3);
         return response()->json($projects);
 
     }
