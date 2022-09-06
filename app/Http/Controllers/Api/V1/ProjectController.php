@@ -11,8 +11,21 @@ class ProjectController extends BaseController
 {
     public function index(Request $request)
     {
-        $Project = Project::all();
-        return new ProjectResource($Project);
+        $query = Project::query();
+        $q = $request->get('q',null);
+        $pageIndex = $request->get('pageIndex',0);
+        $pageSize = $request->get('pageSize',3);
+        $sortBy = $request->get('sortBy','name');
+        $sortDirection = $request->get('sortDirection','ASC');
+
+        if (!empty($q))$query->where('name','like',$request->get('q').'%');
+        $query->orderBy($sortBy, $sortDirection);
+        $query->offset(($pageIndex)*$pageSize);
+        $query->limit($pageSize);
+        $projects = $query->get();
+
+        Redis::set('projects_' . auth('api')->user()->id, $projects,'EX',10);
+        return new ProjectResource($projects);
     }
 
     public function show($id)
