@@ -1,0 +1,512 @@
+{
+	"id": "a7fef902-685a-f986-f259-a6e6897e4dda",
+	"name": "Laravel-test",
+	"description": "",
+	"order": [
+		"086abfb1-e153-e101-45c8-1674db670ac3",
+		"507a56f8-3597-3c15-41a6-9da2616dfe1b",
+		"5bf9914d-172e-9b91-5f0a-66962ee516b8",
+		"bf54aa0a-9bd8-7a5d-8eb7-23e355741669",
+		"58844809-ac9c-7d40-7721-bca8cd83a9fa",
+		"1c4de4c9-accb-c2b9-5ac7-b3a4a6ad1425",
+		"a01792a8-c7dc-84da-471f-997652a03f33",
+		"425762f6-ed9c-4c08-e452-7e7fd59e0ce8",
+		"9ccdd52c-b60b-2b5c-2f49-465265879cc5",
+		"0e6bf5ab-a4fe-9251-7974-fd71cd929868",
+		"d78d5786-6bb9-28c2-3443-43edb0b9317f"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 0,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "086abfb1-e153-e101-45c8-1674db670ac3",
+			"headers": "",
+			"headerData": [],
+			"url": "http://127.0.0.1:8000/api/v1/login",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "username",
+					"value": "admin",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "admin@123",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1662479177359,
+			"name": "Login",
+			"description": "",
+			"collectionId": "a7fef902-685a-f986-f259-a6e6897e4dda",
+			"responses": []
+		},
+		{
+			"id": "0e6bf5ab-a4fe-9251-7974-fd71cd929868",
+			"headers": "Accept: application/json\nAuthorization: Bearer 3|SKtoOaguLVBrURs8J3auBvLeDI9GDYD76lSL06c1\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer 3|SKtoOaguLVBrURs8J3auBvLeDI9GDYD76lSL06c1",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8000/api/v1/tasks",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "title",
+					"value": "Testing task for laravel project",
+					"type": "text"
+				},
+				{
+					"key": "description",
+					"value": "Create listed module in api User, Project, Task",
+					"type": "text"
+				},
+				{
+					"key": "project_id",
+					"value": "1",
+					"type": "text"
+				},
+				{
+					"key": "user_id",
+					"value": "3",
+					"type": "text"
+				},
+				{
+					"key": "status",
+					"value": "not_started",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1662480271695,
+			"name": "Create task",
+			"description": "",
+			"collectionId": "a7fef902-685a-f986-f259-a6e6897e4dda",
+			"responses": []
+		},
+		{
+			"id": "1c4de4c9-accb-c2b9-5ac7-b3a4a6ad1425",
+			"name": "Patch resource",
+			"description": "",
+			"collectionId": "a7fef902-685a-f986-f259-a6e6897e4dda",
+			"method": "PATCH",
+			"helperAttributes": {},
+			"headers": "Accept: application/json",
+			"dataMode": "urlencoded",
+			"data": [
+				{
+					"key": "username",
+					"value": "team_member",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "123456",
+					"type": "text"
+				},
+				{
+					"key": "role_id",
+					"value": "3",
+					"type": "text"
+				}
+			],
+			"rawModeData": "",
+			"url": "http://laravel-coding-test-level-2.test/api/v1/users/631ddd759d04487a868afdd1b7ad0cae",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"type": "text"
+				}
+			],
+			"collection_id": "a7fef902-685a-f986-f259-a6e6897e4dda"
+		},
+		{
+			"id": "425762f6-ed9c-4c08-e452-7e7fd59e0ce8",
+			"headers": "Accept: application/json\nAuthorization: Bearer 3|SKtoOaguLVBrURs8J3auBvLeDI9GDYD76lSL06c1\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer 3|SKtoOaguLVBrURs8J3auBvLeDI9GDYD76lSL06c1",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8000/api/v1/projects?q=Test Project&pageIndex=0&pageSize=3&sortBy=name&sortDirection=DESC",
+			"queryParams": [
+				{
+					"key": "q",
+					"value": "Test Project",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "pageIndex",
+					"value": "0",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "pageSize",
+					"value": "3",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "sortBy",
+					"value": "name",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "sortDirection",
+					"value": "DESC",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1662480118724,
+			"name": "Projects with redis pagination",
+			"description": "",
+			"collectionId": "a7fef902-685a-f986-f259-a6e6897e4dda",
+			"responses": []
+		},
+		{
+			"id": "507a56f8-3597-3c15-41a6-9da2616dfe1b",
+			"headers": "Accept: application/json\nAuthorization: Bearer 2|IMtZ9nA4z0aOAFnUkCzkYaOCT9nilzjeYlAy26mj\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer 2|IMtZ9nA4z0aOAFnUkCzkYaOCT9nilzjeYlAy26mj",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8000/api/v1/users",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1662479259248,
+			"name": "Get all resources",
+			"description": "",
+			"collectionId": "a7fef902-685a-f986-f259-a6e6897e4dda",
+			"responses": []
+		},
+		{
+			"id": "58844809-ac9c-7d40-7721-bca8cd83a9fa",
+			"headers": "Accept: application/json\nAuthorization: Bearer 2|IMtZ9nA4z0aOAFnUkCzkYaOCT9nilzjeYlAy26mj\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer 2|IMtZ9nA4z0aOAFnUkCzkYaOCT9nilzjeYlAy26mj",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8000/api/v1/users/2",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [
+				{
+					"key": "username",
+					"value": "product.owner.12",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "987654",
+					"type": "text"
+				}
+			],
+			"dataMode": "urlencoded",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1662479552466,
+			"name": "Update resource",
+			"description": "",
+			"collectionId": "a7fef902-685a-f986-f259-a6e6897e4dda",
+			"responses": []
+		},
+		{
+			"id": "5bf9914d-172e-9b91-5f0a-66962ee516b8",
+			"headers": "Accept: application/json\nAuthorization: Bearer 2|IMtZ9nA4z0aOAFnUkCzkYaOCT9nilzjeYlAy26mj\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer 2|IMtZ9nA4z0aOAFnUkCzkYaOCT9nilzjeYlAy26mj",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8000/api/v1/users/2",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1662479336726,
+			"name": "Get one resource",
+			"description": "",
+			"collectionId": "a7fef902-685a-f986-f259-a6e6897e4dda",
+			"responses": []
+		},
+		{
+			"id": "9ccdd52c-b60b-2b5c-2f49-465265879cc5",
+			"headers": "Accept: application/json\nAuthorization: Bearer 3|SKtoOaguLVBrURs8J3auBvLeDI9GDYD76lSL06c1\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer 3|SKtoOaguLVBrURs8J3auBvLeDI9GDYD76lSL06c1",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8000/api/v1/projects",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "name",
+					"value": "Test Project",
+					"type": "text"
+				}
+			],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1662480120603,
+			"name": "Create project",
+			"description": "",
+			"collectionId": "a7fef902-685a-f986-f259-a6e6897e4dda",
+			"responses": []
+		},
+		{
+			"id": "a01792a8-c7dc-84da-471f-997652a03f33",
+			"headers": "Accept: application/json\nAuthorization: Bearer 2|IMtZ9nA4z0aOAFnUkCzkYaOCT9nilzjeYlAy26mj\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer 2|IMtZ9nA4z0aOAFnUkCzkYaOCT9nilzjeYlAy26mj",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8000/api/v1/users/6",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1662480122471,
+			"name": "Delete resource",
+			"description": "",
+			"collectionId": "a7fef902-685a-f986-f259-a6e6897e4dda",
+			"responses": []
+		},
+		{
+			"id": "bf54aa0a-9bd8-7a5d-8eb7-23e355741669",
+			"headers": "Accept: application/json\nAuthorization: Bearer 2|IMtZ9nA4z0aOAFnUkCzkYaOCT9nilzjeYlAy26mj\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer 2|IMtZ9nA4z0aOAFnUkCzkYaOCT9nilzjeYlAy26mj",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8000/api/v1/users",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "username",
+					"value": "product.owner.1",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "123456",
+					"type": "text"
+				},
+				{
+					"key": "role",
+					"value": "product_owner",
+					"type": "text"
+				}
+			],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1662479416946,
+			"name": "Create resource",
+			"description": "",
+			"collectionId": "a7fef902-685a-f986-f259-a6e6897e4dda",
+			"responses": []
+		},
+		{
+			"id": "d78d5786-6bb9-28c2-3443-43edb0b9317f",
+			"headers": "Accept: application/json\nAuthorization: Bearer 4|mZJqNPcSaWdUaDQkNBgi5Pnr1MsCBg79XGcyYZB3\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer 4|mZJqNPcSaWdUaDQkNBgi5Pnr1MsCBg79XGcyYZB3",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8000/api/v1/tasks/1",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [
+				{
+					"key": "status",
+					"value": "in_progress",
+					"type": "text"
+				}
+			],
+			"dataMode": "urlencoded",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1662480713193,
+			"name": "Update Task Status",
+			"description": "",
+			"collectionId": "a7fef902-685a-f986-f259-a6e6897e4dda",
+			"responses": []
+		}
+	]
+}
