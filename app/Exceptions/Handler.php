@@ -2,15 +2,19 @@
 
 namespace App\Exceptions;
 
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use App\Exceptions\DotException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use League\OAuth2\Server\Exception\OAuthServerException;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
     /**
      * A list of the exception types that are not reported.
      *
-     * @var array<int, class-string<Throwable>>
+     * @var array
      */
     protected $dontReport = [
         //
@@ -19,10 +23,9 @@ class Handler extends ExceptionHandler
     /**
      * A list of the inputs that are never flashed for validation exceptions.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $dontFlash = [
-        'current_password',
         'password',
         'password_confirmation',
     ];
@@ -34,8 +37,29 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        $this->reportable(function (Throwable $e) {
-            //
-        });
+        //
+    }
+
+    /**
+     * Report or log an exception.
+     *
+     * @param  \Exception  $exception
+     * @return void
+     */
+    public function report(Throwable $exception)
+    {
+        if ($exception instanceof OAuthServerException && $exception->getCode() == 9) {
+            return;
+        }
+        parent::report($exception);
+    }
+
+    public function render($request, Throwable $exception)
+    {
+        if ($exception instanceof ModelNotFoundException) {
+            $exception = new NotFoundHttpException('Data Not Found.', $exception);
+        }
+
+        return parent::render($request, $exception);
     }
 }

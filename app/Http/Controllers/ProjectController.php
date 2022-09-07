@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Projects;
+use App\Http\Resources\ProjectResource;
+use App\Http\Requests\Project\StoreRequest as ProjectStoreRequest;
+use App\Http\Requests\Project\UpdateRequest as ProjectUpdateRequest;
 
 class ProjectController extends Controller
 {
@@ -11,9 +15,9 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return ProjectResource::collection(Projects::paginate(25));
     }
 
     /**
@@ -32,9 +36,13 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProjectStoreRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        $query = Projects::create($validated);
+    
+        return new ProjectResource($query);
     }
 
     /**
@@ -43,9 +51,10 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Projects $project)
     {
-        //
+        return new ProjectResource($project);
+
     }
 
     /**
@@ -66,9 +75,13 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProjectUpdateRequest $request,Projects $project)
     {
-        //
+        $validated = $request->validated();
+
+        $query = $project->update($validated);
+
+        return new ProjectResource($project);
     }
 
     /**
@@ -77,8 +90,10 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Projects $project)
     {
-        //
+      $project->delete();
+
+      return response()->json(true, 204);
     }
 }

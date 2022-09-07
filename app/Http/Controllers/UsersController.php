@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Http\Resources\UserResource;
+use App\Http\Requests\User\StoreRequest as UserStoreRequest;
+use App\Http\Requests\User\UpdateRequest as UserUpdateRequest;
+use Illuminate\Support\Facades\Hash;
+
 
 class UsersController extends Controller
 {
@@ -11,9 +17,9 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return UserResource::collection(User::paginate(25));
     }
 
     /**
@@ -32,9 +38,15 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        $validated['password']  = Hash::make($validated['password']);
+
+        $query = User::create($validated);
+    
+        return new UserResource($query);
     }
 
     /**
@@ -43,9 +55,10 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return new UserResource($user);
+
     }
 
     /**
@@ -66,9 +79,17 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request,User $user)
     {
-        //
+        $validated = $request->validated();
+
+        if(isset($validated['password'])){
+            $validated['password']  = Hash::make($validated['password']);
+        }
+
+        $query = $user->update($validated);
+
+        return new UserResource($user);
     }
 
     /**
@@ -77,8 +98,10 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+      $user->delete();
+
+      return response()->json(true, 204);
     }
 }

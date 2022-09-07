@@ -14,4 +14,8 @@ class Task extends Model
     protected $fillable = [
         'id', 'tittle', 'description', 'status','project_id', 'user_id'
     ];
+
+    public function user_detail(){
+        return $this->hasOne(User::class, 'id','user_id');
+    }
 }

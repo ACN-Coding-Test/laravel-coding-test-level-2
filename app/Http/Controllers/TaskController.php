@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Task;
+use App\Http\Resources\TaskResource;
+use App\Http\Requests\Task\StoreRequest as TaskStoreRequest;
+use App\Http\Requests\Task\UpdateRequest as TaskUpdateRequest;
 
 class TaskController extends Controller
 {
@@ -11,9 +15,9 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return TaskResource::collection(Task::paginate(25));
     }
 
     /**
@@ -32,9 +36,13 @@ class TaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TaskStoreRequest $request)
     {
-        //
+        $validated = $request->validated();
+        
+        $query = Task::create($validated);
+    
+        return new TaskResource($query);
     }
 
     /**
@@ -43,9 +51,10 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Task $task)
     {
-        //
+        return new TaskResource($task);
+
     }
 
     /**
@@ -66,9 +75,13 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TaskUpdateRequest $request,Task $task)
     {
-        //
+        $validated = $request->validated();
+
+        $query = $task->update($validated);
+
+        return new TaskResource($task);
     }
 
     /**
@@ -77,8 +90,10 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Task $task)
     {
-        //
+      $task->delete();
+
+      return response()->json(true, 204);
     }
 }
