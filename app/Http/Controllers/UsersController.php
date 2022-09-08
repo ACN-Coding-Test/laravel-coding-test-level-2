@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Role;
 use App\Http\Resources\UserResource;
 use App\Http\Requests\User\StoreRequest as UserStoreRequest;
 use App\Http\Requests\User\UpdateRequest as UserUpdateRequest;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 
 class UsersController extends Controller
@@ -43,6 +45,7 @@ class UsersController extends Controller
         $validated = $request->validated();
 
         $validated['password']  = Hash::make($validated['password']);
+        $validated['role_id'] = Role::PRODUCT_OWNER;
 
         $query = User::create($validated);
     

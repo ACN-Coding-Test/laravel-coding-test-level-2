@@ -26,7 +26,7 @@ class UpdateRequest extends FormRequest
         return [
             'tittle' => 'required|string',
             'description' => 'nullable|string',
-            'status' => 'required|string',
+            'status' => 'required|string|in:NOT_STARTED,IN_PROGRESS,READY_FOR_TEST,COMPLETED',
             'project_id' =>'required|string',
             'user_id' => 'required|string',
                 // exists:users,id',
