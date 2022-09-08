@@ -75,11 +75,11 @@ class UserTest extends TestCase
     }
 
     public function testCreateTask(){
-        $user_teammember = User::where('role_id', Role::TEAM_MEMBER)->first();
+        $user_teammember = User::where('role_id', Role::TEAM_MEMBER)->inRandomOrder()->first();
 
-        $project = Projects::first();
+        $project = Projects::inRandomOrder()->first();
 
-        $user = User::where('role_id', Role::PRODUCT_OWNER)->first();
+        $user = User::where('role_id', Role::PRODUCT_OWNER)->inRandomOrder()->first();
 
         Passport::actingAs($user);
 
@@ -103,7 +103,7 @@ class UserTest extends TestCase
     public function testChangeTask(){
         $user_teammember = User::where('role_id', Role::TEAM_MEMBER)->whereHas('task_details')->first();
 
-        $get_task = Task::where('user_id',$user_teammember->id)->first();
+        $get_task = Task::where('user_id',$user_teammember->id)->inRandomOrder()->first();
         
         Passport::actingAs($user_teammember);
 

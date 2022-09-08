@@ -10,10 +10,13 @@ use App\Http\Requests\User\StoreRequest as UserStoreRequest;
 use App\Http\Requests\User\UpdateRequest as UserUpdateRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Traits\PaginateTrait;
 
 
 class UsersController extends Controller
 {
+    use PaginateTrait;
+
     /**
      * Display a listing of the resource.
      *
@@ -21,10 +24,11 @@ class UsersController extends Controller
      */
     public function index(Request $request)
     {
-        $user_teammember = User::where('role_id', Role::TEAM_MEMBER)->whereHas('task_details')->first();
+        $query = User::DtFilter($request);
 
-        dd($user_teammember);
-        return UserResource::collection(User::paginate(25));
+        $setDatatable = $this->setDatatable($request,$query,'username');
+
+        return UserResource::collection($setDatatable);
     }
 
     /**

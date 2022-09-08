@@ -53,6 +53,12 @@ class User extends Authenticatable
         return $this->where('username', $username)->first();
     }
 
+    public function scopeDtFilter($query,$request)
+    {
+        return $query->when(isset($request['q']) , function ($query) use ($request) {
+                        $query->where('username','like','%'.strtoupper($request['q']).'%');
+                    });
+    }
 
     public static function generateToken($request)
     {

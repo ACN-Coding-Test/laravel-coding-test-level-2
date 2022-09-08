@@ -22,6 +22,26 @@ class Task extends Model
     ];
 
     public function user_detail(){
-        return $this->belongsTo(User::class, 'id');
+        return $this->belongsTo(User::class, 'user_id','id');
+    }
+
+    public function project_detail(){
+        return $this->belongsTo(Projects::class, 'project_id','id');
+    }
+
+    public function scopeDtFilter($query,$request)
+    {
+        return $query->when(isset($request['q']) , function ($query) use ($request) {
+                        $query->where('tittle','like','%'.strtoupper($request['q']).'%')
+                                ->orWhere('description','like','%'.strtoupper($request['q']).'%')
+                                ->orWhere('status','like','%'.strtoupper($request['q']).'%')
+                                ->orWhereHas('user_detail', function($query)use($request){
+                                    $query->where('username','like','%'.strtoupper($request['q']).'%');
+                                })  
+                                ->orWhereHas('project_detail', function($query)use($request){
+                                    $query->where('name','like','%'.strtoupper($request['q']).'%');
+                                })     
+                                ;
+                    });
     }
 }

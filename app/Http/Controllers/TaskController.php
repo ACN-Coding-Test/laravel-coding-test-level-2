@@ -11,9 +11,12 @@ use App\Http\Middleware\ProductOwnerAccess;
 use App\Http\Middleware\AssignTaskAccess;
 use App\Http\Traits\ResponseTrait;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Traits\PaginateTrait;
 
 class TaskController extends Controller
 {
+    use PaginateTrait;
+
     public function __construct()
     {
         $this->middleware([ProductOwnerAccess::class])->only(['store']);
@@ -22,7 +25,11 @@ class TaskController extends Controller
     }
     public function index(Request $request)
     {
-        return TaskResource::collection(Task::paginate(25));
+        $query = Task::DtFilter($request);
+
+        $setDatatable = $this->setDatatable($request,$query,'tittle');
+
+        return TaskResource::collection($setDatatable);
     }
 
     /**

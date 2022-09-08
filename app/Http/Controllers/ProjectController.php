@@ -8,10 +8,13 @@ use App\Http\Resources\ProjectResource;
 use App\Http\Requests\Project\StoreRequest as ProjectStoreRequest;
 use App\Http\Requests\Project\UpdateRequest as ProjectUpdateRequest;
 use App\Http\Middleware\ProductOwnerAccess;
+use App\Http\Traits\PaginateTrait;
 
 
 class ProjectController extends Controller
 {
+    use PaginateTrait;
+
     public function __construct()
     {
         $this->middleware([ProductOwnerAccess::class])->only(['store']);
@@ -20,7 +23,11 @@ class ProjectController extends Controller
 
     public function index(Request $request)
     {
-        return ProjectResource::collection(Projects::paginate(25));
+        $query = Projects::DtFilter($request);
+
+        $setDatatable = $this->setDatatable($request,$query,'name');
+
+        return ProjectResource::collection($setDatatable);
     }
 
     /**
