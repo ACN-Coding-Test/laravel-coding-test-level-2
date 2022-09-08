@@ -40,6 +40,15 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function task_details()
+    {
+        return $this->hasMany(Task::class, 'user_id','id');
+    }
+
+    public function testGenerateToken() {
+        return $this->createToken('my-oauth-client-name')->accessToken; 
+    }
+
     public function findForPassport($username) {
         return $this->where('username', $username)->first();
     }

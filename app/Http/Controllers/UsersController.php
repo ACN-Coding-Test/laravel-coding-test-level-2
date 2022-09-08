@@ -21,6 +21,9 @@ class UsersController extends Controller
      */
     public function index(Request $request)
     {
+        $user_teammember = User::where('role_id', Role::TEAM_MEMBER)->whereHas('task_details')->first();
+
+        dd($user_teammember);
         return UserResource::collection(User::paginate(25));
     }
 

@@ -9,6 +9,8 @@ class Role extends Model
 {
     const ADMIN = 1;
     const PRODUCT_OWNER = 2;
+    const TEAM_MEMBER = 3;
+    
     use HasFactory;
     protected $table = 'role';
 

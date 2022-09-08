@@ -22,6 +22,6 @@ class Task extends Model
     ];
 
     public function user_detail(){
-        return $this->hasOne(User::class, 'id','user_id');
+        return $this->belongsTo(User::class, 'id');
     }
 }
