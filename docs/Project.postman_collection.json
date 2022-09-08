@@ -1,0 +1,677 @@
+{
+	"info": {
+		"_postman_id": "c998be18-8e77-4473-a839-40d27dec7ac0",
+		"name": "Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9005366"
+	},
+	"item": [
+		{
+			"name": "All",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}{{version}}project?pageSize=2&pageIndex=1&sortBy=id&sortDirection=desc",
+					"host": [
+						"{{url}}{{version}}project"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "susana",
+							"disabled": true
+						},
+						{
+							"key": "pageSize",
+							"value": "2"
+						},
+						{
+							"key": "pageIndex",
+							"value": "1"
+						},
+						{
+							"key": "sortBy",
+							"value": "id"
+						},
+						{
+							"key": "sortDirection",
+							"value": "desc"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "All",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}{{version}}project?pageSize=2&pageIndex=1&sortBy=id&sortDirection=desc",
+							"host": [
+								"{{url}}{{version}}project"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "susana",
+									"disabled": true
+								},
+								{
+									"key": "pageSize",
+									"value": "2"
+								},
+								{
+									"key": "pageIndex",
+									"value": "1"
+								},
+								{
+									"key": "sortBy",
+									"value": "id"
+								},
+								{
+									"key": "sortDirection",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 08 Sep 2022 10:16:27 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Apache/2.4.47 (Win64) OpenSSL/1.1.1k mod_fcgid/2.3.10-dev"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.4"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Vary",
+							"value": "Authorization"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"id\": \"97371cf7-c663-4827-9f4c-121b326b6aa1\",\n            \"name\": \"Susana Terry\",\n            \"task\": []\n        },\n        {\n            \"id\": \"97371caa-02b1-41ce-baeb-1bc790ba3ee6\",\n            \"name\": \"Rubye Gleichner\",\n            \"task\": []\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://accenture_test_lvl2_v2.test/api/v1/project?page=1\",\n        \"last\": \"http://accenture_test_lvl2_v2.test/api/v1/project?page=4\",\n        \"prev\": null,\n        \"next\": \"http://accenture_test_lvl2_v2.test/api/v1/project?page=2\"\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": 1,\n        \"last_page\": 4,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://accenture_test_lvl2_v2.test/api/v1/project?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": \"http://accenture_test_lvl2_v2.test/api/v1/project?page=2\",\n                \"label\": \"2\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://accenture_test_lvl2_v2.test/api/v1/project?page=3\",\n                \"label\": \"3\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://accenture_test_lvl2_v2.test/api/v1/project?page=4\",\n                \"label\": \"4\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://accenture_test_lvl2_v2.test/api/v1/project?page=2\",\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://accenture_test_lvl2_v2.test/api/v1/project\",\n        \"per_page\": \"2\",\n        \"to\": 2,\n        \"total\": 7\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "One",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}{{version}}project/97371c43-31d2-4917-8dc5-8bf8fd61ce3f",
+					"host": [
+						"{{url}}{{version}}project"
+					],
+					"path": [
+						"97371c43-31d2-4917-8dc5-8bf8fd61ce3f"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "One",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}{{version}}project/97371c43-31d2-4917-8dc5-8bf8fd61ce3f",
+							"host": [
+								"{{url}}{{version}}project"
+							],
+							"path": [
+								"97371c43-31d2-4917-8dc5-8bf8fd61ce3f"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 08 Sep 2022 10:16:58 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Apache/2.4.47 (Win64) OpenSSL/1.1.1k mod_fcgid/2.3.10-dev"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.4"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "58"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Vary",
+							"value": "Authorization"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": \"97371c43-31d2-4917-8dc5-8bf8fd61ce3f\",\n        \"name\": \"Rico Kemmer\",\n        \"task\": [\n            {\n                \"id\": \"97371c43-4960-472d-9704-83fab19d88f7\",\n                \"tittle\": \"Provident.\",\n                \"description\": \"Fugiat odio non ex ipsum voluptate. Nemo error voluptas voluptas nihil reiciendis.\",\n                \"status\": \"IN_PROGRESS\",\n                \"project_id\": \"97371c43-31d2-4917-8dc5-8bf8fd61ce3f\",\n                \"user_id\": \"97371c32-1bf6-46d9-8fb3-a605247cc240\",\n                \"created_at\": \"2022-09-08T09:32:11.000000Z\",\n                \"updated_at\": \"2022-09-08T09:32:45.000000Z\"\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Post",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "najmieess",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}{{version}}project",
+					"host": [
+						"{{url}}{{version}}project"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Post",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "najmieess",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}{{version}}project",
+							"host": [
+								"{{url}}{{version}}project"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 08 Sep 2022 10:18:58 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Apache/2.4.47 (Win64) OpenSSL/1.1.1k mod_fcgid/2.3.10-dev"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.4"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Vary",
+							"value": "Authorization"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": \"97372cfe-d41c-4bb7-98b3-5b1f5ade8d65\",\n        \"name\": \"najmieess\",\n        \"task\": []\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"latif\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}{{version}}project/97371caa-02b1-41ce-baeb-1bc790ba3ee6",
+					"host": [
+						"{{url}}{{version}}project"
+					],
+					"path": [
+						"97371caa-02b1-41ce-baeb-1bc790ba3ee6"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"latif\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}{{version}}project/97371caa-02b1-41ce-baeb-1bc790ba3ee6",
+							"host": [
+								"{{url}}{{version}}project"
+							],
+							"path": [
+								"97371caa-02b1-41ce-baeb-1bc790ba3ee6"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 08 Sep 2022 10:19:44 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Apache/2.4.47 (Win64) OpenSSL/1.1.1k mod_fcgid/2.3.10-dev"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.4"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "57"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Vary",
+							"value": "Authorization"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": \"97371caa-02b1-41ce-baeb-1bc790ba3ee6\",\n        \"name\": \"latif\",\n        \"task\": []\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}{{version}}project/97371caa-02b1-41ce-baeb-1bc790ba3ee6",
+					"host": [
+						"{{url}}{{version}}project"
+					],
+					"path": [
+						"97371caa-02b1-41ce-baeb-1bc790ba3ee6"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}{{version}}project/97371caa-02b1-41ce-baeb-1bc790ba3ee6",
+							"host": [
+								"{{url}}{{version}}project"
+							],
+							"path": [
+								"97371caa-02b1-41ce-baeb-1bc790ba3ee6"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 08 Sep 2022 10:20:00 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Apache/2.4.47 (Win64) OpenSSL/1.1.1k mod_fcgid/2.3.10-dev"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.4"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Vary",
+							"value": "Authorization"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=99"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}

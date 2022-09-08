@@ -1,0 +1,141 @@
+{
+	"info": {
+		"_postman_id": "659aeaf3-9491-4d93-bc09-8f3f2a8c5d87",
+		"name": "Auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9005366"
+	},
+	"item": [
+		{
+			"name": "LOGIN",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}{{version}}login",
+					"host": [
+						"{{url}}{{version}}login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "LOGIN",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "test123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}{{version}}login",
+							"host": [
+								"{{url}}{{version}}login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 08 Sep 2022 10:14:32 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Apache/2.4.47 (Win64) OpenSSL/1.1.1k mod_fcgid/2.3.10-dev"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.4"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token_type\": \"Bearer\",\n    \"expires_in\": 86400,\n    \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzZmVmOWEzNC1mZTAyLTQwYTUtOGVmNS0wZDkyZTRlY2MxNTMiLCJqdGkiOiJjMzdmNGM0YTQyYzM4Njc3Y2UwODFkZTRjN2RhOTI1NWJiZjBlOTRhYWIxNzc3ZGY5ZjRiNTQ5OGI2ZDQ2ODA5MWQyNTIwZWE4MzI3MTM4NyIsImlhdCI6MTY2MjYzMjA3Mi41NjQ1ODgsIm5iZiI6MTY2MjYzMjA3Mi41NjQ1OSwiZXhwIjoxNjYyNzE4NDcyLjU0ODM1Miwic3ViIjoiOTczNzFiMjUtYTljZi00Mjg0LWFiNjAtOGEyMzNhOWZlZTc4Iiwic2NvcGVzIjpbXX0.vFkLzgh5r6iEynzL9JP3wWPRPMQHWcSVc8p2z_KKSRSJu16r6Z7lDFJrlvt6ITOX7hzKE0OVMttu5kvCHFz3KZa2AhJQo8FlYjj0XbQLWmfe32XDR7xUOx6FlTLi8aGEtGOoM8wIFNwVxsIvgLe9RusoJrAqb7aO7uM6XKHsVLk3lCPGI9swuL8mvWV8EbZ15dy0PZTiI9Ulb5c6v0mhH4YFF6ni3xrFNpN1YVtE768JVmEdX_DjoN2vA0DUq4corRA2fatDhLLNjH2ZRrfqugmReVepTCWMdIk-VB2-EP-PHkUvWDmQ-qfbqKI8TnoPkS7KFAye8NywbhfamE1faHQJ-L8OoA6vFJ4bjlUxt45J5sM9JWnXRdutfelHdLdqZuK83gtqHyNxjkLLL1JwauLthfB6WsN0ZhoeSBjyCn4Q0qvyy5v5KK36Bg6pSGyWww7Gwe25pkGsBhT7GK2M_O0xqj4eq6-K8t8VMeA23bmQ2spZbMJ2xXdoyzrVw74wWcRwl6Aep1L7MsnLtFB2BR_MbqFaRLNYXqsE2isD5Z6YpjuperKp1JAlYV5gLz-rE-cIbPYnHidyyIJ8N1B5dwqS7hc0ASS-LdrrI6fuhLqub6hjPoxCnCYJdIObuX--hvUwwY-jNtDtJjMD6D2x2REKN5fsfc6M62VNfPGz5Uc\",\n    \"refresh_token\": \"def5020019f831ef22fb12f70c56eeaf6b6f6bada80a2c3b946e4f46870bf9d9dade8fb10d5e5259a28219d48f3e1c6acc0fa144551801431050fa12b70bc4da263209285c427738121d1a284c1bc246a0bc63170f3d548a2ffe384776714d88785b0b59c6ff799da2cb7cb8b0ba9347999280216e6b4fd2c119cb20d9cd78064a899710e1eae514fb3eba8d4cefd6dc0249cb88f98b75451a5b7540a25f04e5524198114841810118da2db3f87055d2dcc990ea7455f7840783f8f3c5f99228afc115473fb583d1c65ab286bba6ff03a7fea02b8e313f7a78015e7266c1991232de1aed39cacec6a53ad6b121cc979732f4f6ba48aeb145d5d916da9308a22b4f716cb0a812cb37880db654edc062c6038c7c0951e4dd8676cc6489cd0c87dd6d8f1cd27836a3d85efdd548fc4b13052ccd6800e803daf6044af78611cb745abccc8db1a372145d69321e230e83a1e7843f06149d344f17ab1c6169aaf0a9f3f415c81bab681777263e624b269721c03c737fffb26ddaf6f1cd2f7ab4e0d71f573ee77f0fcb9ee6d880011cc7333fbb9a75b73764ef54fca8c2d59e622e9b2150ad55918a30d858b1\"\n}"
+				}
+			]
+		}
+	]
+}

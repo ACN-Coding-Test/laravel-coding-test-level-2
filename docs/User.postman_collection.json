@@ -1,0 +1,707 @@
+{
+	"info": {
+		"_postman_id": "f696e86a-0aed-4fa1-a3a7-9035b9f84ccd",
+		"name": "User",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9005366"
+	},
+	"item": [
+		{
+			"name": "All",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}{{version}}users",
+					"host": [
+						"{{url}}{{version}}users"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "ad",
+							"disabled": true
+						},
+						{
+							"key": "pageSize",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "pageIndex",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "sortBy",
+							"value": "id",
+							"disabled": true
+						},
+						{
+							"key": "sortDirection",
+							"value": "desc",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "All",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}{{version}}users",
+							"host": [
+								"{{url}}{{version}}users"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "ad",
+									"disabled": true
+								},
+								{
+									"key": "pageSize",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "pageIndex",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "sortBy",
+									"value": "id",
+									"disabled": true
+								},
+								{
+									"key": "sortDirection",
+									"value": "desc",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 08 Sep 2022 10:27:41 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Apache/2.4.47 (Win64) OpenSSL/1.1.1k mod_fcgid/2.3.10-dev"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.4"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "58"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Vary",
+							"value": "Authorization"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"id\": \"97371b25-a9cf-4284-ab60-8a233a9fee78\",\n            \"username\": \"admin\"\n        },\n        {\n            \"id\": \"97371c32-1bf6-46d9-8fb3-a605247cc240\",\n            \"username\": \"Beaulah Bahringer\"\n        },\n        {\n            \"id\": \"97371c2d-8d51-4ea9-917b-605dcdae610e\",\n            \"username\": \"Jodie Goyette\"\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://accenture_test_lvl2_v2.test/api/v1/users?page=1\",\n        \"last\": \"http://accenture_test_lvl2_v2.test/api/v1/users?page=3\",\n        \"prev\": null,\n        \"next\": \"http://accenture_test_lvl2_v2.test/api/v1/users?page=2\"\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": 1,\n        \"last_page\": 3,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://accenture_test_lvl2_v2.test/api/v1/users?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": \"http://accenture_test_lvl2_v2.test/api/v1/users?page=2\",\n                \"label\": \"2\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://accenture_test_lvl2_v2.test/api/v1/users?page=3\",\n                \"label\": \"3\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://accenture_test_lvl2_v2.test/api/v1/users?page=2\",\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://accenture_test_lvl2_v2.test/api/v1/users\",\n        \"per_page\": 3,\n        \"to\": 3,\n        \"total\": 9\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "One",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}{{version}}users/97371c32-1bf6-46d9-8fb3-a605247cc240",
+					"host": [
+						"{{url}}{{version}}users"
+					],
+					"path": [
+						"97371c32-1bf6-46d9-8fb3-a605247cc240"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "One",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}{{version}}users/97371c32-1bf6-46d9-8fb3-a605247cc240",
+							"host": [
+								"{{url}}{{version}}users"
+							],
+							"path": [
+								"97371c32-1bf6-46d9-8fb3-a605247cc240"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 08 Sep 2022 10:27:26 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Apache/2.4.47 (Win64) OpenSSL/1.1.1k mod_fcgid/2.3.10-dev"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.4"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Vary",
+							"value": "Authorization"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": \"97371c32-1bf6-46d9-8fb3-a605247cc240\",\n        \"username\": \"Beaulah Bahringer\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Post",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "najmieess",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}{{version}}users",
+					"host": [
+						"{{url}}{{version}}users"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Post",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "najmieess",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "test123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}{{version}}users",
+							"host": [
+								"{{url}}{{version}}users"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 08 Sep 2022 10:27:54 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Apache/2.4.47 (Win64) OpenSSL/1.1.1k mod_fcgid/2.3.10-dev"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.4"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "57"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Vary",
+							"value": "Authorization"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": \"97373031-1f39-4dc5-8041-987c9b0184c1\",\n        \"username\": \"najmieess\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "123dsada",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}{{version}}users/97373031-1f39-4dc5-8041-987c9b0184c1",
+					"host": [
+						"{{url}}{{version}}users"
+					],
+					"path": [
+						"97373031-1f39-4dc5-8041-987c9b0184c1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "123dsada",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}{{version}}users/97373031-1f39-4dc5-8041-987c9b0184c1",
+							"host": [
+								"{{url}}{{version}}users"
+							],
+							"path": [
+								"97373031-1f39-4dc5-8041-987c9b0184c1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 08 Sep 2022 10:28:20 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Apache/2.4.47 (Win64) OpenSSL/1.1.1k mod_fcgid/2.3.10-dev"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.4"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "56"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Vary",
+							"value": "Authorization"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": \"97373031-1f39-4dc5-8041-987c9b0184c1\",\n        \"username\": \"123dsada\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}{{version}}users/97373031-1f39-4dc5-8041-987c9b0184c1",
+					"host": [
+						"{{url}}{{version}}users"
+					],
+					"path": [
+						"97373031-1f39-4dc5-8041-987c9b0184c1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}{{version}}users/97373031-1f39-4dc5-8041-987c9b0184c1",
+							"host": [
+								"{{url}}{{version}}users"
+							],
+							"path": [
+								"97373031-1f39-4dc5-8041-987c9b0184c1"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 08 Sep 2022 10:28:43 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Apache/2.4.47 (Win64) OpenSSL/1.1.1k mod_fcgid/2.3.10-dev"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.4"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Vary",
+							"value": "Authorization"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}
