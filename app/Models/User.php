@@ -7,10 +7,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\SoftDeletes;
+// use App\Traits\Uuid;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
+
+    public $incrementing = false;
 
     /**
      * The attributes that are mass assignable.
@@ -18,6 +22,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'name',
         'email',
         'password',
@@ -39,6 +44,7 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
+        'id' => 'string',
         'email_verified_at' => 'datetime',
     ];
 
