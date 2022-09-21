@@ -9,4 +9,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Project extends Model
 {
     use HasFactory,UuidForKey;
+
+    protected $fillable = ['name'];
 }
