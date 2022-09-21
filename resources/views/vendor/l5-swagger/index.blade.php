@@ -45,6 +45,7 @@
 
             requestInterceptor: function(request) {
                 request.headers['X-CSRF-TOKEN'] = '{{ csrf_token() }}';
+                request.headers.Authorization = "Bearer " + request.headers.Authorization;
                 return request;
             },
 
