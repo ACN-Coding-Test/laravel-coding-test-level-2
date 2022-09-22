@@ -8,9 +8,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use Exception;
+use JWTAuth;
 
 class UserController extends Controller
 {
+
+    public function __construct(Request $request)
+    {
+        $this->middleware('is.admin');
+    }
+    
     /**
      * @OA\Get(
      * path="/v1/user",

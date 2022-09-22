@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             "name" => "Superuser",
             "username" => "admin",
             "password" => bcrypt("admin"),
-            "role_id" => 1
+            "role_id" => 3
         ]);
 
     }
