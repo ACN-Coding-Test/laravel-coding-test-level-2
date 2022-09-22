@@ -14,6 +14,11 @@ use App\Http\Middleware\IsProductOwner;
 */
 
 # >>> Auth #
+
+Route::get('/', function () {
+    return "welcome to api";
+});
+
 Route::get('login', [AuthController::class, 'invalidLogin'])->name('login');
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);

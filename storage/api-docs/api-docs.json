@@ -72,6 +72,63 @@
                 ],
                 "summary": "Projects",
                 "operationId": "getProjects",
+                "parameters": [
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "description": "Search By Name",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "text"
+                        },
+                        "example": ""
+                    },
+                    {
+                        "name": "pageIndex",
+                        "in": "query",
+                        "description": "Page Index (default 0)",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": ""
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "Page Size (default 3)",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": ""
+                    },
+                    {
+                        "name": "sortBy",
+                        "in": "query",
+                        "description": "Sort By (default by name)",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "text"
+                        },
+                        "example": ""
+                    },
+                    {
+                        "name": "sortDirection",
+                        "in": "query",
+                        "description": "Sort Direction (default ASC)",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "text"
+                        },
+                        "example": ""
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -322,7 +379,6 @@
                             "example": {
                                 "title": "First Task",
                                 "description": "This is First Task",
-                                "status_id": 1,
                                 "project_id": "",
                                 "user_id": ""
                             }

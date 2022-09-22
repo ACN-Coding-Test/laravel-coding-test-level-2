@@ -18,6 +18,67 @@ class ProjectController extends Controller
      * operationId="getProjects",
      * tags={"Projects"},
      * security={ {"Bearer": {} }},
+     * 
+     * @OA\Parameter(
+     *      description="Search By Name",
+     *      in="query",
+     *      name="q",
+     *      required=false,
+     *      example="",
+     *      @OA\Schema(
+     *          type="string",
+     *          format="text"
+     *      )
+     * ),
+     * 
+     * @OA\Parameter(
+     *      description="Page Index (default 0)",
+     *      in="query",
+     *      name="pageIndex",
+     *      required=false,
+     *      example="",
+     *      @OA\Schema(
+     *          type="integer",
+     *          format="int64"
+     *      )
+     * ),
+     * 
+     * @OA\Parameter(
+     *      description="Page Size (default 3)",
+     *      in="query",
+     *      name="pageSize",
+     *      required=false,
+     *      example="",
+     *      @OA\Schema(
+     *          type="integer",
+     *          format="int64"
+     *      )
+     * ),
+     * 
+     * @OA\Parameter(
+     *      description="Sort By (default by name)",
+     *      in="query",
+     *      name="sortBy",
+     *      required=false,
+     *      example="",
+     *      @OA\Schema(
+     *          type="string",
+     *          format="text"
+     *      )
+     * ),
+     * 
+     * @OA\Parameter(
+     *      description="Sort Direction (default ASC)",
+     *      in="query",
+     *      name="sortDirection",
+     *      required=false,
+     *      example="",
+     *      @OA\Schema(
+     *          type="string",
+     *          format="text"
+     *      )
+     * ),
+     * 
      *   @OA\Response(
      *        response=200,
      *        description="Successful operation",
@@ -40,10 +101,44 @@ class ProjectController extends Controller
      *    )
      * )
     */
-    public function index()
+    public function index(Request $request)
     {
         try {
-            $data = Projects::get();
+            $credentials = $request->all();
+            $validator = Validator::make($credentials, [
+                'q' => 'string|max:100',
+                'pageIndex' => 'integer',
+                'pageSize' => 'integer',
+                'sortBy' => 'string|max:100',
+                'sortDirection' => 'string|max:4',
+            ]);
+
+            # Cred Validation
+            if ($validator->fails()) {
+                return response()->json(['error' => $validator->errors(), 'status' => Response::HTTP_BAD_REQUEST], Response::HTTP_BAD_REQUEST);
+            }
+            
+            # Set Limit Data
+            $limit = $request->pageSize?$request->pageSize:3;
+
+            # Set Page Index (Start Record)
+            $offset = $request->pageIndex?$request->pageIndex:0;
+
+            # Set sort data
+            $sortBy = $request->sortBy?$request->sortBy:'name';
+            $sortDirection = $request->sortDirection?$request->sortDirection:'ASC';
+           
+            # Query Data
+            $data = new Projects;
+            if ($request->q) {
+                $data = $data->where('name','LIKE','%'.$request->q.'%');
+            }
+
+            $data = $data->offset($offset)
+                    ->limit($limit)
+                    ->orderBy($sortBy,$sortDirection)
+                    ->get();
+
             $count = $data?count($data):0;
             return response()->json([
                 'status' => Response::HTTP_OK,
@@ -110,11 +205,12 @@ class ProjectController extends Controller
                 return response()->json(['error' => $validator->errors(), 'status' => Response::HTTP_BAD_REQUEST], Response::HTTP_BAD_REQUEST);
             }
 
-            Projects::create(["name" => $request->name]);
+            $data = Projects::create(["name" => $request->name]);
 
             return response()->json([
                 'status' => Response::HTTP_CREATED,
-                'message' => "Create Project Success"
+                'message' => "Create Project Success",
+                'data' => $data
             ], Response::HTTP_CREATED);
         } catch (Exception $e) {
             return response()->json([
@@ -169,7 +265,6 @@ class ProjectController extends Controller
     {
         try {
             $data = Projects::find($id);
-            \Log::info($data);
             if ($data) {
                 return response()->json([
                     'status' => Response::HTTP_OK,

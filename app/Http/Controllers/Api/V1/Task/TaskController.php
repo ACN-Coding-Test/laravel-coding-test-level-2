@@ -130,7 +130,7 @@ class TaskController extends Controller
             }
 
             $currentUser = JWTAuth::authenticate($request->token);
-            Tasks::create([
+            $data = Tasks::create([
                 "title" => $request->title,
                 "description" => $request->description,
                 "status_id" => 1,
@@ -141,7 +141,8 @@ class TaskController extends Controller
 
             return response()->json([
                 'status' => Response::HTTP_CREATED,
-                'message' => "Create Task Success"
+                'message' => "Create Task Success",
+                'data' => $data
             ], Response::HTTP_CREATED);
         } catch (Exception $e) {
             return response()->json([
@@ -343,7 +344,7 @@ class TaskController extends Controller
             ], Response::HTTP_BAD_REQUEST);
         }
     }
-
+    
     /**
      * @OA\Delete(
      * path="/v1/task/{id}",

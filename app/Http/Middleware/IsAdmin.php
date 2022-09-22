@@ -19,7 +19,6 @@ class IsAdmin
     public function handle(Request $request, Closure $next)
     {
         $currentUser = JWTAuth::authenticate($request->token);
-        \Log::info($currentUser->role_id);
         if ($currentUser->role_id == 3) {
             return $next($request);
         }
