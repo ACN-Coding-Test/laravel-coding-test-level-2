@@ -21,12 +21,26 @@ class DatabaseSeeder extends Seeder
         ]);
         
         # Default User
-        User::create([
+        $users =  [[
             "name" => "Superuser",
             "username" => "admin",
-            "password" => bcrypt("admin"),
+            "password" => bcrypt("123456"),
             "role_id" => 3
-        ]);
+        ],[
+            "name" => "Product Owner",
+            "username" => "product",
+            "password" => bcrypt("123456"),
+            "role_id" => 2
+        ],[
+            "name" => "Team Member",
+            "username" => "member",
+            "password" => bcrypt("123456"),
+            "role_id" => 1
+        ]];
+
+        foreach ($users as $key => $value) {
+            User::create($value);
+        }
 
     }
 }
