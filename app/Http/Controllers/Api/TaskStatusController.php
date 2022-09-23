@@ -16,6 +16,7 @@ class TaskStatusController extends Controller
     {
         try {
             //Validated
+            if (strtoupper(auth()->user()->userrole->role_name) == 'ADMIN') {
             $validateStatus = Validator::make($request->all(), 
             [
                 'status' => 'required',
@@ -37,6 +38,11 @@ class TaskStatusController extends Controller
                 'status' => true,
                 'message' => 'User Role Created Successfully',
             ], 200);
+        }else{
+            return response([
+                'message' => 'Only ADMIN User Can Create Task Status.',
+            ]);
+        }
 
         } catch (\Throwable $th) {
             return response()->json([
@@ -47,126 +53,154 @@ class TaskStatusController extends Controller
     }
     public function get(Request $request)
     {
+        if (strtoupper(auth()->user()->userrole->role_name) == 'ADMIN') {
         try {
             $data = TaskStatus::find($request->id);
 
             if($data){
-                http_response_code(200);
                 return response([
                     'message' => 'Data successfully retrieved.',
                     'data' => $data
                 ]);
           }
           else{
-            http_response_code(200);
             return response([
                 'message' => 'No Record Found!!',
             ]);
          }
         } catch (RequestException $r) {
 
-            http_response_code(400);
-            return response([
-                'message' => 'Failed to retrieve data.', 
-                'errorCode' => 4103
-            ],400);
-        }
-    }
-    public function getAll(Request $request)
-    {
-        try {
-            $data = TaskStatus::orderby('id', 'desc')->get();
-
-            http_response_code(200);
-            return response([
-                'message' => 'Data successfully retrieved.',
-                'data' => $data
-            ]);
-        } catch (RequestException $r) {
-
-            http_response_code(400);
             return response([
                 'message' => 'Failed to retrieve data.',
                 'errorCode' => 4103
             ],400);
         }
+     }else{
+        return response([
+            'message' => 'Only ADMIN User Can See Status.',
+        ]);
+     }
+    }
+    public function getAll(Request $request)
+    {
+        
+            try {
+                if (strtoupper(auth()->user()->userrole->role_name) == 'ADMIN') {
+                    $data = TaskStatus::orderby('id', 'desc')->get();
+                    return response([
+                        'message' => 'Data successfully retrieved.',
+                        'data' => $data
+                    ]);
+                }else{
+                    return response([
+                        'message' => 'Only ADMIN User Can See Status.',
+                    ]);
+                }
+            } catch (RequestException $r) {
+
+                return response([
+                    'message' => 'Failed to retrieve data.',
+                    'errorCode' => 4103
+                ],400);
+            }
+      
     }
     public function update(Request $request, $id)
     {
-        $validateStatus = Validator::make($request->all(), 
-        [
-            'status' => 'required',
-        ]);
-
-        if($validateStatus->fails()){
-            return response()->json([
-                'status' => false,
-                'message' => 'validation error',
-                'errors' => $validateStatus->errors()
-            ], 401);
-        }
-        try {
-            $data = TaskStatus::findOrFail($id);
-            $data->status = $request->status;
-            $data->save();
-
-            http_response_code(200);
-            return response([
-                'message' => 'Update Successful',
+        if (strtoupper(auth()->user()->userrole->role_name) == 'ADMIN') {
+            $validateStatus = Validator::make($request->all(), 
+            [
+                'status' => 'required',
             ]);
 
-        } catch (RequestException $r) {
+            if($validateStatus->fails()){
+                return response()->json([
+                    'status' => false,
+                    'message' => 'validation error',
+                    'errors' => $validateStatus->errors()
+                ], 401);
+            }
+            try {
+                $data = TaskStatus::findOrFail($id);
+                $data->status = $request->status;
+                $data->save();
 
-            http_response_code(400);
-            return response([
-                'message' => 'Data failed to be updated.',
-                'errorCode' => 4101,
-            ], 400);
+                http_response_code(200);
+                return response([
+                    'message' => 'Update Successful',
+                    'data' => $data,
+                ]);
+
+            } catch (RequestException $r) {
+
+                http_response_code(400);
+                return response([
+                    'message' => 'Data failed to be updated.',
+                    'errorCode' => 4101,
+                ], 400);
+            }
+        }else{
+        return response([
+            'message' => 'Only ADMIN User Can Update Status.',
+        ]);
         }
     }
     public function patchupdate(Request $request, $id)
     {
-        $validateStatus = Validator::make($request->all(), 
-        [
-            'status' => 'required',
-        ]);
-
-        if($validateStatus->fails()){
-            return response()->json([
-                'status' => false,
-                'message' => 'validation error',
-                'errors' => $validateStatus->errors()
-            ], 401);
-        }
-        try {
-            $data = TaskStatus::findOrFail($id);
-            $data->status = $request->status;
-            $data->save();
-
-            http_response_code(200);
-            return response([
-                'message' => 'Update Successful',
+        if (strtoupper(auth()->user()->userrole->role_name) == 'ADMIN') {
+            $validateStatus = Validator::make($request->all(), 
+            [
+                'status' => 'required',
             ]);
 
-        } catch (RequestException $r) {
+            if($validateStatus->fails()){
+                return response()->json([
+                    'status' => false,
+                    'message' => 'validation error',
+                    'errors' => $validateStatus->errors()
+                ], 401);
+            }
+            try {
+                $data = TaskStatus::findOrFail($id);
+                $data->status = $request->status;
+                $data->save();
 
-            http_response_code(400);
+                http_response_code(200);
+                return response([
+                    'message' => 'Update Successful',
+                ]);
+
+            } catch (RequestException $r) {
+
+                http_response_code(400);
+                return response([
+                    'message' => 'Data failed to be updated.',
+                    'errorCode' => 4101,
+                ], 400);
+            }
+        }else{
             return response([
-                'message' => 'Data failed to be updated.',
-                'errorCode' => 4101,
-            ], 400);
-        }
+                'message' => 'Only ADMIN User Can Update Status.',
+            ]);
+            }
     }
     public function delete($id)
     {
+       
         try {
-            $data = TaskStatus::find($id);
-            $data->delete();
+            if (strtoupper(auth()->user()->userrole->role_name) == 'ADMIN') {
+                $data = TaskStatus::find($id);
+                $data->delete();
 
-            http_response_code(200);
-            return response([
-                'message' => 'Data successfully deleted.',
-            ]);
+                http_response_code(200);
+                return response([
+                    'message' => 'Data successfully deleted.',
+                ]);
+            }else{
+                return response([
+                    'message' => 'Only ADMIN User Can Delete Role.',
+                ]);
+            }
 
         } catch (RequestException $r) {
 

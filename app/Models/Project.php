@@ -9,6 +9,11 @@ class Project extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name'
+        'name',
+        'user_id'
     ];
+    public function projectUser()
+    {
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
 }

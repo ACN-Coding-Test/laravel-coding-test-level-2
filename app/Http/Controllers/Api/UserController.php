@@ -15,17 +15,23 @@ class UserController extends Controller
     public function get(Request $request)
     {
         try {
-            $data = User::find($request->user_id);
+            if (strtoupper(auth()->user()->userrole->role_name) == 'ADMIN' || auth()->user()->id == $request->user_id) {
+            $data = User::with('userrole')->find($request->user_id);
+            }
+            else{
+                $data = [];
+                return response([
+                    'message' => 'Only ADMIN User Can See.',
+                ]);
+            }
 
             if($data){
-                http_response_code(200);
                 return response([
                     'message' => 'Data successfully retrieved.',
                     'data' => $data
                 ]);
           }
           else{
-            http_response_code(200);
             return response([
                 'message' => 'No Record Found!!',
             ]);
@@ -42,23 +48,21 @@ class UserController extends Controller
     public function getAll(Request $request)
     {
         try {
-           // Log::info("enter=". auth()->user()->userrole->role_name);
-            //if (auth()->user()->userrole->role_name == 'ADMIN') {
-            $data = User::orderby('id', 'desc')->get();
+           // Log::info("enter=". strtoupper(auth()->user()->userrole->role_name));
+            if (strtoupper(auth()->user()->userrole->role_name) == 'ADMIN') {
+            $data = User::with('userrole')->orderby('id', 'desc')->get();
 
-            http_response_code(200);
             return response([
                 'message' => 'Data successfully retrieved.',
                 'data' => $data
             ]);
-        //  }
-        //  else{
-        //     http_response_code(200);
-        //     return response([
-        //         'message' => 'Only Admin User Can See!!',
-        //         //'data' => $data
-        //     ]);
-        //  }
+         }
+         else{
+            return response([
+                'message' => 'Only Admin User Can See!!',
+                //'data' => $data
+            ]);
+         }
         } catch (RequestException $r) {
 
             http_response_code(400);
@@ -86,20 +90,25 @@ class UserController extends Controller
                 ], 401);
             }
         try {
-            $data = User::findOrFail($id);
-            $data->name = $request->name;
-            $data->email = $request->email;
-            $data->role_id = $request->role_id;
-            $data->save();
+            if (strtoupper(auth()->user()->userrole->role_name) == 'ADMIN') {
+                $data = User::with('userrole')->findOrFail($id);
+                $data->name = $request->name;
+                $data->email = $request->email;
+                $data->role_id = $request->role_id;
+                $data->save();
 
-            http_response_code(200);
-            return response([
-                'message' => 'Update Successful',
-            ]);
+                return response([
+                    'message' => 'Update Successful',
+                    'data' => $data,
+                ]);
+            }else{
+                return response([
+                    'message' => 'Only Admin User Can Update!!',
+                ]);
+            }
 
         } catch (RequestException $r) {
 
-            http_response_code(400);
             return response([
                 'message' => 'Data failed to be updated.',
                 'errorCode' => 4101,
@@ -112,8 +121,6 @@ class UserController extends Controller
         $validateUser = Validator::make($request->all(),
             [
                 'name' => 'required',
-                'email' => 'required|email',
-                'role_id' => 'required'
             ]);
 
             if($validateUser->fails()){
@@ -124,16 +131,23 @@ class UserController extends Controller
                 ], 401);
             }
         try {
-            $data = User::findOrFail($id);
-            $data->name = $request->name;
-            $data->email = $request->email;
-            $data->role_id = $request->role_id;
-            $data->save();
+            if (strtoupper(auth()->user()->userrole->role_name) == 'ADMIN') {
+                $data = User::with('userrole')->findOrFail($id);
+                $data->name = $request->name;
+               // $data->email = $request->email;
+               // $data->role_id = $request->role_id;
+                $data->save();
 
-            http_response_code(200);
-            return response([
-                'message' => 'Update Successful',
-            ]);
+                http_response_code(200);
+                return response([
+                    'message' => 'Update Successful',
+                    'data' => $data,
+                ]);
+            }else{
+                return response([
+                    'message' => 'Only Admin User Can Update!!',
+                ]);
+            }
 
         } catch (RequestException $r) {
 
@@ -147,13 +161,18 @@ class UserController extends Controller
     public function delete($id)
     {
         try {
+            if (strtoupper(auth()->user()->userrole->role_name) == 'ADMIN') {
             $data = User::find($id);
             $data->delete();
 
-            http_response_code(200);
             return response([
                 'message' => 'Data successfully deleted.',
             ]);
+          }else{
+            return response([
+                'message' => 'Only Admin User Can delete.',
+            ]);
+          }
 
         } catch (RequestException $r) {
 
