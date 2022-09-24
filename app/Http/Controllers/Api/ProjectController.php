@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
+use DB;
 
 class ProjectController extends Controller
 {
@@ -18,7 +19,7 @@ class ProjectController extends Controller
         try {
             if (strtoupper(auth()->user()->userrole->role_name) == 'PRODUCT_OWNER') {
             //Validated
-            $validateProject = Validator::make($request->all(), 
+            $validateProject = Validator::make($request->all(),
             [
                 'name' => 'required',
             ]);
@@ -59,8 +60,8 @@ class ProjectController extends Controller
         try {
            $data = [];
             if(strtoupper(auth()->user()->userrole->role_name) == 'ADMIN') {
-            $data = Project::with('projectUser')->find($request->id);
-            }else if(strtoupper(auth()->user()->userrole->role_name) == 'PRODUCT_OWNER') {
+                $data = Project::with('projectUser')->find($request->id);
+            } else if(strtoupper(auth()->user()->userrole->role_name) == 'PRODUCT_OWNER') {
                 $data = Project::with('projectUser')->where('user_id','=', auth()->user()->id)->find($request->id);
              }else{
                $data = [];
@@ -93,10 +94,14 @@ class ProjectController extends Controller
         try {
             $data = [];
             if(strtoupper(auth()->user()->userrole->role_name) == 'ADMIN') {
-            $data = Project::with('projectUser')->orderby('id', 'desc')->get();
-            }
-            else if(strtoupper(auth()->user()->userrole->role_name) == 'PRODUCT_OWNER') {
-                $data = Project::with('projectUser')->where('user_id','=', auth()->user()->id)->orderby('id', 'desc')->get();
+
+                \DB::enableQueryLog();  
+    ;
+                $data = Project::with('projectUser')->where('name','LIKE','%'.$request->q.'%')->orderby($request->sortBy,$request->sortDirection)->paginate($request->pageSize);
+                $data->count();
+            } else if(strtoupper(auth()->user()->userrole->role_name) == 'PRODUCT_OWNER') {
+                $data = Project::with('projectUser')->where('user_id','=', auth()->user()->id)->where('name','LIKE','%'.$request->q.'%')->orderby($request->sortBy,$request->sortDirection)->paginate($request->pageSize);
+                $data->count();
              }else{
                 return response([
                     'message' => 'Unauthorized User!!',
