@@ -165,8 +165,8 @@ class TaskController extends Controller
             [
                 'title' => 'required',
                // 'status_id' => 'required',
-                'user_id' => 'required',
-                'project_id' => 'required',
+              //  'user_id' => 'required',
+               // 'project_id' => 'required',
             ]);
 
             if($validateTask->fails()){
