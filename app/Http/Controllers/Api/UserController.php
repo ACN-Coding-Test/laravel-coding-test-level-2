@@ -77,7 +77,7 @@ class UserController extends Controller
             return response()->json([
                 'status'    => 200,
                 'message'   => 'User Successfully Created',
-                'token'     => $user->createToken("Laravel")->plainTextToken
+                'token'     => $user->createToken($request->username)->plainTextToken
             ], 200);
 
         } catch (Exception $e) {

@@ -14,11 +14,21 @@ use DB;
 
 class ProjectController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         try {
 
-            $projects = Project::all();
+            $search = $request->q ?? null;
+            $pageIndex = $request->pageIndex ?? 0;
+            $pageSize = $request->pageSize ?? 3;
+            $sortBy = $request->sortBy ?? 'name';
+            $sortDirection = $request->sortDirection ?? 'ASC';
+            
+            $projects = Project::where( 'name', 'LIKE', '%' . $search . '%' )
+                            ->skip($pageIndex*$pageSize)
+                            ->take($pageSize)
+                            ->orderBy($sortBy, $sortDirection)
+                            ->get();
 
             return response()->json([
                 'status' => 200,
