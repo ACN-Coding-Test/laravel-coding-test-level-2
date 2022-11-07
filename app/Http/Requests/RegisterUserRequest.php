@@ -17,16 +17,17 @@ class RegisterUserRequest extends FormRequest
     {
         return [
             'username' => 'required|string|unique:users,username',
-            'password' => 'required|string|min:6'
+            'password' => 'required|string|min:6',
+            'role'     => 'required|string'
         ];
     }
 
     public function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json([
-            'success'   => 401,
-            'message'   => 'Validation errors',
-            'errors'      => $validator->errors()
+            'status'   => 401,
+            'message'  => 'Validation errors',
+            'errors'   => $validator->errors()
         ]));
     }
 }

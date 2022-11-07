@@ -6,7 +6,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateTaskRequest extends FormRequest
+class UpdateTaskStatusRequest extends FormRequest
 {
     public function authorize()
     {
@@ -16,11 +16,8 @@ class UpdateTaskRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'         => 'required|string',
             'description'   => 'nullable|string',
-            'status'        => 'required|string',
-            'project_id'    => 'required|uuid',
-            'user_id'       => 'required|uuid',
+            'status'        => 'required|string'
         ];
     }
 

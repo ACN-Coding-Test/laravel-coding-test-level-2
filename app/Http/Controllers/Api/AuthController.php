@@ -18,7 +18,16 @@ class AuthController extends Controller
     { 
         DB::beginTransaction();
 
+        $roles = ['ADMIN', 'PRODUCT_OWNER', 'MEMBER'];
+
         try {
+            
+            if(in_array($request->role, $roles) == false){
+                return response()->json([
+                    'status' => 401,
+                    'message' => 'Only ADMIN, PRODUCT_OWNER and MEMBER role are allowed',
+                ], 401);
+            }
             
             $user = User::create([
                 'username'  => $request->username,
@@ -31,7 +40,7 @@ class AuthController extends Controller
             return response()->json([
                 'status'    => 200,
                 'message'   => 'User Successfully Created',
-                'token'     => $user->createToken("Laravel")->plainTextToken
+                'token'     => $user->createToken($request->username)->plainTextToken
             ], 200);
 
         } catch (Exception $e) {
@@ -62,7 +71,7 @@ class AuthController extends Controller
             return response()->json([
                 'status' => 200,
                 'message' => 'User Successfully Logged In',
-                'token' => $user->createToken("API TOKEN")->plainTextToken
+                'token' => $user->createToken($request->username)->plainTextToken
             ], 200);
 
         } catch (Exception $e) {

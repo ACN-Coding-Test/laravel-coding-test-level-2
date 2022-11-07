@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\Task;
 use Exception;
 use Auth;
 use DB;
@@ -16,7 +17,7 @@ class ProjectController extends Controller
     public function index()
     {
         try {
-            
+
             $projects = Project::all();
 
             return response()->json([
@@ -40,6 +41,13 @@ class ProjectController extends Controller
         DB::beginTransaction();
 
         try {
+
+            if(getRole() != 'PRODUCT_OWNER'){
+                return response()->json([
+                    'status' => 401,
+                    'message' => 'you do not have permission to access this API',
+                ], 401);
+            }
             
             $project = Project::create([
                 'name' => $request->name,
@@ -50,6 +58,7 @@ class ProjectController extends Controller
             return response()->json([
                 'status'    => 200,
                 'message'   => 'Project Successfully Created',
+                'data'      => $project->toArray()
             ], 200);
 
         } catch (Exception $e) {
@@ -90,6 +99,13 @@ class ProjectController extends Controller
 
         try {
 
+            if(getRole() != 'PRODUCT_OWNER'){
+                return response()->json([
+                    'status' => 401,
+                    'message' => 'you do not have permission to access this API',
+                ], 401);
+            }
+
             $project->name = $request->name;
             $project->save();
             
@@ -117,6 +133,21 @@ class ProjectController extends Controller
         DB::beginTransaction();
 
         try {
+
+            if(getRole() != 'PRODUCT_OWNER'){
+                return response()->json([
+                    'status' => 401,
+                    'message' => 'you do not have permission to access this API',
+                ], 401);
+            }
+
+            $tasks = Task::where('project_id', $project->id)->get();
+
+            if(!empty($tasks->toArray())){
+                foreach($tasks as $task){
+                    $task->delete();
+                }  
+            }
 
             $project->delete();
 

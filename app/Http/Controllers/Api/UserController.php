@@ -18,6 +18,13 @@ class UserController extends Controller
     public function index()
     {
         try {
+
+            if(getRole() != 'ADMIN'){
+                return response()->json([
+                    'status' => 401,
+                    'message' => 'you do not have permission to access this API',
+                ], 401);
+            }
             
             $users = User::all();
 
@@ -41,7 +48,23 @@ class UserController extends Controller
     {
         DB::beginTransaction();
 
+        $roles = ['ADMIN', 'PRODUCT_OWNER', 'MEMBER'];
+
         try {
+
+            if(in_array($request->role, $roles) == false){
+                return response()->json([
+                    'status' => 401,
+                    'message' => 'Only ADMIN, PRODUCT_OWNER and MEMBER role are allowed',
+                ], 401);
+            }
+
+            if(getRole() != 'ADMIN'){
+                return response()->json([
+                    'status' => 401,
+                    'message' => 'you do not have permission to access this API',
+                ], 401);
+            }
             
             $user = User::create([
                 'username'  => $request->username,
@@ -72,6 +95,13 @@ class UserController extends Controller
     public function show(User $user)
     {
         try { 
+
+            if(getRole() != 'ADMIN'){
+                return response()->json([
+                    'status' => 401,
+                    'message' => 'you do not have permission to access this API',
+                ], 401);
+            }
             
             return response()->json([
                 'status' => 200,
@@ -93,7 +123,23 @@ class UserController extends Controller
     { 
         DB::beginTransaction();
 
+        $roles = ['ADMIN', 'PRODUCT_OWNER', 'MEMBER'];
+
         try {
+
+            if(in_array($request->role, $roles) == false){
+                return response()->json([
+                    'status' => 401,
+                    'message' => 'Only ADMIN, PRODUCT_OWNER and MEMBER role are allowed',
+                ], 401);
+            }
+
+            if(getRole() != 'ADMIN'){
+                return response()->json([
+                    'status' => 401,
+                    'message' => 'you do not have permission to access this API',
+                ], 401);
+            }
 
             $user->username = $request->username;
             $user->role = $request->role;
@@ -130,6 +176,13 @@ class UserController extends Controller
 
         try {
 
+            if(getRole() != 'ADMIN'){
+                return response()->json([
+                    'status' => 401,
+                    'message' => 'you do not have permission to access this API',
+                ], 401);
+            }
+
             $user->password = Hash::make($request->password);
             $user->save();
             
@@ -157,6 +210,13 @@ class UserController extends Controller
         DB::beginTransaction();
 
         try {
+
+            if(getRole() != 'ADMIN'){
+                return response()->json([
+                    'status' => 401,
+                    'message' => 'you do not have permission to access this API',
+                ], 401);
+            }
 
             $user->delete();
 

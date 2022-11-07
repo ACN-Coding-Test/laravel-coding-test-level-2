@@ -47,6 +47,7 @@ Route::prefix('v1')->group(function () {
         Route::put('/tasks/{task}', [TaskController::class, 'update'])->name('task.update');
         Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('task.destroy');
         Route::get('/tasks/by/project/{id}', [TaskController::class, 'taskListByProject'])->name('task.by.project');
+        Route::patch('/tasks/update/status/{task}', [TaskController::class, 'updateTaskStatus'])->name('task.update.status');
 
     });
 
