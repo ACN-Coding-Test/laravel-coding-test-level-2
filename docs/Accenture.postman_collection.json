@@ -1,0 +1,481 @@
+{
+	"info": {
+		"_postman_id": "9913414c-07cf-461f-9af9-c899e5969a10",
+		"name": "Accenture",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/users/97c350ee-f039-4c57-89ef-b091068b6c20",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"97c350ee-f039-4c57-89ef-b091068b6c20"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User By ID (IDEMPOTENT)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"Hairul Azreen\",\n    \"password\": \"password\",\n    \"password_confirmation\": \"password\",\n    \"role\": \"product_owner\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/97c350ee-f039-4c57-89ef-b091068b6c20",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"97c350ee-f039-4c57-89ef-b091068b6c20"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User By ID",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"Q\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/97c350ee-f039-4c57-89ef-b091068b6c20",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"97c350ee-f039-4c57-89ef-b091068b6c20"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"Emma Maembong\",\n    \"password\": \"password\",\n    \"password_confirmation\": \"password\",\n    \"role\": \"dev\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User By ID",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/users/97c35152-87b5-4f22-aedf-b38463fb8317",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"97c35152-87b5-4f22-aedf-b38463fb8317"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "Create Project",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Project 1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/projects",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Projects",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/projects",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Project By ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/projects/97c35f83-888a-42b3-99ad-16bcf63fed1e",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"projects",
+								"97c35f83-888a-42b3-99ad-16bcf63fed1e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Project By ID [PUT]",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Project\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/projects/97c364cf-f37f-47cc-9d7e-194f3ba6331a",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"projects",
+								"97c364cf-f37f-47cc-9d7e-194f3ba6331a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Project By ID [PATCH]",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Project 2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/projects/97c364cf-f37f-47cc-9d7e-194f3ba6331a",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"projects",
+								"97c364cf-f37f-47cc-9d7e-194f3ba6331a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Project By ID",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/projects/97c35f83-888a-42b3-99ad-16bcf63fed1e",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"projects",
+								"97c35f83-888a-42b3-99ad-16bcf63fed1e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"Hairul Azreen\",\n    \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/login",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"Zikri Nawawi\",\n    \"password\": \"password\",\n    \"password_confirmation\": \"password\",\n    \"role\": \"admin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/register",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Roles",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/roles",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"roles"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "5|JbSYEJmcdfDE1tBkQpjNfmrqF9KcrpNJ41aLOLWb",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "https://acn-2.test/api/v1",
+			"type": "default"
+		},
+		{
+			"key": "user_id",
+			"value": "97beaa6c-e17e-4c13-92e2-09620abb8cbe",
+			"type": "default"
+		}
+	]
+}
