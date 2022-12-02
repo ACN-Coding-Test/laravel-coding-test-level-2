@@ -1,0 +1,2685 @@
+{
+	"info": {
+		"_postman_id": "84b30642-6d35-40d8-8454-a1e80a6e349e",
+		"name": "API Collection",
+		"description": "# Introduction\nThis project is about a backend of project management application. User can create a project and practice agile methodology using SCRUM framework.\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nAuthenticate is using Access Token \n\n# Rate limit\nRate limit is 60 Request in a minute",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get - Get all user collection",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token_with_no_role}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response - empty user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/v1/users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.33"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Dec 2022 01:41:59 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [],\n    \"links\": {\n        \"first\": \"http://laravel-coding.test/api/v1/users?page=1\",\n        \"last\": \"http://laravel-coding.test/api/v1/users?page=1\",\n        \"prev\": null,\n        \"next\": null\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": null,\n        \"last_page\": 1,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://laravel-coding.test/api/v1/users?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://laravel-coding.test/api/v1/users\",\n        \"per_page\": 15,\n        \"to\": null,\n        \"total\": 0\n    }\n}"
+						},
+						{
+							"name": "Response - all user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/v1/users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.33"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Dec 2022 02:31:52 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": \"beead8c3-7c64-4dbe-a49b-88e1ff1991a5\",\n            \"username\": \"Shafizul99\",\n            \"created_at\": \"2022-12-01T02:31:49.000000Z\",\n            \"updated_at\": \"2022-12-01T02:31:49.000000Z\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"f8bcf838-3011-43a0-894d-51ccc4101076\",\n            \"username\": \"shafizul\",\n            \"created_at\": \"2022-12-01T02:31:38.000000Z\",\n            \"updated_at\": \"2022-12-01T02:31:38.000000Z\",\n            \"deleted_at\": null\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://laravel-coding.test/api/v1/users?page=1\",\n        \"last\": \"http://laravel-coding.test/api/v1/users?page=1\",\n        \"prev\": null,\n        \"next\": null\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": 1,\n        \"last_page\": 1,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://laravel-coding.test/api/v1/users?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://laravel-coding.test/api/v1/users\",\n        \"per_page\": 15,\n        \"to\": 2,\n        \"total\": 2\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "show - get one resource user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/users/{user_id}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"{user_id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store - create one User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"team_member\",\r\n    \"password\" : \"Asdf123!\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/users/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "User - success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"Shafizul99\",\r\n    \"password\" : \"Asdf123!\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.33"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Dec 2022 02:22:39 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"username\": \"Shafizul99\",\n        \"id\": \"1b046ccf-1c80-482c-8a8a-9e4b007862fe\",\n        \"updated_at\": \"2022-12-01T02:22:39.000000Z\",\n        \"created_at\": \"2022-12-01T02:22:39.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "User - error for unqiue username",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"Shafizul99\",\r\n    \"password\" : \"Asdf123!\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.33"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Dec 2022 02:23:39 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The given data was invalid.\",\n    \"errors\": {\n        \"username\": [\n            \"The username has already been taken.\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update - update one User Copy",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"Shafizul10\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/users/f8bcf838-3011-43a0-894d-51ccc4101076",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"f8bcf838-3011-43a0-894d-51ccc4101076"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "User - success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"Shafizul99\",\r\n    \"password\" : \"Asdf123!\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.33"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Dec 2022 02:22:39 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"username\": \"Shafizul99\",\n        \"id\": \"1b046ccf-1c80-482c-8a8a-9e4b007862fe\",\n        \"updated_at\": \"2022-12-01T02:22:39.000000Z\",\n        \"created_at\": \"2022-12-01T02:22:39.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "User - error for unqiue username",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"Shafizul99\",\r\n    \"password\" : \"Asdf123!\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.33"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Dec 2022 02:23:39 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The given data was invalid.\",\n    \"errors\": {\n        \"username\": [\n            \"The username has already been taken.\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Patch- update one User Copy 2",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"Shafizul10\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/users/f8bcf838-3011-43a0-894d-51ccc4101076",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"f8bcf838-3011-43a0-894d-51ccc4101076"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete - User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Project",
+			"item": [
+				{
+					"name": "Get - list all project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1/project?q=cms",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"project"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "cms"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get - list all project",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/v1/project",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"project"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.33"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Dec 2022 04:04:31 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": \"4c83ea42-a446-450b-b861-7c84799544f3\",\n            \"name\": \"Laravel CMS\",\n            \"created_at\": \"2022-12-01T04:03:21.000000Z\",\n            \"updated_at\": \"2022-12-01T04:03:21.000000Z\",\n            \"deleted_at\": null\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://laravel-coding.test/api/v1/project?page=1\",\n        \"last\": \"http://laravel-coding.test/api/v1/project?page=1\",\n        \"prev\": null,\n        \"next\": null\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": 1,\n        \"last_page\": 1,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://laravel-coding.test/api/v1/project?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://laravel-coding.test/api/v1/project\",\n        \"per_page\": 15,\n        \"to\": 1,\n        \"total\": 1\n    }\n}"
+						},
+						{
+							"name": "Filter and paginate",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/v1/project?q=laravel",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"project"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "laravel"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.33"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 02 Dec 2022 01:18:50 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": \"e3c7eec2-64b0-4807-94b3-d7f9ada32945\",\n            \"name\": \"Laravel Cms Version 4\",\n            \"created_at\": \"2022-12-01T04:06:24.000000Z\",\n            \"updated_at\": \"2022-12-01T22:03:33.000000Z\",\n            \"deleted_at\": null\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://laravel-coding.test/api/v1/project?page=1\",\n        \"last\": \"http://laravel-coding.test/api/v1/project?page=1\",\n        \"prev\": null,\n        \"next\": null\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": 1,\n        \"last_page\": 1,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://laravel-coding.test/api/v1/project?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://laravel-coding.test/api/v1/project\",\n        \"per_page\": 15,\n        \"to\": 1,\n        \"total\": 1\n    }\n}"
+						},
+						{
+							"name": "Paginate example to page 2",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/v1/project?page=2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"project"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "laravel",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.33"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 02 Dec 2022 01:24:47 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": \"f903cff9-5cff-4b4e-a87d-536d0aae9829\",\n            \"name\": \"Laravel Cms Version 6\",\n            \"created_at\": \"2022-12-02T01:24:35.000000Z\",\n            \"updated_at\": \"2022-12-02T01:24:35.000000Z\",\n            \"deleted_at\": null\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://laravel-coding.test/api/v1/project?page=1\",\n        \"last\": \"http://laravel-coding.test/api/v1/project?page=2\",\n        \"prev\": \"http://laravel-coding.test/api/v1/project?page=1\",\n        \"next\": null\n    },\n    \"meta\": {\n        \"current_page\": 2,\n        \"from\": 4,\n        \"last_page\": 2,\n        \"links\": [\n            {\n                \"url\": \"http://laravel-coding.test/api/v1/project?page=1\",\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://laravel-coding.test/api/v1/project?page=1\",\n                \"label\": \"1\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://laravel-coding.test/api/v1/project?page=2\",\n                \"label\": \"2\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://laravel-coding.test/api/v1/project\",\n        \"per_page\": 3,\n        \"to\": 4,\n        \"total\": 4\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Resource - get one resource",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/project/e3c7eec2-64b0-4807-94b3-d7f9ada32945",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"project",
+								"e3c7eec2-64b0-4807-94b3-d7f9ada32945"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Resource - get one resource",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/project/4c83ea42-a446-450b-b861-7c84799544f3",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"project",
+										"4c83ea42-a446-450b-b861-7c84799544f3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.33"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Dec 2022 04:04:13 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": \"4c83ea42-a446-450b-b861-7c84799544f3\",\n        \"name\": \"Laravel CMS\",\n        \"created_at\": \"2022-12-01T04:03:21.000000Z\",\n        \"updated_at\": \"2022-12-01T04:03:21.000000Z\",\n        \"deleted_at\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Store - Store project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Laravel Cms Version 4\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/project",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"project"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "succes - store response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Laravel CMS\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/project",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"project"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.33"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Dec 2022 04:03:21 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"name\": \"Laravel CMS\",\n        \"id\": \"4c83ea42-a446-450b-b861-7c84799544f3\",\n        \"updated_at\": \"2022-12-01T04:03:21.000000Z\",\n        \"created_at\": \"2022-12-01T04:03:21.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Put - update project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Laravel Cms Version 2\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/project/e3c7eec2-64b0-4807-94b3-d7f9ada32945",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"project",
+								"e3c7eec2-64b0-4807-94b3-d7f9ada32945"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Store - Store project Copy",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Laravel Cms Version 2\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/project/e3c7eec2-64b0-4807-94b3-d7f9ada32945",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"project",
+										"e3c7eec2-64b0-4807-94b3-d7f9ada32945"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.33"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Dec 2022 04:09:25 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": \"e3c7eec2-64b0-4807-94b3-d7f9ada32945\",\n        \"name\": \"Laravel Cms Version 2\",\n        \"created_at\": \"2022-12-01T04:06:24.000000Z\",\n        \"updated_at\": \"2022-12-01T04:09:25.000000Z\",\n        \"deleted_at\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Patch - update project Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Laravel Cms Version 4\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/project/e3c7eec2-64b0-4807-94b3-d7f9ada32945",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"project",
+								"e3c7eec2-64b0-4807-94b3-d7f9ada32945"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Store - Store project Copy",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Laravel Cms Version 2\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/project/e3c7eec2-64b0-4807-94b3-d7f9ada32945",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"project",
+										"e3c7eec2-64b0-4807-94b3-d7f9ada32945"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.33"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Dec 2022 04:09:25 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": \"e3c7eec2-64b0-4807-94b3-d7f9ada32945\",\n        \"name\": \"Laravel Cms Version 2\",\n        \"created_at\": \"2022-12-01T04:06:24.000000Z\",\n        \"updated_at\": \"2022-12-01T04:09:25.000000Z\",\n        \"deleted_at\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete - Delete project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/project",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"project"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "Get - List all task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token_team_member}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1/task",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show - get one resource",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1/task/01d81e49-05bb-4939-9688-f21137b14591",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"task",
+								"01d81e49-05bb-4939-9688-f21137b14591"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store - Store Task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Create Api\",\r\n    \"description\": \"Creating new Api for new function\",\r\n    \"status\" : \"NOT_STARTED\",\r\n    \"project_id\": \"e3c7eec2-64b0-4807-94b3-d7f9ada32945\",\r\n    \"user_id\" : \"f8bcf838-3011-43a0-894d-51ccc4101076\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/task",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update - Update Task",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Create Api ver 2\",\r\n    \"description\": \"Creating new Api for new function\",\r\n    \"status\" : \"pending\",\r\n    \"project_id\": \"e3c7eec2-64b0-4807-94b3-d7f9ada32945\",\r\n    \"user_id\" : \"f8bcf838-3011-43a0-894d-51ccc4101076\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/task",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch - Patch Task",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1/task",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete - Delete Task",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1/task",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"task"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Role",
+			"item": [
+				{
+					"name": "Get - List All Role",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1/role",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"role"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get - List All Role",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/v1/role",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"role"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.33"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 02 Dec 2022 00:10:49 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "600"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "597"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Admin\",\n            \"title\": \"Role Admin\",\n            \"scope\": null,\n            \"created_at\": \"2022-12-01T07:37:17.000000Z\",\n            \"updated_at\": \"2022-12-01T07:37:17.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"PRODUCT_OWNER\",\n            \"title\": \"Role Product_OWNER\",\n            \"scope\": null,\n            \"created_at\": \"2022-12-01T12:43:21.000000Z\",\n            \"updated_at\": \"2022-12-01T12:43:21.000000Z\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"TeamMember\",\n            \"title\": \"Role TeamMember\",\n            \"scope\": null,\n            \"created_at\": \"2022-12-02T00:09:06.000000Z\",\n            \"updated_at\": \"2022-12-02T00:09:06.000000Z\"\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://laravel-coding.test/api/v1/role?page=1\",\n        \"last\": \"http://laravel-coding.test/api/v1/role?page=1\",\n        \"prev\": null,\n        \"next\": null\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": 1,\n        \"last_page\": 1,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://laravel-coding.test/api/v1/role?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://laravel-coding.test/api/v1/role\",\n        \"per_page\": 15,\n        \"to\": 3,\n        \"total\": 3\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Show - Get One Role Resource",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1/role/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"role",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Show - Get One Role Resource",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/v1/role/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"role",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.33"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 02 Dec 2022 00:10:34 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "600"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "598"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Admin\",\n        \"title\": \"Role Admin\",\n        \"scope\": null,\n        \"created_at\": \"2022-12-01T07:37:17.000000Z\",\n        \"updated_at\": \"2022-12-01T07:37:17.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Post - Store Role",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"TeamMember\",\r\n    \"title\": \"Role TeamMember\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/role",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"role"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Post - Store Role",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"TeamMember\",\r\n    \"title\": \"Role TeamMember\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/role",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"role"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.33"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 02 Dec 2022 00:09:06 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "600"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "599"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"name\": \"TeamMember\",\n        \"title\": \"Role TeamMember\",\n        \"updated_at\": \"2022-12-02T00:09:06.000000Z\",\n        \"created_at\": \"2022-12-02T00:09:06.000000Z\",\n        \"id\": 3\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Assign - Role User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roles\" : [\r\n        \"TeamMember\"\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/role/assign/02d2b63f-09fe-4cb0-847b-85bb3fece44b",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"role",
+								"assign",
+								"02d2b63f-09fe-4cb0-847b-85bb3fece44b"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Assign - 1 Role User",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"roles\" : [\r\n        \"TeamMember\"\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/role/assign/49e88647-edeb-4047-b741-687d40bf95b6",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"role",
+										"assign",
+										"49e88647-edeb-4047-b741-687d40bf95b6"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.33"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 02 Dec 2022 00:09:26 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "600"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "597"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": \"49e88647-edeb-4047-b741-687d40bf95b6\",\n        \"username\": \"team_member\",\n        \"created_at\": \"2022-12-02T00:08:10.000000Z\",\n        \"updated_at\": \"2022-12-02T00:08:10.000000Z\",\n        \"deleted_at\": null,\n        \"roles\": [\n            {\n                \"id\": 3,\n                \"name\": \"TeamMember\",\n                \"title\": \"Role TeamMember\",\n                \"scope\": null,\n                \"created_at\": \"2022-12-02T00:09:06.000000Z\",\n                \"updated_at\": \"2022-12-02T00:09:06.000000Z\",\n                \"pivot\": {\n                    \"entity_id\": \"49e88647-edeb-4047-b741-687d40bf95b6\",\n                    \"role_id\": 3,\n                    \"entity_type\": \"App\\\\Models\\\\User\",\n                    \"scope\": null\n                }\n            }\n        ]\n    }\n}"
+						},
+						{
+							"name": "Assing - Mulitple Role to User",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"roles\" : [\r\n        \"Admin\",\r\n        \"PRODUCT_OWNER\"\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/role/assign/02d2b63f-09fe-4cb0-847b-85bb3fece44b",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"role",
+										"assign",
+										"02d2b63f-09fe-4cb0-847b-85bb3fece44b"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.33"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 02 Dec 2022 00:10:02 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "600"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "596"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": \"02d2b63f-09fe-4cb0-847b-85bb3fece44b\",\n        \"username\": \"Shafizul100\",\n        \"created_at\": \"2022-12-01T07:52:38.000000Z\",\n        \"updated_at\": \"2022-12-01T07:52:38.000000Z\",\n        \"deleted_at\": null,\n        \"roles\": [\n            {\n                \"id\": 1,\n                \"name\": \"Admin\",\n                \"title\": \"Role Admin\",\n                \"scope\": null,\n                \"created_at\": \"2022-12-01T07:37:17.000000Z\",\n                \"updated_at\": \"2022-12-01T07:37:17.000000Z\",\n                \"pivot\": {\n                    \"entity_id\": \"02d2b63f-09fe-4cb0-847b-85bb3fece44b\",\n                    \"role_id\": 1,\n                    \"entity_type\": \"App\\\\Models\\\\User\",\n                    \"scope\": null\n                }\n            },\n            {\n                \"id\": 2,\n                \"name\": \"PRODUCT_OWNER\",\n                \"title\": \"Role Product_OWNER\",\n                \"scope\": null,\n                \"created_at\": \"2022-12-01T12:43:21.000000Z\",\n                \"updated_at\": \"2022-12-01T12:43:21.000000Z\",\n                \"pivot\": {\n                    \"entity_id\": \"02d2b63f-09fe-4cb0-847b-85bb3fece44b\",\n                    \"role_id\": 2,\n                    \"entity_type\": \"App\\\\Models\\\\User\",\n                    \"scope\": null\n                }\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete  - Role User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/role/f8bcf838-3011-43a0-894d-51ccc4101076",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"role",
+								"f8bcf838-3011-43a0-894d-51ccc4101076"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Personal accesss user",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"team_member\",\r\n    \"password\" : \"Asdf123!\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success - Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"Shafizul100\",\r\n    \"password\" : \"Asdf123!\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.33"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Dec 2022 23:47:56 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "600"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "599"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"user\": {\n            \"id\": \"02d2b63f-09fe-4cb0-847b-85bb3fece44b\",\n            \"username\": \"Shafizul100\",\n            \"created_at\": \"2022-12-01T07:52:38.000000Z\",\n            \"updated_at\": \"2022-12-01T07:52:38.000000Z\",\n            \"deleted_at\": null\n        },\n        \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5N2RmZjQxMi00NGQxLTQ2NGItYjMwMi1mZjAxZWY0M2Y0NjUiLCJqdGkiOiI4N2Y4MTgzYTdmYzk1MDU4NTk1NjRjZjlmNDc2ZTY3NTM3MzdkZTRjZGVlNTBiOTVkN2U3NDc0NjNmN2Y0YjFmNjAwNjUxZmZkMzQxODk2OSIsImlhdCI6MTY2OTkzODQ3Ni4wNzYyMzcsIm5iZiI6MTY2OTkzODQ3Ni4wNzYyNDUsImV4cCI6MTcwMTQ3NDQ3Ni4wNjk5LCJzdWIiOiIwMmQyYjYzZi0wOWZlLTRjYjAtODQ3Yi04NWJiM2ZlY2U0NGIiLCJzY29wZXMiOltdfQ.gtOf4Oy-K7lh6t_HOMh_gpvKmIOaluCd0MZZ45gYWCN2G8JZb0A1J1XoEuXZOkAo_X9cLJiqVvkp5bYGZxNFSvroTtotEohTy590-D4nEDC9Ndqjzlls5elrr5NDn1aykp-rfHUkQ--D8xNw010icf81BxWeeHELQK-lDVQPVzo1TMC3jUNjVI9S-UKbMRKgauTPFYdu82IXCtpTpe9cqVh1m8CHFwdBsHN5W0hu6ELSDr_4ldZ2BXm21fNS1hhxqJKZ0DCfQbGnmXzEnP6EAb9GStTh8fsTWmEHrXP6WirWoAAWjReNV9wN8gEu6aNjPrHoS5lcrAzJn3C-3fVrm3BElPOBlMyHJb1dUuSHAEMlSkmzNTcKIIfEbhwyZM3f8Es4MczbGqkVYRE7BEF6hICvp3YgNSFSqxNP2qx75Wx7xVd8QLigDNvS7-sytBu9IgFsw-kptwdxstVSJe4bkpPA8V79yhA4CIMC5JL_d53HxOCfUlRmzJGyM51f7YBu1biMGpz6aDbcMjQZy8gIxtPjJeGxo36rlgd28MrkeQgn_fyxDXaGE1AWLq9cXqoKD1n-XCRDAA6bAQDD2idtmVwqFAwRcO6m3NLLti_bNdgsGIOXOuhxQYvnmTr-14Ejz113tVvVsEbfh4D_Q6eJv_u4uLLAqs-xOj10Kk7U7kg\",\n        \"roles\": [\n            \"Admin\"\n        ]\n    }\n}"
+						},
+						{
+							"name": "Incorrrect - login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"Shafizul100\",\r\n    \"password\" : \"Asdf123\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.33"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Dec 2022 23:48:13 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "600"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "598"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Incorrect login.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Register",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"John doe\",\r\n    \"password\" : \"Asdf123!\",\r\n    \"password_confirmation\": \"Asdf123!\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"John doe\",\r\n    \"password\" : \"Asdf123!\",\r\n    \"password_confirmation\": \"Asdf123!\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.33"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Dec 2022 23:52:11 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "600"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "599"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						}
+					]
+				}
+			]
+		}
+	]
+}
