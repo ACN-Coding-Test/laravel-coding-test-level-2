@@ -16,9 +16,13 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $projects = Project::paginate();
+        $projects = Project::when($request->q, function($query) use($request){
+            $query->where('name', 'Like', '%'.$request->q.'%');
+            })
+            ->orderBy('name','ASC')
+            ->paginate(3, ['*'], 'page', 0);
 
         return new ProjectCollection($projects);
     }
