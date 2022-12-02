@@ -1,0 +1,1949 @@
+openapi: 3.0.3
+info:
+  title: API Collection
+  description: >-
+    # Introduction
+
+    This project is about a backend of project management application. User can
+    create a project and practice agile methodology using SCRUM framework.
+
+
+    # Overview
+
+    Things that the developers should know about
+
+
+    # Authentication
+
+    Authenticate is using Access Token 
+
+
+    # Rate limit
+
+    Rate limit is 60 Request in a minute
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: '{{url}}'
+paths:
+  /api/v1/users:
+    get:
+      tags:
+        - User
+      summary: Get - Get all user collection
+      description: Get - Get all user collection
+      operationId: getGetAllUserCollection
+      responses:
+        '200':
+          description: Response - all user
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Thu, 01 Dec 2022 02:31:52 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/7.4.33
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '58'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        created_at:
+                          type: string
+                          example: '2022-12-01T02:31:49.000000Z'
+                        deleted_at:
+                          nullable: true
+                          example: null
+                        id:
+                          type: string
+                          example: beead8c3-7c64-4dbe-a49b-88e1ff1991a5
+                        updated_at:
+                          type: string
+                          example: '2022-12-01T02:31:49.000000Z'
+                        username:
+                          type: string
+                          example: Shafizul99
+                    example:
+                      - created_at: '2022-12-01T02:31:49.000000Z'
+                        deleted_at: null
+                        id: beead8c3-7c64-4dbe-a49b-88e1ff1991a5
+                        updated_at: '2022-12-01T02:31:49.000000Z'
+                        username: Shafizul99
+                      - created_at: '2022-12-01T02:31:38.000000Z'
+                        deleted_at: null
+                        id: f8bcf838-3011-43a0-894d-51ccc4101076
+                        updated_at: '2022-12-01T02:31:38.000000Z'
+                        username: shafizul
+                  links:
+                    type: object
+                    properties:
+                      first:
+                        type: string
+                        example: http://laravel-coding.test/api/v1/users?page=1
+                      last:
+                        type: string
+                        example: http://laravel-coding.test/api/v1/users?page=1
+                      next:
+                        nullable: true
+                        example: null
+                      prev:
+                        nullable: true
+                        example: null
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: number
+                        example: 1
+                      from:
+                        type: number
+                        example: 1
+                      last_page:
+                        type: number
+                        example: 1
+                      links:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            active:
+                              type: boolean
+                              example: false
+                            label:
+                              type: string
+                              example: '&laquo; Previous'
+                            url:
+                              type: string
+                              nullable: true
+                              example: null
+                        example:
+                          - active: false
+                            label: '&laquo; Previous'
+                            url: null
+                          - active: true
+                            label: '1'
+                            url: http://laravel-coding.test/api/v1/users?page=1
+                          - active: false
+                            label: Next &raquo;
+                            url: null
+                      path:
+                        type: string
+                        example: http://laravel-coding.test/api/v1/users
+                      per_page:
+                        type: number
+                        example: 15
+                      to:
+                        type: number
+                        example: 2
+                      total:
+                        type: number
+                        example: 2
+              examples:
+                Response - all user:
+                  value:
+                    data:
+                      - created_at: '2022-12-01T02:31:49.000000Z'
+                        deleted_at: null
+                        id: beead8c3-7c64-4dbe-a49b-88e1ff1991a5
+                        updated_at: '2022-12-01T02:31:49.000000Z'
+                        username: Shafizul99
+                      - created_at: '2022-12-01T02:31:38.000000Z'
+                        deleted_at: null
+                        id: f8bcf838-3011-43a0-894d-51ccc4101076
+                        updated_at: '2022-12-01T02:31:38.000000Z'
+                        username: shafizul
+                    links:
+                      first: http://laravel-coding.test/api/v1/users?page=1
+                      last: http://laravel-coding.test/api/v1/users?page=1
+                      next: null
+                      prev: null
+                    meta:
+                      current_page: 1
+                      from: 1
+                      last_page: 1
+                      links:
+                        - active: false
+                          label: '&laquo; Previous'
+                          url: null
+                        - active: true
+                          label: '1'
+                          url: http://laravel-coding.test/api/v1/users?page=1
+                        - active: false
+                          label: Next &raquo;
+                          url: null
+                      path: http://laravel-coding.test/api/v1/users
+                      per_page: 15
+                      to: 2
+                      total: 2
+  /api/v1/users/{user_id}:
+    get:
+      tags:
+        - User
+      summary: show - get one resource user
+      description: show - get one resource user
+      operationId: showGetOneResourceUser
+      responses:
+        '200':
+          description: ''
+    parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v1/users/:
+    post:
+      tags:
+        - User
+      summary: Store - create one User
+      description: Store - create one User
+      operationId: storeCreateOneUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  example: Asdf123!
+                username:
+                  type: string
+                  example: team_member
+            example:
+              password: Asdf123!
+              username: team_member
+      responses:
+        '201':
+          description: User - success
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Thu, 01 Dec 2022 02:22:39 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/7.4.33
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '59'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      created_at:
+                        type: string
+                        example: '2022-12-01T02:22:39.000000Z'
+                      id:
+                        type: string
+                        example: 1b046ccf-1c80-482c-8a8a-9e4b007862fe
+                      updated_at:
+                        type: string
+                        example: '2022-12-01T02:22:39.000000Z'
+                      username:
+                        type: string
+                        example: Shafizul99
+              examples:
+                User - success:
+                  value:
+                    data:
+                      created_at: '2022-12-01T02:22:39.000000Z'
+                      id: 1b046ccf-1c80-482c-8a8a-9e4b007862fe
+                      updated_at: '2022-12-01T02:22:39.000000Z'
+                      username: Shafizul99
+        '422':
+          description: User - error for unqiue username
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Thu, 01 Dec 2022 02:23:39 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/7.4.33
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '59'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      username:
+                        type: array
+                        items:
+                          type: string
+                          example: The username has already been taken.
+                        example:
+                          - The username has already been taken.
+                  message:
+                    type: string
+                    example: The given data was invalid.
+              examples:
+                User - error for unqiue username:
+                  value:
+                    errors:
+                      username:
+                        - The username has already been taken.
+                    message: The given data was invalid.
+  /api/v1/users/f8bcf838-3011-43a0-894d-51ccc4101076:
+    put:
+      tags:
+        - User
+      summary: Update - update one User Copy
+      description: Update - update one User Copy
+      operationId: updateUpdateOneUserCopy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  example: Shafizul10
+            example:
+              username: Shafizul10
+      responses:
+        '201':
+          description: User - success
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Thu, 01 Dec 2022 02:22:39 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/7.4.33
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '59'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      created_at:
+                        type: string
+                        example: '2022-12-01T02:22:39.000000Z'
+                      id:
+                        type: string
+                        example: 1b046ccf-1c80-482c-8a8a-9e4b007862fe
+                      updated_at:
+                        type: string
+                        example: '2022-12-01T02:22:39.000000Z'
+                      username:
+                        type: string
+                        example: Shafizul99
+              examples:
+                User - success:
+                  value:
+                    data:
+                      created_at: '2022-12-01T02:22:39.000000Z'
+                      id: 1b046ccf-1c80-482c-8a8a-9e4b007862fe
+                      updated_at: '2022-12-01T02:22:39.000000Z'
+                      username: Shafizul99
+        '422':
+          description: User - error for unqiue username
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Thu, 01 Dec 2022 02:23:39 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/7.4.33
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '59'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      username:
+                        type: array
+                        items:
+                          type: string
+                          example: The username has already been taken.
+                        example:
+                          - The username has already been taken.
+                  message:
+                    type: string
+                    example: The given data was invalid.
+              examples:
+                User - error for unqiue username:
+                  value:
+                    errors:
+                      username:
+                        - The username has already been taken.
+                    message: The given data was invalid.
+    patch:
+      tags:
+        - User
+      summary: Patch- update one User Copy 2
+      description: Patch- update one User Copy 2
+      operationId: patchUpdateOneUserCopy2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  example: Shafizul10
+            example:
+              username: Shafizul10
+      responses:
+        '200':
+          description: ''
+  /:
+    delete:
+      tags:
+        - User
+      summary: Delete - User
+      description: Delete - User
+      operationId: deleteUser
+      responses:
+        '200':
+          description: ''
+  /api/v1/project:
+    get:
+      tags:
+        - Project
+      summary: Get - list all project
+      description: Get - list all project
+      operationId: getListAllProject
+      parameters:
+        - name: q
+          in: query
+          schema:
+            type: string
+            example: cms
+      responses:
+        '200':
+          description: Paginate example to page 2
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Fri, 02 Dec 2022 01:24:47 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/7.4.33
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '57'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        created_at:
+                          type: string
+                          example: '2022-12-02T01:24:35.000000Z'
+                        deleted_at:
+                          nullable: true
+                          example: null
+                        id:
+                          type: string
+                          example: f903cff9-5cff-4b4e-a87d-536d0aae9829
+                        name:
+                          type: string
+                          example: Laravel Cms Version 6
+                        updated_at:
+                          type: string
+                          example: '2022-12-02T01:24:35.000000Z'
+                    example:
+                      - created_at: '2022-12-02T01:24:35.000000Z'
+                        deleted_at: null
+                        id: f903cff9-5cff-4b4e-a87d-536d0aae9829
+                        name: Laravel Cms Version 6
+                        updated_at: '2022-12-02T01:24:35.000000Z'
+                  links:
+                    type: object
+                    properties:
+                      first:
+                        type: string
+                        example: http://laravel-coding.test/api/v1/project?page=1
+                      last:
+                        type: string
+                        example: http://laravel-coding.test/api/v1/project?page=2
+                      next:
+                        nullable: true
+                        example: null
+                      prev:
+                        type: string
+                        example: http://laravel-coding.test/api/v1/project?page=1
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: number
+                        example: 2
+                      from:
+                        type: number
+                        example: 4
+                      last_page:
+                        type: number
+                        example: 2
+                      links:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            active:
+                              type: boolean
+                              example: false
+                            label:
+                              type: string
+                              example: '&laquo; Previous'
+                            url:
+                              type: string
+                              nullable: true
+                              example: http://laravel-coding.test/api/v1/project?page=1
+                        example:
+                          - active: false
+                            label: '&laquo; Previous'
+                            url: http://laravel-coding.test/api/v1/project?page=1
+                          - active: false
+                            label: '1'
+                            url: http://laravel-coding.test/api/v1/project?page=1
+                          - active: true
+                            label: '2'
+                            url: http://laravel-coding.test/api/v1/project?page=2
+                          - active: false
+                            label: Next &raquo;
+                            url: null
+                      path:
+                        type: string
+                        example: http://laravel-coding.test/api/v1/project
+                      per_page:
+                        type: number
+                        example: 3
+                      to:
+                        type: number
+                        example: 4
+                      total:
+                        type: number
+                        example: 4
+              examples:
+                Paginate example to page 2:
+                  value:
+                    data:
+                      - created_at: '2022-12-02T01:24:35.000000Z'
+                        deleted_at: null
+                        id: f903cff9-5cff-4b4e-a87d-536d0aae9829
+                        name: Laravel Cms Version 6
+                        updated_at: '2022-12-02T01:24:35.000000Z'
+                    links:
+                      first: http://laravel-coding.test/api/v1/project?page=1
+                      last: http://laravel-coding.test/api/v1/project?page=2
+                      next: null
+                      prev: http://laravel-coding.test/api/v1/project?page=1
+                    meta:
+                      current_page: 2
+                      from: 4
+                      last_page: 2
+                      links:
+                        - active: false
+                          label: '&laquo; Previous'
+                          url: http://laravel-coding.test/api/v1/project?page=1
+                        - active: false
+                          label: '1'
+                          url: http://laravel-coding.test/api/v1/project?page=1
+                        - active: true
+                          label: '2'
+                          url: http://laravel-coding.test/api/v1/project?page=2
+                        - active: false
+                          label: Next &raquo;
+                          url: null
+                      path: http://laravel-coding.test/api/v1/project
+                      per_page: 3
+                      to: 4
+                      total: 4
+    post:
+      tags:
+        - Project
+      summary: Delete - Delete project
+      description: Delete - Delete project
+      operationId: deleteDeleteProject
+      requestBody:
+        content:
+          text/plain:
+            example: "{\r\n    \"name\"\r\n}"
+      responses:
+        '200':
+          description: ''
+  /api/v1/project/e3c7eec2-64b0-4807-94b3-d7f9ada32945:
+    get:
+      tags:
+        - Project
+      summary: Get Resource - get one resource
+      description: Get Resource - get one resource
+      operationId: getResourceGetOneResource
+      requestBody:
+        content:
+          text/plain:
+            example: ''
+      responses:
+        '200':
+          description: Get Resource - get one resource
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Thu, 01 Dec 2022 04:04:13 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/7.4.33
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '58'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      created_at:
+                        type: string
+                        example: '2022-12-01T04:03:21.000000Z'
+                      deleted_at:
+                        nullable: true
+                        example: null
+                      id:
+                        type: string
+                        example: 4c83ea42-a446-450b-b861-7c84799544f3
+                      name:
+                        type: string
+                        example: Laravel CMS
+                      updated_at:
+                        type: string
+                        example: '2022-12-01T04:03:21.000000Z'
+              examples:
+                Get Resource - get one resource:
+                  value:
+                    data:
+                      created_at: '2022-12-01T04:03:21.000000Z'
+                      deleted_at: null
+                      id: 4c83ea42-a446-450b-b861-7c84799544f3
+                      name: Laravel CMS
+                      updated_at: '2022-12-01T04:03:21.000000Z'
+    put:
+      tags:
+        - Project
+      summary: Put - update project
+      description: Put - update project
+      operationId: putUpdateProject
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Laravel Cms Version 2
+            example:
+              name: Laravel Cms Version 2
+      responses:
+        '200':
+          description: Store - Store project Copy
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Thu, 01 Dec 2022 04:09:25 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/7.4.33
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '58'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      created_at:
+                        type: string
+                        example: '2022-12-01T04:06:24.000000Z'
+                      deleted_at:
+                        nullable: true
+                        example: null
+                      id:
+                        type: string
+                        example: e3c7eec2-64b0-4807-94b3-d7f9ada32945
+                      name:
+                        type: string
+                        example: Laravel Cms Version 2
+                      updated_at:
+                        type: string
+                        example: '2022-12-01T04:09:25.000000Z'
+              examples:
+                Store - Store project Copy:
+                  value:
+                    data:
+                      created_at: '2022-12-01T04:06:24.000000Z'
+                      deleted_at: null
+                      id: e3c7eec2-64b0-4807-94b3-d7f9ada32945
+                      name: Laravel Cms Version 2
+                      updated_at: '2022-12-01T04:09:25.000000Z'
+    patch:
+      tags:
+        - Project
+      summary: Patch - update project Copy
+      description: Patch - update project Copy
+      operationId: patchUpdateProjectCopy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Laravel Cms Version 4
+            example:
+              name: Laravel Cms Version 4
+      responses:
+        '200':
+          description: Store - Store project Copy
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Thu, 01 Dec 2022 04:09:25 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/7.4.33
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '58'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      created_at:
+                        type: string
+                        example: '2022-12-01T04:06:24.000000Z'
+                      deleted_at:
+                        nullable: true
+                        example: null
+                      id:
+                        type: string
+                        example: e3c7eec2-64b0-4807-94b3-d7f9ada32945
+                      name:
+                        type: string
+                        example: Laravel Cms Version 2
+                      updated_at:
+                        type: string
+                        example: '2022-12-01T04:09:25.000000Z'
+              examples:
+                Store - Store project Copy:
+                  value:
+                    data:
+                      created_at: '2022-12-01T04:06:24.000000Z'
+                      deleted_at: null
+                      id: e3c7eec2-64b0-4807-94b3-d7f9ada32945
+                      name: Laravel Cms Version 2
+                      updated_at: '2022-12-01T04:09:25.000000Z'
+  /api/v1/task:
+    get:
+      tags:
+        - Tasks
+      summary: Get - List all task
+      description: Get - List all task
+      operationId: getListAllTask
+      responses:
+        '200':
+          description: ''
+    put:
+      tags:
+        - Tasks
+      summary: Update - Update Task
+      description: Update - Update Task
+      operationId: updateUpdateTask
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  example: Creating new Api for new function
+                project_id:
+                  type: string
+                  example: e3c7eec2-64b0-4807-94b3-d7f9ada32945
+                status:
+                  type: string
+                  example: pending
+                title:
+                  type: string
+                  example: Create Api ver 2
+                user_id:
+                  type: string
+                  example: f8bcf838-3011-43a0-894d-51ccc4101076
+            example:
+              description: Creating new Api for new function
+              project_id: e3c7eec2-64b0-4807-94b3-d7f9ada32945
+              status: pending
+              title: Create Api ver 2
+              user_id: f8bcf838-3011-43a0-894d-51ccc4101076
+      responses:
+        '200':
+          description: ''
+    post:
+      tags:
+        - Tasks
+      summary: Store - Store Task
+      description: Store - Store Task
+      operationId: storeStoreTask
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  example: Creating new Api for new function
+                project_id:
+                  type: string
+                  example: e3c7eec2-64b0-4807-94b3-d7f9ada32945
+                status:
+                  type: string
+                  example: NOT_STARTED
+                title:
+                  type: string
+                  example: Create Api
+                user_id:
+                  type: string
+                  example: f8bcf838-3011-43a0-894d-51ccc4101076
+            example:
+              description: Creating new Api for new function
+              project_id: e3c7eec2-64b0-4807-94b3-d7f9ada32945
+              status: NOT_STARTED
+              title: Create Api
+              user_id: f8bcf838-3011-43a0-894d-51ccc4101076
+      responses:
+        '200':
+          description: ''
+    delete:
+      tags:
+        - Tasks
+      summary: Delete - Delete Task
+      description: Delete - Delete Task
+      operationId: deleteDeleteTask
+      responses:
+        '200':
+          description: ''
+    patch:
+      tags:
+        - Tasks
+      summary: Patch - Patch Task
+      description: Patch - Patch Task
+      operationId: patchPatchTask
+      responses:
+        '200':
+          description: ''
+  /api/v1/task/01d81e49-05bb-4939-9688-f21137b14591:
+    get:
+      tags:
+        - Tasks
+      summary: Show - get one resource
+      description: Show - get one resource
+      operationId: showGetOneResource
+      responses:
+        '200':
+          description: ''
+  /api/v1/role:
+    get:
+      tags:
+        - Role
+      summary: Get - List All Role
+      description: Get - List All Role
+      operationId: getListAllRole
+      responses:
+        '200':
+          description: Get - List All Role
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Fri, 02 Dec 2022 00:10:49 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/7.4.33
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '600'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '597'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        created_at:
+                          type: string
+                          example: '2022-12-01T07:37:17.000000Z'
+                        id:
+                          type: number
+                          example: 1
+                        name:
+                          type: string
+                          example: Admin
+                        scope:
+                          nullable: true
+                          example: null
+                        title:
+                          type: string
+                          example: Role Admin
+                        updated_at:
+                          type: string
+                          example: '2022-12-01T07:37:17.000000Z'
+                    example:
+                      - created_at: '2022-12-01T07:37:17.000000Z'
+                        id: 1
+                        name: Admin
+                        scope: null
+                        title: Role Admin
+                        updated_at: '2022-12-01T07:37:17.000000Z'
+                      - created_at: '2022-12-01T12:43:21.000000Z'
+                        id: 2
+                        name: PRODUCT_OWNER
+                        scope: null
+                        title: Role Product_OWNER
+                        updated_at: '2022-12-01T12:43:21.000000Z'
+                      - created_at: '2022-12-02T00:09:06.000000Z'
+                        id: 3
+                        name: TeamMember
+                        scope: null
+                        title: Role TeamMember
+                        updated_at: '2022-12-02T00:09:06.000000Z'
+                  links:
+                    type: object
+                    properties:
+                      first:
+                        type: string
+                        example: http://laravel-coding.test/api/v1/role?page=1
+                      last:
+                        type: string
+                        example: http://laravel-coding.test/api/v1/role?page=1
+                      next:
+                        nullable: true
+                        example: null
+                      prev:
+                        nullable: true
+                        example: null
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: number
+                        example: 1
+                      from:
+                        type: number
+                        example: 1
+                      last_page:
+                        type: number
+                        example: 1
+                      links:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            active:
+                              type: boolean
+                              example: false
+                            label:
+                              type: string
+                              example: '&laquo; Previous'
+                            url:
+                              type: string
+                              nullable: true
+                              example: null
+                        example:
+                          - active: false
+                            label: '&laquo; Previous'
+                            url: null
+                          - active: true
+                            label: '1'
+                            url: http://laravel-coding.test/api/v1/role?page=1
+                          - active: false
+                            label: Next &raquo;
+                            url: null
+                      path:
+                        type: string
+                        example: http://laravel-coding.test/api/v1/role
+                      per_page:
+                        type: number
+                        example: 15
+                      to:
+                        type: number
+                        example: 3
+                      total:
+                        type: number
+                        example: 3
+              examples:
+                Get - List All Role:
+                  value:
+                    data:
+                      - created_at: '2022-12-01T07:37:17.000000Z'
+                        id: 1
+                        name: Admin
+                        scope: null
+                        title: Role Admin
+                        updated_at: '2022-12-01T07:37:17.000000Z'
+                      - created_at: '2022-12-01T12:43:21.000000Z'
+                        id: 2
+                        name: PRODUCT_OWNER
+                        scope: null
+                        title: Role Product_OWNER
+                        updated_at: '2022-12-01T12:43:21.000000Z'
+                      - created_at: '2022-12-02T00:09:06.000000Z'
+                        id: 3
+                        name: TeamMember
+                        scope: null
+                        title: Role TeamMember
+                        updated_at: '2022-12-02T00:09:06.000000Z'
+                    links:
+                      first: http://laravel-coding.test/api/v1/role?page=1
+                      last: http://laravel-coding.test/api/v1/role?page=1
+                      next: null
+                      prev: null
+                    meta:
+                      current_page: 1
+                      from: 1
+                      last_page: 1
+                      links:
+                        - active: false
+                          label: '&laquo; Previous'
+                          url: null
+                        - active: true
+                          label: '1'
+                          url: http://laravel-coding.test/api/v1/role?page=1
+                        - active: false
+                          label: Next &raquo;
+                          url: null
+                      path: http://laravel-coding.test/api/v1/role
+                      per_page: 15
+                      to: 3
+                      total: 3
+    post:
+      tags:
+        - Role
+      summary: Post - Store Role
+      description: Post - Store Role
+      operationId: postStoreRole
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: TeamMember
+                title:
+                  type: string
+                  example: Role TeamMember
+            example:
+              name: TeamMember
+              title: Role TeamMember
+      responses:
+        '201':
+          description: Post - Store Role
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Fri, 02 Dec 2022 00:09:06 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/7.4.33
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '600'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '599'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      created_at:
+                        type: string
+                        example: '2022-12-02T00:09:06.000000Z'
+                      id:
+                        type: number
+                        example: 3
+                      name:
+                        type: string
+                        example: TeamMember
+                      title:
+                        type: string
+                        example: Role TeamMember
+                      updated_at:
+                        type: string
+                        example: '2022-12-02T00:09:06.000000Z'
+              examples:
+                Post - Store Role:
+                  value:
+                    data:
+                      created_at: '2022-12-02T00:09:06.000000Z'
+                      id: 3
+                      name: TeamMember
+                      title: Role TeamMember
+                      updated_at: '2022-12-02T00:09:06.000000Z'
+  /api/v1/role/:
+    get:
+      tags:
+        - Role
+      summary: Show - Get One Role Resource
+      description: Show - Get One Role Resource
+      operationId: showGetOneRoleResource
+      responses:
+        '200':
+          description: Show - Get One Role Resource
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Fri, 02 Dec 2022 00:10:34 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/7.4.33
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '600'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '598'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      created_at:
+                        type: string
+                        example: '2022-12-01T07:37:17.000000Z'
+                      id:
+                        type: number
+                        example: 1
+                      name:
+                        type: string
+                        example: Admin
+                      scope:
+                        nullable: true
+                        example: null
+                      title:
+                        type: string
+                        example: Role Admin
+                      updated_at:
+                        type: string
+                        example: '2022-12-01T07:37:17.000000Z'
+              examples:
+                Show - Get One Role Resource:
+                  value:
+                    data:
+                      created_at: '2022-12-01T07:37:17.000000Z'
+                      id: 1
+                      name: Admin
+                      scope: null
+                      title: Role Admin
+                      updated_at: '2022-12-01T07:37:17.000000Z'
+  /api/v1/role/assign/02d2b63f-09fe-4cb0-847b-85bb3fece44b:
+    put:
+      tags:
+        - Role
+      summary: Assign - Role User
+      description: Assign - Role User
+      operationId: assignRoleUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                roles:
+                  type: array
+                  items:
+                    type: string
+                    example: TeamMember
+                  example:
+                    - TeamMember
+            example:
+              roles:
+                - TeamMember
+      responses:
+        '200':
+          description: Assing - Mulitple Role to User
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Fri, 02 Dec 2022 00:10:02 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/7.4.33
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '600'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '596'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      created_at:
+                        type: string
+                        example: '2022-12-01T07:52:38.000000Z'
+                      deleted_at:
+                        nullable: true
+                        example: null
+                      id:
+                        type: string
+                        example: 02d2b63f-09fe-4cb0-847b-85bb3fece44b
+                      roles:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            created_at:
+                              type: string
+                              example: '2022-12-01T07:37:17.000000Z'
+                            id:
+                              type: number
+                              example: 1
+                            name:
+                              type: string
+                              example: Admin
+                            pivot:
+                              type: object
+                              properties:
+                                entity_id:
+                                  type: string
+                                  example: 02d2b63f-09fe-4cb0-847b-85bb3fece44b
+                                entity_type:
+                                  type: string
+                                  example: App\Models\User
+                                role_id:
+                                  type: number
+                                  example: 1
+                                scope:
+                                  nullable: true
+                                  example: null
+                            scope:
+                              nullable: true
+                              example: null
+                            title:
+                              type: string
+                              example: Role Admin
+                            updated_at:
+                              type: string
+                              example: '2022-12-01T07:37:17.000000Z'
+                        example:
+                          - created_at: '2022-12-01T07:37:17.000000Z'
+                            id: 1
+                            name: Admin
+                            pivot:
+                              entity_id: 02d2b63f-09fe-4cb0-847b-85bb3fece44b
+                              entity_type: App\Models\User
+                              role_id: 1
+                              scope: null
+                            scope: null
+                            title: Role Admin
+                            updated_at: '2022-12-01T07:37:17.000000Z'
+                          - created_at: '2022-12-01T12:43:21.000000Z'
+                            id: 2
+                            name: PRODUCT_OWNER
+                            pivot:
+                              entity_id: 02d2b63f-09fe-4cb0-847b-85bb3fece44b
+                              entity_type: App\Models\User
+                              role_id: 2
+                              scope: null
+                            scope: null
+                            title: Role Product_OWNER
+                            updated_at: '2022-12-01T12:43:21.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2022-12-01T07:52:38.000000Z'
+                      username:
+                        type: string
+                        example: Shafizul100
+              examples:
+                Assing - Mulitple Role to User:
+                  value:
+                    data:
+                      created_at: '2022-12-01T07:52:38.000000Z'
+                      deleted_at: null
+                      id: 02d2b63f-09fe-4cb0-847b-85bb3fece44b
+                      roles:
+                        - created_at: '2022-12-01T07:37:17.000000Z'
+                          id: 1
+                          name: Admin
+                          pivot:
+                            entity_id: 02d2b63f-09fe-4cb0-847b-85bb3fece44b
+                            entity_type: App\Models\User
+                            role_id: 1
+                            scope: null
+                          scope: null
+                          title: Role Admin
+                          updated_at: '2022-12-01T07:37:17.000000Z'
+                        - created_at: '2022-12-01T12:43:21.000000Z'
+                          id: 2
+                          name: PRODUCT_OWNER
+                          pivot:
+                            entity_id: 02d2b63f-09fe-4cb0-847b-85bb3fece44b
+                            entity_type: App\Models\User
+                            role_id: 2
+                            scope: null
+                          scope: null
+                          title: Role Product_OWNER
+                          updated_at: '2022-12-01T12:43:21.000000Z'
+                      updated_at: '2022-12-01T07:52:38.000000Z'
+                      username: Shafizul100
+  /api/v1/role/f8bcf838-3011-43a0-894d-51ccc4101076:
+    delete:
+      tags:
+        - Role
+      summary: Delete  - Role User
+      description: Delete  - Role User
+      operationId: deleteRoleUser
+      requestBody:
+        content:
+          text/plain:
+            example: ''
+      responses:
+        '200':
+          description: ''
+  /api/v1/login:
+    post:
+      tags:
+        - Personal accesss user
+      summary: Login
+      description: Login
+      operationId: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  example: Asdf123!
+                username:
+                  type: string
+                  example: team_member
+            example:
+              password: Asdf123!
+              username: team_member
+      responses:
+        '200':
+          description: Success - Login
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Thu, 01 Dec 2022 23:47:56 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/7.4.33
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '600'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '599'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      access_token:
+                        type: string
+                        example: >-
+                          eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5N2RmZjQxMi00NGQxLTQ2NGItYjMwMi1mZjAxZWY0M2Y0NjUiLCJqdGkiOiI4N2Y4MTgzYTdmYzk1MDU4NTk1NjRjZjlmNDc2ZTY3NTM3MzdkZTRjZGVlNTBiOTVkN2U3NDc0NjNmN2Y0YjFmNjAwNjUxZmZkMzQxODk2OSIsImlhdCI6MTY2OTkzODQ3Ni4wNzYyMzcsIm5iZiI6MTY2OTkzODQ3Ni4wNzYyNDUsImV4cCI6MTcwMTQ3NDQ3Ni4wNjk5LCJzdWIiOiIwMmQyYjYzZi0wOWZlLTRjYjAtODQ3Yi04NWJiM2ZlY2U0NGIiLCJzY29wZXMiOltdfQ.gtOf4Oy-K7lh6t_HOMh_gpvKmIOaluCd0MZZ45gYWCN2G8JZb0A1J1XoEuXZOkAo_X9cLJiqVvkp5bYGZxNFSvroTtotEohTy590-D4nEDC9Ndqjzlls5elrr5NDn1aykp-rfHUkQ--D8xNw010icf81BxWeeHELQK-lDVQPVzo1TMC3jUNjVI9S-UKbMRKgauTPFYdu82IXCtpTpe9cqVh1m8CHFwdBsHN5W0hu6ELSDr_4ldZ2BXm21fNS1hhxqJKZ0DCfQbGnmXzEnP6EAb9GStTh8fsTWmEHrXP6WirWoAAWjReNV9wN8gEu6aNjPrHoS5lcrAzJn3C-3fVrm3BElPOBlMyHJb1dUuSHAEMlSkmzNTcKIIfEbhwyZM3f8Es4MczbGqkVYRE7BEF6hICvp3YgNSFSqxNP2qx75Wx7xVd8QLigDNvS7-sytBu9IgFsw-kptwdxstVSJe4bkpPA8V79yhA4CIMC5JL_d53HxOCfUlRmzJGyM51f7YBu1biMGpz6aDbcMjQZy8gIxtPjJeGxo36rlgd28MrkeQgn_fyxDXaGE1AWLq9cXqoKD1n-XCRDAA6bAQDD2idtmVwqFAwRcO6m3NLLti_bNdgsGIOXOuhxQYvnmTr-14Ejz113tVvVsEbfh4D_Q6eJv_u4uLLAqs-xOj10Kk7U7kg
+                      roles:
+                        type: array
+                        items:
+                          type: string
+                          example: Admin
+                        example:
+                          - Admin
+                      user:
+                        type: object
+                        properties:
+                          created_at:
+                            type: string
+                            example: '2022-12-01T07:52:38.000000Z'
+                          deleted_at:
+                            nullable: true
+                            example: null
+                          id:
+                            type: string
+                            example: 02d2b63f-09fe-4cb0-847b-85bb3fece44b
+                          updated_at:
+                            type: string
+                            example: '2022-12-01T07:52:38.000000Z'
+                          username:
+                            type: string
+                            example: Shafizul100
+              examples:
+                Success - Login:
+                  value:
+                    data:
+                      access_token: >-
+                        eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5N2RmZjQxMi00NGQxLTQ2NGItYjMwMi1mZjAxZWY0M2Y0NjUiLCJqdGkiOiI4N2Y4MTgzYTdmYzk1MDU4NTk1NjRjZjlmNDc2ZTY3NTM3MzdkZTRjZGVlNTBiOTVkN2U3NDc0NjNmN2Y0YjFmNjAwNjUxZmZkMzQxODk2OSIsImlhdCI6MTY2OTkzODQ3Ni4wNzYyMzcsIm5iZiI6MTY2OTkzODQ3Ni4wNzYyNDUsImV4cCI6MTcwMTQ3NDQ3Ni4wNjk5LCJzdWIiOiIwMmQyYjYzZi0wOWZlLTRjYjAtODQ3Yi04NWJiM2ZlY2U0NGIiLCJzY29wZXMiOltdfQ.gtOf4Oy-K7lh6t_HOMh_gpvKmIOaluCd0MZZ45gYWCN2G8JZb0A1J1XoEuXZOkAo_X9cLJiqVvkp5bYGZxNFSvroTtotEohTy590-D4nEDC9Ndqjzlls5elrr5NDn1aykp-rfHUkQ--D8xNw010icf81BxWeeHELQK-lDVQPVzo1TMC3jUNjVI9S-UKbMRKgauTPFYdu82IXCtpTpe9cqVh1m8CHFwdBsHN5W0hu6ELSDr_4ldZ2BXm21fNS1hhxqJKZ0DCfQbGnmXzEnP6EAb9GStTh8fsTWmEHrXP6WirWoAAWjReNV9wN8gEu6aNjPrHoS5lcrAzJn3C-3fVrm3BElPOBlMyHJb1dUuSHAEMlSkmzNTcKIIfEbhwyZM3f8Es4MczbGqkVYRE7BEF6hICvp3YgNSFSqxNP2qx75Wx7xVd8QLigDNvS7-sytBu9IgFsw-kptwdxstVSJe4bkpPA8V79yhA4CIMC5JL_d53HxOCfUlRmzJGyM51f7YBu1biMGpz6aDbcMjQZy8gIxtPjJeGxo36rlgd28MrkeQgn_fyxDXaGE1AWLq9cXqoKD1n-XCRDAA6bAQDD2idtmVwqFAwRcO6m3NLLti_bNdgsGIOXOuhxQYvnmTr-14Ejz113tVvVsEbfh4D_Q6eJv_u4uLLAqs-xOj10Kk7U7kg
+                      roles:
+                        - Admin
+                      user:
+                        created_at: '2022-12-01T07:52:38.000000Z'
+                        deleted_at: null
+                        id: 02d2b63f-09fe-4cb0-847b-85bb3fece44b
+                        updated_at: '2022-12-01T07:52:38.000000Z'
+                        username: Shafizul100
+        '401':
+          description: Incorrrect - login
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Thu, 01 Dec 2022 23:48:13 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/7.4.33
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '600'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '598'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Incorrect login.
+              examples:
+                Incorrrect - login:
+                  value:
+                    error: Incorrect login.
+  /api/v1/register:
+    post:
+      tags:
+        - Personal accesss user
+      summary: Register
+      description: Register
+      operationId: register
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  example: Asdf123!
+                password_confirmation:
+                  type: string
+                  example: Asdf123!
+                username:
+                  type: string
+                  example: John doe
+            example:
+              password: Asdf123!
+              password_confirmation: Asdf123!
+              username: John doe
+      responses:
+        '201':
+          description: Register
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Thu, 01 Dec 2022 23:52:11 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/7.4.33
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '600'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '599'
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+                example: []
+              examples:
+                Register:
+                  value: []
+tags:
+  - name: User
+  - name: Project
+  - name: Tasks
+  - name: Role
+  - name: Personal accesss user
