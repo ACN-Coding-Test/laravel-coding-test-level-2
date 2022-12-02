@@ -41,6 +41,7 @@ class TaskController extends Controller
      */
     public function store(TaskRequest $request)
     {
+        $request->merge(['status' => 'NOT_STARTED']);
         $task = Task::create($request->all());
 
         return new TaskResource($task);
