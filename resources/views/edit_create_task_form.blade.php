@@ -87,7 +87,7 @@ if(isset($tasks))
                         <div class="col-md-3"><label>Description <span class="red-mark">*</span></label></label></div>
                         <div class="col-md-9">
                             <textarea type="text" name="description" class="form-control" placeholder="Enter Description">{{ $task_description }}</textarea>
-                        </div>
+                        </div> 
                     </div>
                     <hr>
                     <div class="row">
