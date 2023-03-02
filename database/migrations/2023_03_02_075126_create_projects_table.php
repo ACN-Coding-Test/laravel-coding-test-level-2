@@ -14,7 +14,7 @@ class CreateProjectsTable extends Migration
     public function up()
     {
         Schema::create('projects', function (Blueprint $table) {
-            $table->uuid('id')->autoIncrement();
+            $table->uuid('id')->autoIncrement()->primary();
             $table->char('name', 100)->unique();
         });
     }
