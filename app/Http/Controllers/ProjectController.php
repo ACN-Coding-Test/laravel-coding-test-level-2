@@ -14,10 +14,23 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if(Auth::user()->user_type == User::ROLE['PRODUCT_OWNER']){
-            $projects = Project::get();
+            //$projects = Project::get();
+            $q = $request->q; // search keyword, will search for name
+            $pageIndex  = $request->pageIndex  ? $request->pageIndex : 0;  //  the index of the page to shown, default 0
+            $pageSize  = $request->pageSize  ? $request->pageSize  : 3; //  how many items to return, default 3
+            $sortBy = $request->sortBy ? $request->sortBy : 'name' ; // attribute to sort, default name 
+            $sortDirection  = $request->sortDirection ? $request->sortDirection : 'ASC'; //  direction of the sort, default ASC
+            $query =Project::query();
+            // Search by name
+            if (isset($q)) {
+                $query->where('name', 'LIKE', '%'.$q.'%');
+            }
+            // search by sort by and direction
+            $query->orderBy($sortBy, $sortDirection);
+            $projects = $query->paginate($pageSize);
             return response()->json(['status' => 'success','projects'=>$projects]);
         }else{
             return response()->json(['errors' => 'You does not have an access'], 401);
