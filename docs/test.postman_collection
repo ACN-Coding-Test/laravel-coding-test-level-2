@@ -1,0 +1,1140 @@
+{
+	"info": {
+		"_postman_id": "6ade2340-9d21-44ea-b35d-f303f68f1949",
+		"name": "3-3-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users-login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_name",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|WBnS3NTciDAMTf22DBJSbkVlVA6wg6GTwYkFMU1c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "vaishu",
+							"type": "text"
+						},
+						{
+							"key": "user_name",
+							"value": "vaishu",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345",
+							"type": "text"
+						},
+						{
+							"key": "user_type",
+							"value": "product_owner",
+							"description": "product_owner,team_member",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/add",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users-list",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|WBnS3NTciDAMTf22DBJSbkVlVA6wg6GTwYkFMU1c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/list",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user-view ",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|WBnS3NTciDAMTf22DBJSbkVlVA6wg6GTwYkFMU1c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/view/9944f9b2-78cd-433a-96fb-085100176fcc",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"view",
+						"9944f9b2-78cd-433a-96fb-085100176fcc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user-update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|WBnS3NTciDAMTf22DBJSbkVlVA6wg6GTwYkFMU1c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "athyap",
+							"type": "text"
+						},
+						{
+							"key": "_method",
+							"value": "PUT",
+							"type": "text"
+						},
+						{
+							"key": "user_type",
+							"value": "team_member",
+							"description": "product_owner,team_member",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/update/9944f9b2-78cd-433a-96fb-085100176fcc",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"update",
+						"9944f9b2-78cd-433a-96fb-085100176fcc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users-remove",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|WBnS3NTciDAMTf22DBJSbkVlVA6wg6GTwYkFMU1c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/remove/d9670477-84a6-4f9d-81e6-1c3310397a4c",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"remove",
+						"d9670477-84a6-4f9d-81e6-1c3310397a4c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "project-list",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "5|YD2SRlRZY3W23odhxFBdq64FCGOrvc40zNpuP0Kf",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/project/list?sortDirection=ASC&pageSize=1&q=project2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"project",
+						"list"
+					],
+					"query": [
+						{
+							"key": "sortDirection",
+							"value": "ASC"
+						},
+						{
+							"key": "pageSize",
+							"value": "1"
+						},
+						{
+							"key": "q",
+							"value": "project2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "project-add",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "3|fSP1bfaek9bdWC7hP2xPXpgOQt2IDcS6hM8Y09fw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "project3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/add-project",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"add-project"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "project-view",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "3|fSP1bfaek9bdWC7hP2xPXpgOQt2IDcS6hM8Y09fw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "project3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/view-project/14667e03-ff1d-4542-8adf-6f5594dceaee",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"view-project",
+						"14667e03-ff1d-4542-8adf-6f5594dceaee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "project-update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "3|fSP1bfaek9bdWC7hP2xPXpgOQt2IDcS6hM8Y09fw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "project312",
+							"type": "text"
+						},
+						{
+							"key": "_method",
+							"value": "PUT",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/update-project/14667e03-ff1d-4542-8adf-6f5594dceaee",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"update-project",
+						"14667e03-ff1d-4542-8adf-6f5594dceaee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "project-delete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "3|fSP1bfaek9bdWC7hP2xPXpgOQt2IDcS6hM8Y09fw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "project312",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "_method",
+							"value": "PUT",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/remove-project/14667e03-ff1d-4542-8adf-6f5594dceaee",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"remove-project",
+						"14667e03-ff1d-4542-8adf-6f5594dceaee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "task-add",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "3|fSP1bfaek9bdWC7hP2xPXpgOQt2IDcS6hM8Y09fw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "task1",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "testtww",
+							"type": "text"
+						},
+						{
+							"key": "project_id",
+							"value": "0c113200-2965-467a-a505-15c607795b79",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/add-task",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"add-task"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "task-update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "3|fSP1bfaek9bdWC7hP2xPXpgOQt2IDcS6hM8Y09fw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "task1",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "testtwwaf",
+							"type": "text"
+						},
+						{
+							"key": "project_id",
+							"value": "0c113200-2965-467a-a505-15c607795b79",
+							"type": "text"
+						},
+						{
+							"key": "_method",
+							"value": "PUT",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/update-task/adde34ed-f009-4e46-9120-4fa4aecac693",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"update-task",
+						"adde34ed-f009-4e46-9120-4fa4aecac693"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "task-list",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "3|fSP1bfaek9bdWC7hP2xPXpgOQt2IDcS6hM8Y09fw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "task1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "testtwwaf",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "project_id",
+							"value": "0c113200-2965-467a-a505-15c607795b79",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "_method",
+							"value": "PUT",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/task/list",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"task",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "task-view",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "3|fSP1bfaek9bdWC7hP2xPXpgOQt2IDcS6hM8Y09fw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "task1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "testtwwaf",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "project_id",
+							"value": "0c113200-2965-467a-a505-15c607795b79",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "_method",
+							"value": "PUT",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/view-task/2fb9569a-fd65-4bb3-b596-a1227d48b3a9",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"view-task",
+						"2fb9569a-fd65-4bb3-b596-a1227d48b3a9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "task-remove",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "3|fSP1bfaek9bdWC7hP2xPXpgOQt2IDcS6hM8Y09fw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "task1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "testtwwaf",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "project_id",
+							"value": "0c113200-2965-467a-a505-15c607795b79",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "_method",
+							"value": "PUT",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/remove-task/2fb9569a-fd65-4bb3-b596-a1227d48b3a9",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"remove-task",
+						"2fb9569a-fd65-4bb3-b596-a1227d48b3a9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "team-members",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "3|fSP1bfaek9bdWC7hP2xPXpgOQt2IDcS6hM8Y09fw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "task1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "testtwwaf",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "project_id",
+							"value": "0c113200-2965-467a-a505-15c607795b79",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "_method",
+							"value": "PUT",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/teams",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"teams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "assign-task to team-members",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "3|fSP1bfaek9bdWC7hP2xPXpgOQt2IDcS6hM8Y09fw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "task1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "testtwwaf",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "project_id",
+							"value": "0c113200-2965-467a-a505-15c607795b79",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "_method",
+							"value": "PUT",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "task_id",
+							"value": "1dc9bedb-b398-43d2-8d09-5f948675b8cf",
+							"type": "text"
+						},
+						{
+							"key": "team_user_id",
+							"value": "9944f9b2-78cd-433a-96fb-085100176fcc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/assign-task",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"assign-task"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "task status update by team-member",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "4|3VeNdLTZEhmMkhOe2VyTTJilkHJkjQQ6L6SCKQOt",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "task1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "testtwwaf",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "project_id",
+							"value": "0c113200-2965-467a-a505-15c607795b79",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "_method",
+							"value": "PUT",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "task_id",
+							"value": "1dc9bedb-b398-43d2-8d09-5f948675b8cf",
+							"type": "text"
+						},
+						{
+							"key": "team_user_id",
+							"value": "9944f9b2-78cd-433a-96fb-085100176fcc",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "status",
+							"value": "inprogress",
+							"description": "completed,inprogress,ready_for_test",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/update-task-status",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"update-task-status"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
