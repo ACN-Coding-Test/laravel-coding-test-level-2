@@ -25,4 +25,8 @@ class Project extends Model
     {
         return 'id';
     }
+
+    protected $fillable = [
+        'name'
+    ];
 }

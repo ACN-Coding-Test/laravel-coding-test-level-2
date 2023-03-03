@@ -35,6 +35,7 @@ Route::group(['prefix' => 'users','middleware' => 'auth:sanctum'],function () {
     Route::post('add-task', [\App\Http\Controllers\TaskController::class,'store']);
     Route::put('update-task/{id}', [\App\Http\Controllers\TaskController::class,'update']);
     Route::delete('remove-task/{id}', [\App\Http\Controllers\TaskController::class,'destroy']);
+    Route::get('teams', [\App\Http\Controllers\TaskController::class,'getTeams']);
     Route::post('assign-task', [\App\Http\Controllers\TaskController::class,'assignTask']);
     Route::post('update-task-status', [\App\Http\Controllers\TaskController::class,'updateStatus']);
 });

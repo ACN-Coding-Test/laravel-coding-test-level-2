@@ -25,7 +25,14 @@ class Task extends Model
     {
         return 'id';
     }
+    protected $fillable = [
+        'title',
+        'description',
+        'project_id',
+        'user_id',
+        'status'
 
+    ];
     const STATUS = [
         'NOT_STARTED' => 'not_started',
         'IN_PROGRESS' => 'inprogress',
