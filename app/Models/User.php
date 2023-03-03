@@ -7,10 +7,27 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
+use Dyrynda\Database\Support\GeneratesUuid;
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, GeneratesUuid;
+
+    public $incrementing = false;
+
+    /**
+     * @var string
+     */
+    protected $keyType = 'string';
+
+    /**
+     * The name of the column that should be used for the UUID.
+     *
+     * @return string
+     */
+    public function uuidColumn(): string
+    {
+        return 'id';
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -40,5 +57,11 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+    ];
+
+    const ROLE = [
+        'ADMIN' => 'admin',
+        'PRODUCT_OWNER' => 'product_owner',
+        'TEAM_MEMBER'=>'team_member'
     ];
 }
