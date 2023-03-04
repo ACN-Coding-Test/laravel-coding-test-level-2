@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\API\V1\AuthController;
+use App\Http\Controllers\API\V1\ProjectController;
+use App\Http\Controllers\API\V1\TaskController;
 use App\Http\Controllers\API\V1\UserController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('login', [AuthController::class, 'login']);
-Route::group(['middleware' => 'auth:sanctum'],
-    function () {
+Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::post('logout', [AuthController::class, 'logout']);
 
         // User's routes
@@ -29,8 +29,26 @@ Route::group(['middleware' => 'auth:sanctum'],
             Route::put('/{user}/update', [UserController::class, 'update']);
             Route::delete('/{user}/remove', [UserController::class, 'destroy']);
         });
+
+        // Project's Route
+        Route::group(['prefix' => 'projects'], function() {
+            Route::get('/', [ProjectController::class, 'index']);
+            Route::post('/', [ProjectController::class, 'store']);
+            Route::get('/{project}', [ProjectController::class, 'show']);
+            Route::put('/{project}/update', [ProjectController::class, 'update']);
+            Route::delete('/{project}/remove', [ProjectController::class, 'destroy']);
+        });
+
+        // Project's Route
+        Route::group(['prefix' => 'tasks'], function() {
+            Route::get('/', [TaskController::class, 'index']); // List task
+            Route::post('/', [TaskController::class, 'store']);  // Create task
+            Route::get('/{task}', [TaskController::class, 'show']);  // Show task
+            Route::put('/{task}/update', [TaskController::class, 'update']);  // Update task
+            Route::delete('/{task}/remove', [TaskController::class, 'destroy']);  // Remove task
+
+            Route::post('/{task}/assign', [TaskController::class, 'assignTask']);
+            Route::post('/{task}/update-status', [TaskController::class, 'updateStatus']);
+        });
     });
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});

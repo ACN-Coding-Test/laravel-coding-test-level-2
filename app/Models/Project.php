@@ -10,6 +10,8 @@ class Project extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name'];
+
     /**
      * Get all of the tasks for the Project
      *
