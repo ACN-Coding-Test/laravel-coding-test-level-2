@@ -33,22 +33,29 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         // Project's Route
         Route::group(['prefix' => 'projects'], function() {
             Route::get('/', [ProjectController::class, 'index']);
-            Route::post('/', [ProjectController::class, 'store']);
+
+            Route::group(['middleware' => 'isProductOwner'], function() {
+                Route::post('/', [ProjectController::class, 'store'])->middleware('');
+                Route::put('/{project}/update', [ProjectController::class, 'update']);
+                Route::delete('/{project}/remove', [ProjectController::class, 'destroy']);
+            });
             Route::get('/{project}', [ProjectController::class, 'show']);
-            Route::put('/{project}/update', [ProjectController::class, 'update']);
-            Route::delete('/{project}/remove', [ProjectController::class, 'destroy']);
         });
 
         // Project's Route
         Route::group(['prefix' => 'tasks'], function() {
             Route::get('/', [TaskController::class, 'index']); // List task
-            Route::post('/', [TaskController::class, 'store']);  // Create task
+
+            Route::group(['middleware' => 'isProductOwner'], function () {
+                Route::post('/', [TaskController::class, 'store']);  // Create task
+                Route::delete('/{task}/remove', [TaskController::class, 'destroy']);  // Remove task
+            });
+
             Route::get('/{task}', [TaskController::class, 'show']);  // Show task
             Route::put('/{task}/update', [TaskController::class, 'update']);  // Update task
-            Route::delete('/{task}/remove', [TaskController::class, 'destroy']);  // Remove task
 
-            Route::post('/{task}/assign', [TaskController::class, 'assignTask']);
-            Route::post('/{task}/update-status', [TaskController::class, 'updateStatus']);
+            Route::post('/{task}/assign/{user}', [TaskController::class, 'assignTask']);
+            Route::post('/{task}/update-status', [TaskController::class, 'updateStatus'])->middleware('isTeamMember');
         });
     });
 
