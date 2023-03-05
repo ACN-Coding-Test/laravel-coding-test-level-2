@@ -12,9 +12,11 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::all();
-
-        return $this->success($tasks, 'Task list', 200);
+        $tasks = new Task;
+        if(auth()->user()->hasRole('Team Member')) {
+            $tasks = $tasks->where('user_id', auth()->user()->id);
+        }
+        return $this->success($tasks->get(), 'Task list', 200);
     }
 
     public function store(CreateRequest $request)

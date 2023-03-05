@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
                 if($user_id = User::role('Product Owner')->inRandomOrder()->first()->id){
 
                     Project::factory(5)->create(['user_id' => $user_id])->each(function ($project) {
-                        $tasks = Task::factory(5)->create([
+                        $tasks = Task::factory(1)->create([
                             'project_id' => $project,
                             'user_id' => User::role('Team Member')->inRandomOrder()->first()->id
                         ]);

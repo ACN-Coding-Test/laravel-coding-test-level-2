@@ -22,6 +22,9 @@ class isAdmin
             return $next($request);
         }
 
-        return $this->error('Unauthorized access', 403);
+        if ($request->expectsJson())
+            return $this->error('Unauthorized access', 403);
+
+        abort(403);
     }
 }

@@ -19,6 +19,7 @@ class ProjectController extends Controller
     {
         $project = Project::create([
             'name' => $request->name,
+            'user_id' => auth()->user()->id
         ]);
 
         return $this->success($project, 'Project has been created', 201);
@@ -31,6 +32,10 @@ class ProjectController extends Controller
 
     public function update(CreateRequest $request, Project $project)
     {
+        if (!$this->authorize('update', $project)) {
+            return $this->error('You can not update this project', 403);
+        }
+
         $project->name = $request->name;
         $project->save();
 
@@ -39,6 +44,10 @@ class ProjectController extends Controller
 
     public function destroy(Project $project)
     {
+        if (!$this->authorize('delete', $project)) {
+            return $this->error('You can not update this project', 403);
+        }
+
         if ($project->delete()) {
             return $this->success($project, 'Project Successfully Deleted', 200);
         }

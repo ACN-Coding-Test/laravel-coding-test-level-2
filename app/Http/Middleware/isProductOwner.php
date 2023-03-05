@@ -2,11 +2,13 @@
 
 namespace App\Http\Middleware;
 
+use App\Traits\ApiResponse;
 use Closure;
 use Illuminate\Http\Request;
 
 class isProductOwner
 {
+    use ApiResponse;
     /**
      * Handle an incoming request.
      *
@@ -20,6 +22,9 @@ class isProductOwner
             return $next($request);
         }
 
-        return $this->error('Unauthorized access', 403);
+        if ($request->expectsJson())
+            return $this->error('Unauthorized access', 403);
+
+        abort(403);
     }
 }

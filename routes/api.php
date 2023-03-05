@@ -28,21 +28,24 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::get('/{user}', [UserController::class, 'show']);
             Route::put('/{user}/update', [UserController::class, 'update']);
             Route::delete('/{user}/remove', [UserController::class, 'destroy']);
+
         });
 
         // Project's Route
+        Route::get('/free-users', [UserController::class, 'freeUsers'])->middleware('isProductOwner');
         Route::group(['prefix' => 'projects'], function() {
             Route::get('/', [ProjectController::class, 'index']);
 
             Route::group(['middleware' => 'isProductOwner'], function() {
-                Route::post('/', [ProjectController::class, 'store'])->middleware('');
+                Route::post('/', [ProjectController::class, 'store']);
                 Route::put('/{project}/update', [ProjectController::class, 'update']);
                 Route::delete('/{project}/remove', [ProjectController::class, 'destroy']);
             });
+
             Route::get('/{project}', [ProjectController::class, 'show']);
         });
 
-        // Project's Route
+        // Task's Route
         Route::group(['prefix' => 'tasks'], function() {
             Route::get('/', [TaskController::class, 'index']); // List task
 

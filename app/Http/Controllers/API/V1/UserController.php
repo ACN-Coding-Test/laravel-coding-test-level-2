@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\CreateRequest;
 use App\Http\Requests\User\UpdateRequest;
+use App\Models\Task;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -60,5 +61,14 @@ class UserController extends Controller
         }
 
         return $this->error('Something went wrong');
+    }
+
+    public function freeUsers()
+    {
+        $taskUserID = Task::where('status', '!=', 'COMPLETED')->get()->pluck('user_id');
+
+        $users = User::role('Team Member')->whereNotIn('id', $taskUserID)->get();
+
+        return $this->success($users, 'User list who available', 200);
     }
 }
