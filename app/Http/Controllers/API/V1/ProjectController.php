@@ -5,14 +5,23 @@ namespace App\Http\Controllers\API\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Project\CreateRequest;
 use App\Models\Project;
+use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $projects = Project::all();
+        $projects = new Project;
 
-        return $this->success($projects, 'Project list', 200);
+        // Search project name
+        if($request->has('q')){
+            $projects->where('name', 'LIKE', '%' . $request->q . '%');
+        }
+
+        // search by sort by and direction
+        $projects->orderBy($request->sortBy ?? 'id', $request->sortDirection ?? 'ASC');
+
+        return $this->success($projects->paginate($request->pageSize ?? 10), 'Project list', 200);
     }
 
     public function store(CreateRequest $request)

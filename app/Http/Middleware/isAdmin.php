@@ -21,10 +21,6 @@ class isAdmin
         if(auth()->user()->hasRole('Admin')) {
             return $next($request);
         }
-
-        if ($request->expectsJson())
-            return $this->error('Unauthorized access', 403);
-
-        abort(403);
+        return $this->error('Unauthorized access', 403);
     }
 }

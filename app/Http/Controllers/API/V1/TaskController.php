@@ -47,10 +47,6 @@ class TaskController extends Controller
 
     public function destroy(Task $task)
     {
-        if (!$this->authorize('delete', $task)) {
-            return $this->error('You can not delete this project', 403);
-        }
-
         if ($task->delete()) {
             return $this->success($task, 'Task Successfully Deleted', 200);
         }

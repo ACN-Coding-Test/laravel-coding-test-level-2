@@ -16,11 +16,12 @@ abstract class TestCase extends BaseTestCase
     use CreatesApplication, DatabaseMigrations;
 
     private Generator $faker;
+
     private $loginURL = '/api/v1/login';
+
     public function setUp(): void
     {
         parent::setUp();
-        Artisan::call('migrate:fresh');
 
         User::factory(1)->create([
             'name' => 'Admin User',

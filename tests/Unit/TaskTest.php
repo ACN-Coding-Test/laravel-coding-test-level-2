@@ -31,7 +31,7 @@ class TaskTest extends TestCase
         $response->assertStatus(Response::HTTP_FORBIDDEN);
     }
 
-    public function testValidationErrorWhileCreateingProject()
+    public function testValidationErrorWhileCreateingTask()
     {
         $userToken = $this->generateToken('Product Owner');
         $payload = [
@@ -44,7 +44,7 @@ class TaskTest extends TestCase
             ->assertStatus(419);
     }
 
-    public function testProjectCreatedSuccessfully()
+    public function testTaskCreatedSuccessfully()
     {
         $userToken = $this->generateToken('Product Owner');
 
@@ -52,11 +52,11 @@ class TaskTest extends TestCase
             'name' => 'New project for weekend',
         ];
 
-        $project = $this->json('post', 'api/v1/projects', $projectPayload, $this->generateHeader($userToken))->content();
-        $project_id = json_decode($project, true)['data']['id'];
+        $project = $this->json('post', 'api/v1/projects', $projectPayload, $this->generateHeader($userToken));
+        $project_id = json_decode($project->content(), true)['data']['id'];
 
-        $users = $this->json('post', 'api/v1/free-users', [], $this->generateHeader($userToken))->content();
-        $user_id = collect(json_decode($users, true)['data'])->inRandomOrder()->first()->id;
+        $users = $this->json('post', 'api/v1/free-users', [], $this->generateHeader($userToken));
+        $user_id = collect(json_decode($users->content(), true)['data'])->inRandomOrder()->first()->id;
 
         $payload = [
             'title' => 'Create Test for this practical',

@@ -6,9 +6,8 @@ use App\Models\Task;
 use Illuminate\Http\Response;
 use Tests\TestCase;
 
-class ProjectTest extends TestCase
+class ChangeStatusOfTask extends TestCase
 {
-    private $route = 'api/v1/projects';
     /**
      * A basic test example.
      *
@@ -17,7 +16,7 @@ class ProjectTest extends TestCase
 
     public function testUnuthenticatedAccessProjectRoute()
     {
-        $response = $this->json('post', $this->route);
+        $response = $this->json('post', 'api/v1/tasks/1/update-status');
         $response->assertStatus(Response::HTTP_UNAUTHORIZED);
     }
 

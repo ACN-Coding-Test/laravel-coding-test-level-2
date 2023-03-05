@@ -22,9 +22,7 @@ class isProductOwner
             return $next($request);
         }
 
-        if ($request->expectsJson())
-            return $this->error('Unauthorized access', 403);
+        return $this->error('Unauthorized access', 403);
 
-        abort(403);
     }
 }
