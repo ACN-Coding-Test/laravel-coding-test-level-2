@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers\V1;
 
+use Exception;
 use App\Models\User;
+use App\Models\Project;
+use App\Helpers\ApiHelper;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\EditUserRequest;
-use App\Http\Requests\StoreUserRequest;
-use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\EditProjectRequest;
+use App\Http\Requests\IndexProjectRequest;
+use App\Http\Requests\StoreProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
 use Illuminate\Auth\Access\AuthorizationException;
 
-class UserController extends Controller
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,44 +25,13 @@ class UserController extends Controller
     public function index()
     {
         try {
-            $this->authorize('getAllUsers', User::class);
+            $this->authorize('getAllProjects', Project::class);
 
-            $users = User::all();
+            $projects = Project::all();
 
             return response(
-                $users
+                $projects
             );
-        } catch (AuthorizationException  $ex) {
-            return response(
-                [
-                    'errors' => $ex->getMessage()
-                ],
-                Response::HTTP_UNAUTHORIZED
-            );
-        }
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * 
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreUserRequest $request)
-    {
-        try {
-            $this->authorize('storeUser', User::class);
-
-            $user = User::create(
-                [
-                    'username' => $request->input('username'),
-                    'password' => bcrypt($request->input('password')),
-                    'role_id' => $request->input('role_id'),
-                ]
-            );
-
-            return response($user);
         } catch (AuthorizationException  $ex) {
             return response(
                 [
@@ -79,13 +52,42 @@ class UserController extends Controller
     public function show($id)
     {
         try {
-            $this->authorize('showUser', User::class);
+            $this->authorize('showProject', Project::class);
 
-            $user = User::find($id);
+            $project = Project::find($id);
 
             return response(
-                $user
+                $project
             );
+        } catch (AuthorizationException  $ex) {
+            return response(
+                [
+                    'errors' => $ex->getMessage()
+                ],
+                Response::HTTP_UNAUTHORIZED
+            );
+        }
+    }
+
+    /**
+     * Store a newly created project resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function store(StoreProjectRequest $request)
+    {
+        try {
+            $this->authorize('storeProject', Project::class);
+
+            $project = Project::create(
+                [
+                    'name' => $request->input('name'),
+                ]
+            );
+
+            return response($project);
         } catch (AuthorizationException  $ex) {
             return response(
                 [
@@ -104,29 +106,27 @@ class UserController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function edit(EditUserRequest $request, $id)
+    public function edit(EditProjectRequest $request, $id)
     {
         try {
-            $this->authorize('editUser', User::class);
+            $this->authorize('editProject', Project::class);
 
-            $user = User::find($id);
+            $project = Project::find($id);
 
-            if(!$user) {
+            if(!$project) {
                 return response(
                     [
-                        'errors' => 'The requested User is not found'
+                        'errors' => 'The requested project is not found'
                     ],
                     Response::HTTP_UNPROCESSABLE_ENTITY
                 );
             }
 
-            $user->username = $request->input('username');
-            $user->password = bcrypt($request->input('password'));
-            $user->role_id = $request->input('role_id');
+            $project->name = $request->input('name');
 
-            $user->update();
+            $project->update();
 
-            return response($user);
+            return response($project);
         } catch (AuthorizationException  $ex) {
             return response(
                 [
@@ -145,29 +145,27 @@ class UserController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserRequest $request, $id)
+    public function update(UpdateProjectRequest $request, $id)
     {
         try {
-            $this->authorize('updateUser', User::class);
+            $this->authorize('updateProject', Project::class);
 
-            $user = User::find($id);
+            $project = Project::find($id);
 
-            if(!$user) {
+            if(!$project) {
                 return response(
                     [
-                        'errors' => 'The requested User is not found'
+                        'errors' => 'The requested project is not found'
                     ],
                     Response::HTTP_UNPROCESSABLE_ENTITY
                 );
             }
 
-            $user->username = $request->input('username');
-            $user->password = bcrypt($request->input('password'));
-            $user->role_id = $request->input('role_id');
+            $project->name = $request->input('name');
 
-            $user->update();
+            $project->update();
 
-            return response($user);
+            return response($project);
         } catch (AuthorizationException  $ex) {
             return response(
                 [
@@ -188,24 +186,24 @@ class UserController extends Controller
     public function destroy($id)
     {
         try {
-            $this->authorize('destroyUser', User::class);
+            $this->authorize('destroyProject', Project::class);
 
-            $user = User::find($id);
+            $project = Project::find($id);
 
-            if(!$user) {
+            if(!$project) {
                 return response(
                     [
-                        'errors' => 'The requested User is not found'
+                        'errors' => 'The requested project is not found'
                     ],
                     Response::HTTP_UNPROCESSABLE_ENTITY
                 );
             }
 
-            $user->delete();
+            $project->delete();
 
             return response(
                 [
-                    'message' => 'This user deleted successfully'
+                    'message' => 'This project deleted successfully'
                 ],
                 Response::HTTP_OK
             );
