@@ -19,18 +19,90 @@ class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * 
+     * @param  int $pageIndex
+     * @param  int $pageSize
+     * @param  string $sortBy
+     * @param  string $sortDirection
+     * @param  string $q
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(
+        $pageIndex,
+        $pageSize,
+        $sortBy,
+        $sortDirection,
+        $q = ""
+    )
     {
         try {
             $this->authorize('getAllProjects', Project::class);
 
-            $projects = Project::all();
+            if(!is_numeric($pageIndex)) {
+                return response(
+                    [
+                        'errors' => 'The requested page index is not a valid value'
+                    ],
+                    Response::HTTP_UNPROCESSABLE_ENTITY
+                );
+            }
+
+            // set default value
+            if(!$pageIndex) {
+                $pageIndex = 0;
+            }
+
+            if(!is_numeric($pageSize)) {
+                return response(
+                    [
+                        'errors' => 'The requested page size is not a valid value'
+                    ],
+                    Response::HTTP_UNPROCESSABLE_ENTITY
+                );
+            }
+
+            // set default value
+            if(!$pageSize) {
+                $pageSize = 3;
+            }
+
+            // this will check the default and set the sorted by col
+            if(!in_array($sortDirection, ApiHelper::DATA_SORTING_DIRECTIONS)) {
+                return response(
+                    [
+                        'errors' => 'The requested page sorting direction is not a valid value'
+                    ],
+                    Response::HTTP_UNPROCESSABLE_ENTITY
+                );
+            }
+
+            // skip calculation
+            $skip = ((int) $pageIndex - 1) * (int) $pageSize;
+
+            // get count
+            $projectsCount = Project::selectRaw('COUNT(id) AS count')
+                ->where('name', 'like', '%' . $q . '%');
+
+            // get the coun from the data
+            $projectsCount = $projectsCount->get()->toArray();
+            $projectsCount = $projectsCount[0]['count'];
+
+            $projects = Project::select('*')
+                ->where('name', 'like', '%' . $q . '%')
+                ->orderBy($sortBy, $sortDirection)
+                ->skip($skip)
+                ->take($pageSize)
+                ->get()
+                ->toArray();
 
             return response(
-                $projects
+                [
+                    'data' => $projects,
+                    'total' => $projectsCount,
+                    'page' => (int) $pageIndex,
+                    'limit' => (int) $pageSize,
+                ]
             );
         } catch (AuthorizationException  $ex) {
             return response(
