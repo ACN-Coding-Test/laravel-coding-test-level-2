@@ -26,14 +26,20 @@ class CreateTasksTable extends Migration
                   ->nullable(false)
                   ->onDelete('restrict')
                   ->onUpdate('restrict');
-            $table->uuid('user_id');
-            $table->foreign('user_id')
+            $table->uuid('team_member_id');
+            $table->foreign('team_member_id')
                   ->references('id')
                   ->on('users')
                   ->nullable(false)
                   ->onDelete('restrict')
                   ->onUpdate('restrict');
-
+            $table->uuid('task_owner_id');
+            $table->foreign('task_owner_id')
+                  ->references('id')
+                  ->on('users')
+                  ->nullable(false)
+                  ->onDelete('restrict')
+                  ->onUpdate('restrict');
             $table->timestamps();
 
         });

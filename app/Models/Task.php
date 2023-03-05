@@ -1,10 +1,9 @@
 <?php
 
 namespace App\Models;
-use App\Traits\UUID;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Traits\UUID;
 class Task extends Model
 {
     use HasFactory, UUID;
@@ -14,7 +13,8 @@ class Task extends Model
         'description',
         'status',
         'project_id',
-        'user_id',
+        'team_member_id',
+        'task_owner_id',
     ];
 
 }

@@ -16,6 +16,13 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name')->unique();
+            $table->uuid('product_owner_id');
+            $table->foreign('product_owner_id')
+                  ->references('id')
+                  ->on('users')
+                  ->nullable(false)
+                  ->onDelete('restrict')
+                  ->onUpdate('restrict');
             $table->timestamps();
         });
     }
