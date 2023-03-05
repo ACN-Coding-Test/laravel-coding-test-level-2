@@ -2,15 +2,17 @@
 
 namespace App\Models;
 
-use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class Role extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory;
+
+    // role types
+    public const ROLE_TYPE_ADMIN = 1;
+    public const ROLE_TYPE_PRODUCT_OWNER = 2;
+    public const ROLE_TYPE_DEVELOPER = 3;
 
     /**
      * The attributes that are mass assignable.
@@ -18,9 +20,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'username',
-        'password',
-        'role_id'
+        'name',
     ];
 
     /**
@@ -29,8 +29,6 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
-        'remember_token',
     ];
 
     /**
@@ -41,8 +39,8 @@ class User extends Authenticatable
     protected $casts = [
     ];
 
-    public function role()
+    public function users()
     {
-        return $this->belongsTo(Role::class);
+        return $this->hasMany(User::class);
     }
 }
