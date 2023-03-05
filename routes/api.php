@@ -28,7 +28,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::put("users/{id}",[UserController::class, 'updateresource']);
         Route::delete("users/{id}",[UserController::class, 'deleteresource']);
 
-        Route::get("projects/{id?}",[ProjectController::class, 'getprojects']);
+        Route::get("projects",[ProjectController::class, 'getprojects']);
         Route::post("projects",[ProjectController::class, 'createproject']);
         Route::put("projects/{id}",[ProjectController::class, 'updateproject']);
 

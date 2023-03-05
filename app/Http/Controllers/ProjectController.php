@@ -9,18 +9,37 @@ use App\Models\Project;
 
 class ProjectController extends Controller
 {
-     function getprojects($id=null){
-        if($id){
-            $result = Project::find($id);
-        }else{
-            $result = Project::all();
+     function getprojects(Request $request){
+        
+        $name=$request->q ? $request->q : '';
+        $pageIndex=$request->pageIndex ? $request->pageIndex : '0';
+        $pageSize=$request->pageSize ? $request->pageSize : '3';
+        $sortBy=$request->sortBy ? $request->sortBy : 'name';
+        $sortDirection=$request->sortDirection ? $request->sortDirection : 'ASC';
+        $project_query=$data="";
+
+        if($name){
+            $project_query=Project::where("name", "like","%".$name."%");
+
+            if($pageIndex){
+                $project_query->offset($pageIndex);
+            }
+            if($pageSize){
+                $project_query->limit($pageSize);
+            }
+            if($sortDirection){
+                $project_query->orderBy($sortBy, $sortDirection);
+            }
+                $result = $project_query->get();
+                $data = json_decode($result, true);
         }
-        $data = json_decode($result, true);
+
         if(!empty($data)){
             return $result;
         }else{
             return response()->json(['message'=>'No Data Found']);
         }
+
     }
 
     function createproject(Request $req){
