@@ -21,6 +21,8 @@ class UserController extends Controller
     public function index()
     {
         try {
+            $this->authorize('getAllUsers', User::class);
+
             $users = User::all();
 
             return response(
@@ -46,6 +48,8 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {
         try {
+            $this->authorize('storeUser', User::class);
+
             $user = User::create(
                 [
                     'username' => $request->input('username'),
@@ -75,6 +79,8 @@ class UserController extends Controller
     public function show($id)
     {
         try {
+            $this->authorize('showUser', User::class);
+
             $user = User::find($id);
 
             return response(
@@ -101,6 +107,8 @@ class UserController extends Controller
     public function edit(EditUserRequest $request, $id)
     {
         try {
+            $this->authorize('editUser', User::class);
+
             $user = User::find($id);
 
             if(!$user) {
@@ -140,6 +148,8 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, $id)
     {
         try {
+            $this->authorize('updateUser', User::class);
+
             $user = User::find($id);
 
             if(!$user) {
@@ -178,6 +188,8 @@ class UserController extends Controller
     public function destroy($id)
     {
         try {
+            $this->authorize('destroyUser', User::class);
+
             $user = User::find($id);
 
             if(!$user) {
