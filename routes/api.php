@@ -18,9 +18,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('/v1')->group(function () {
-    Route::resource('users', UserController::class);
-    Route::resource('projects', ProjectController::class);
-    Route::resource('tasks', TaskController::class);
+
+    Route::group(['middleware' => 'admin'], function() {
+        Route::resource('users', UserController::class);
+    });
+
+    Route::group(['middleware' => 'product.owner'], function() {
+        Route::resource('projects', ProjectController::class);
+        Route::resource('tasks', TaskController::class);
+    });
 
 });
 

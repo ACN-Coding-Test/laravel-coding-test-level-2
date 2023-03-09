@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->uuid('id')->primary();
             $table->string('username')->unique();
             $table->string('password');
+            $table->enum('role', ['ADMIN', 'PRODUCT_OWNER'])->default('PRODUCT_OWNER');
             $table->timestamps();
         });
     }

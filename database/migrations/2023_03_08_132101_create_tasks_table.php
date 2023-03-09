@@ -17,7 +17,7 @@ class CreateTasksTable extends Migration
             $table->uuid('id')->primary();
             $table->string('title');
             $table->string('description');
-            $table->string('status');
+            $table->enum('status', ['NOT_STARTED', 'IN_PROGRESS', 'READY_FOR_TEST', 'COMPLETED'])->default('NOT_STARTED');
             $table->uuid('project_id');
             $table->uuid('user_id');
             $table->timestamps();
