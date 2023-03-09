@@ -39,6 +39,8 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validate = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|unique:users|max:255',
             'username' => 'required|unique:users|max:255',
             'password' => 'required|max:255',
         ]);
@@ -83,8 +85,11 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $validate = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|unique:users|max:255',
             'username' => 'required|unique:users|max:255',
             'password' => 'required|max:255',
+            'role' => 'required',
         ]);
 
         if($validate->fails()) {

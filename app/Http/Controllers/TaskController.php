@@ -39,7 +39,6 @@ class TaskController extends Controller
     {
         $validate = Validator::make($request->all(), [
             'title' => 'required',
-            'status' => 'required',
             'project_id' => 'required',
             'user_id' => 'required',
         ]);
@@ -83,6 +82,7 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $validate = Validator::make($request->all(), [
             'title' => 'required',
             'status' => 'required',
@@ -95,6 +95,7 @@ class TaskController extends Controller
         }
 
         $task = Task::find($id);
+
         $task->update($request->all());
         return response()->json($task);
     }
