@@ -23,8 +23,7 @@ class UserTest extends TestCase
     public function test_user_product_owner_register()
     {
         $user = [
-            'name' => 'Product Owner',
-            'email' => 'owner@test.com',
+            'username' => 'Product Owner',            
             'password' => 'passwordtest',
             'role_id' => 2 // PRODUCT_OWNER
           ];
@@ -41,8 +40,7 @@ class UserTest extends TestCase
     public function test_user_team_member_one_register()
     {
         $user = [
-            'name' => 'Team Member 1',
-            'email' => 'member1@test.com',
+            'username' => 'Team Member 1',            
             'password' => 'passwordtest',
             'role_id' => 3 // TEAM_MEMBER
           ];
@@ -59,8 +57,7 @@ class UserTest extends TestCase
     public function test_user_team_member_two_register()
     {
         $user = [
-            'name' => 'Team Member 2',
-            'email' => 'member2@test.com',
+            'username' => 'Team Member 2',            
             'password' => 'passwordtest',
             'role_id' => 3 // TEAM_MEMBER
           ];
@@ -77,8 +74,7 @@ class UserTest extends TestCase
     public function test_user_team_member_three_register()
     {
         $user = [
-            'name' => 'Team Member 3',
-            'email' => 'member3@test.com',
+            'username' => 'Team Member 3',            
             'password' => 'passwordtest',
             'role_id' => 3 // TEAM_MEMBER
           ];
