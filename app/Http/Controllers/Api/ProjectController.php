@@ -39,6 +39,7 @@ class ProjectController extends Controller
             return response()->json([
                 'status' => true,
                 'message' => 'Project Created Successfully',
+                 'id' => $project->id,
             ], 200);
         }
         else{

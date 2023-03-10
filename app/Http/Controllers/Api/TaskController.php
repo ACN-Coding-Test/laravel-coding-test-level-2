@@ -161,10 +161,7 @@ class TaskController extends Controller
             if(strtoupper(auth()->user()->userrole->role_name) == 'PRODUCT_OWNER') {
             $validateTask = Validator::make($request->all(),
             [
-                'title' => 'required',
-               // 'status_id' => 'required',
-                'user_id' => 'required',
-                'project_id' => 'required',
+                'title' => 'required'               
             ]);
 
             if($validateTask->fails()){
