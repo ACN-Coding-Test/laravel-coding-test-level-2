@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['prefix'=>'v1'], function (){
+    Route::resource('users', 'App\Http\Controllers\UserController');
+    Route::resource('projects', 'App\Http\Controllers\ProjectController');
+    Route::resource('tasks', 'App\Http\Controllers\TaskController');
+});
