@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Task extends Authenticatable
+class Task extends Model
 {
     use HasFactory;
+    protected $table = 'task';
 
     /**
      * Override fillable property data.
@@ -15,16 +16,20 @@ class Task extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
+        'title',
         'description',
         'status',
         'project_id',
         'user_id'
     ];
 
- 	public function user(): object
+    public function user(): object
     {
         return $this->belongsTo(User::class)->select('id', 'name', 'username');
+    }
+    public function project(): object
+    {
+        return $this->belongsTo(Project::class)->select('id', 'name');
     }
 
 }
